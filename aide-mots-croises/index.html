@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aide mots croisés en ligne — solution mot croisé | Kalambour</title>
+<meta name="description" content="Trouvez la solution d'un mot croisé à partir des lettres déjà posées ou d'une définition. Aide gratuite pour mots croisés et mots fléchés.">
+<link rel="canonical" href="https://kalambour.fr/aide-mots-croises/">
+<meta property="og:title" content="Aide mots croisés en ligne — solution mot croisé | Kalambour">
+<meta property="og:description" content="Trouvez la solution d'un mot croisé à partir des lettres déjà posées ou d'une définition. Aide gratuite pour mots croisés et mots fléchés.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kalambour.fr/aide-mots-croises/">
+<meta property="og:site_name" content="Kalambour">
+<meta name="theme-color" content="#4f3dfb">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@700&display=swap">
+<link rel="stylesheet" href="/assets/css/style.css">
+
+<script type="application/ld+json">{"@graph": [{"@context": "https://schema.org", "@type": "WebApplication", "name": "Aide mots croisés", "url": "https://kalambour.fr/aide-mots-croises/", "description": "Trouvez la réponse d'une grille de mots croisés à partir d'un motif de lettres ou d'une définition.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Tous (navigateur web)", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}, "inLanguage": "fr"}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://kalambour.fr/"}, {"@type": "ListItem", "position": 2, "name": "Aide mots croisés", "item": "https://kalambour.fr/aide-mots-croises/"}]}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Comment écrire un motif de lettres ?", "acceptedAnswer": {"@type": "Answer", "text": "Utilisez le symbole <code>_</code> pour chaque case vide. Par exemple <span class=\"mono\">C_A_</span> cherche un mot de 4 lettres commençant par C, avec un A en 3ᵉ position."}}, {"@type": "Question", "name": "Puis-je chercher à partir d'une définition ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, l'onglet « Par définition » cherche dans les définitions du dictionnaire du site — utile quand vous connaissez le sens du mot mais pas ses lettres."}}]}]}</script>
+</head>
+<body data-tool="croises">
+<a href="#contenu" class="skip-link">Aller au contenu</a>
+<main id="contenu">
+<div class="hero ">
+    <div class="hero-panel grid-dots-wrap">
+      <div class="grid-dots" style="position:absolute; inset:0; opacity:0.32;"></div>
+      <div class="hero-blob-a"></div><div class="hero-blob-b"></div>
+  <header class="site-header page-shell">
+    <a href="/" class="brand">
+      <svg width="38" height="38" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+        <rect x="2" y="12" width="20" height="20" rx="6" fill="#ffffff" transform="rotate(-10 2 12)"></rect>
+        <rect x="18" y="4" width="20" height="20" rx="6" fill="#c9beff" transform="rotate(10 18 4)"></rect>
+      </svg>
+      <span class="display brand-name">Kalambour</span>
+    </a>
+    <nav class="main-nav" aria-label="Navigation principale">
+        <a href="/">Accueil</a>
+        <a href="/mots-par-longueur/">Mots par longueur</a>
+        <a href="/anagramme/">Solveur d'anagrammes</a>
+        <a href="/aide-mots-croises/" class="active">Aide mots croisés</a>
+    </nav>
+    <span class="chip pill lang-chip">FR</span>
+  </header>
+      <div class="page-shell hero-inner">
+        <h1 class="display hero-title">Aide mots croisés</h1>
+        <p class="hero-subtitle">Trouvez la réponse à partir des lettres déjà posées dans la grille, ou à partir de la définition.</p>
+        <div style="display:flex; flex-direction:row; gap:0; margin-top:20px;" role="tablist">
+          <button type="button" id="cr-tab-motif" class="chip active-tab" style="border-radius:12px 0 0 12px; background:rgba(255,255,255,0.18); border:none; color:#fff; font-weight:700;">Par motif de lettres</button>
+          <button type="button" id="cr-tab-definition" class="chip" style="border-radius:0 12px 12px 0; border:none; color:rgba(255,255,255,0.75);">Par définition</button>
+        </div>
+        <div class="card" style="display:flex; flex-direction:row; align-items:center; gap:10px; padding:14px; margin-top:14px; box-shadow:var(--shadow-lg); max-width:480px; width:100%;">
+          <div id="cr-panel-motif" style="flex:1; display:flex;">
+            <input type="text" id="cr-motif" placeholder="Ex. C_A_ (4 lettres)" autocomplete="off" maxlength="20"
+                   style="flex:1; border:none; outline:none; font-size:20px; letter-spacing:0.08em; text-transform:uppercase; font-family:'Space Mono',monospace; padding:8px 12px; min-width:0;">
+          </div>
+          <div id="cr-panel-definition" style="flex:1; display:none;">
+            <input type="text" id="cr-definition" placeholder="Ex. compagnon domestique" autocomplete="off"
+                   style="width:100%; border:none; outline:none; font-size:16px; padding:8px 12px;">
+          </div>
+          <button type="button" id="cr-chercher" class="btn-primary">Chercher</button>
+        </div>
+      </div>
+    </div>
+  </div>  <div class="content-grid page-shell">
+    <div>
+      <h2 class="section-title">Résultats</h2>
+      <p class="section-sub" id="resultats-info">Entrez un motif, ex. C_A_ pour un mot de 4 lettres.</p>
+      <div id="resultats" class="results-list"></div>  <div class="ad-banner page-shell"><span class="ad-note">Emplacement publicitaire — bannière 728×90</span></div><div class="card" style="padding:28px 30px; margin-top:32px;"><h2 class="display" style="font-size:20px; margin:0 0 18px 0;">Questions fréquentes</h2><div style="margin-bottom:18px;"><div style="font-weight:700; margin-bottom:4px;">Comment écrire un motif de lettres ?</div><div style="color:var(--muted); font-size:15px; line-height:1.6;">Utilisez le symbole <code>_</code> pour chaque case vide. Par exemple <span class="mono">C_A_</span> cherche un mot de 4 lettres commençant par C, avec un A en 3ᵉ position.</div></div>
+<div style="margin-bottom:18px;"><div style="font-weight:700; margin-bottom:4px;">Puis-je chercher à partir d'une définition ?</div><div style="color:var(--muted); font-size:15px; line-height:1.6;">Oui, l'onglet « Par définition » cherche dans les définitions du dictionnaire du site — utile quand vous connaissez le sens du mot mais pas ses lettres.</div></div></div>
+    </div>
+    <aside>
+      <div class="card sidebar-card">
+        <div class="sidebar-title">Autres outils</div>
+        <a href="/" class="tool-row">
+          <div class="swatch bg-indigo">D</div>
+          <span class="tool-label" style="font-size:15.5px;">Démêleur de mots</span>
+          <span class="tool-arrow">›</span>
+        </a>
+        <a href="/mots-par-longueur/" class="tool-row">
+          <div class="swatch bg-amber">L</div>
+          <span class="tool-label" style="font-size:15.5px;">Mots par longueur</span>
+          <span class="tool-arrow">›</span>
+        </a>
+        <a href="/anagramme/" class="tool-row">
+          <div class="swatch bg-green">A</div>
+          <span class="tool-label" style="font-size:15.5px;">Solveur d'anagrammes</span>
+          <span class="tool-arrow">›</span>
+        </a>
+        <a href="/aide-mots-croises/" class="tool-row active">
+          <div class="swatch bg-coral">C</div>
+          <span class="tool-label" style="font-size:15.5px;">Aide mots croisés</span>
+          <span class="tool-arrow">●</span>
+        </a>
+        <a href="/aide-sutom-motus/" class="tool-row">
+          <div class="swatch bg-indigo">S</div>
+          <span class="tool-label" style="font-size:15.5px;">Aide Sutom / Motus</span>
+          <span class="tool-arrow">›</span>
+        </a>
+        <a href="/generateur-de-mots/" class="tool-row">
+          <div class="swatch bg-amber">G</div>
+          <span class="tool-label" style="font-size:15.5px;">Générateur de mots</span>
+          <span class="tool-arrow">›</span>
+        </a>
+        <a href="/dictionnaire/" class="tool-row">
+          <div class="swatch bg-green">D</div>
+          <span class="tool-label" style="font-size:15.5px;">Dictionnaire (recherche)</span>
+          <span class="tool-arrow">›</span>
+        </a>
+        <a href="/aide-pendu/" class="tool-row">
+          <div class="swatch bg-coral">P</div>
+          <span class="tool-label" style="font-size:15.5px;">Jeu du pendu — aide</span>
+          <span class="tool-arrow">›</span>
+        </a>
+        <a href="/bibliotheque-grilles/" class="tool-row">
+          <div class="swatch bg-indigo">B</div>
+          <span class="tool-label" style="font-size:15.5px;">Bibliothèque de grilles</span>
+          <span class="tool-arrow">›</span>
+        </a>
+        <a href="/jouer-sur-mobile/" class="tool-row">
+          <div class="swatch bg-amber">M</div>
+          <span class="tool-label" style="font-size:15.5px;">Jouer sur mobile</span>
+          <span class="tool-arrow">›</span>
+        </a>
+      </div>
+      <div class="ad-square" style="margin-top:20px;"><span class="ad-note">Emplacement publicitaire<br>pavé 300×250</span></div>
+    </aside>
+  </div>  <section class="seo-block page-shell">
+    <h2 class="display">Solutionneur de mots croisés et mots fléchés</h2>
+    <p>Bloqué sur une grille ? Indiquez les lettres déjà connues (avec un espace ou un underscore pour les cases vides) pour filtrer instantanément le dictionnaire, ou cherchez directement par définition si vous connaissez le sens du mot recherché.</p>
+    <div style="font-size:14px; color:var(--muted); margin-top:6px; font-weight:600;">Sources &amp; liens utiles</div>
+    <div class="seo-links">
+      <a href="https://www.cnrtl.fr/" class="chip" rel="nofollow noopener" target="_blank">CNRTL — définitions et étymologie <span style="color:var(--muted); font-size:12px;">↗</span></a>
+      <a href="https://www.larousse.fr/dictionnaires/francais" class="chip" rel="nofollow noopener" target="_blank">Larousse <span style="color:var(--muted); font-size:12px;">↗</span></a>
+      <a href="https://dictionnaire.lerobert.com/" class="chip" rel="nofollow noopener" target="_blank">Le Robert <span style="color:var(--muted); font-size:12px;">↗</span></a>
+      <a href="https://fr.wiktionary.org/" class="chip" rel="nofollow noopener" target="_blank">Wiktionnaire <span style="color:var(--muted); font-size:12px;">↗</span></a>
+    </div>
+  </section>
+</main>
+  <footer class="site-footer">
+    <div class="page-shell">
+    <div class="footer-brand">
+      <svg width="20" height="20" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+        <rect x="2" y="12" width="20" height="20" rx="6" fill="#7c5cff" transform="rotate(-10 2 12)"></rect>
+        <rect x="18" y="4" width="20" height="20" rx="6" fill="#c9beff" transform="rotate(10 18 4)"></rect>
+      </svg>
+      <span><strong>Kalambour</strong> — © 2026</span>
+    </div>
+    <div class="footer-links">
+      <a href="/mentions-legales/">Mentions légales</a>
+      <a href="/confidentialite/">Confidentialité</a>
+      <a href="/contact/">Contact</a>
+    </div>
+    </div>
+  </footer>
+<script src="/assets/js/dictionnaire.js"></script>
+<script src="/assets/js/outils.js"></script>
+</body>
+</html>

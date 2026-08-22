@@ -1,0 +1,44 @@
+name: Régénérer les grilles de mots croisés
+
+# Gratuit et illimité sur un dépôt public (voir README.md, section
+# Hébergement). Se déclenche automatiquement le 1er de chaque mois, ou
+# manuellement depuis l'onglet "Actions" de GitHub.
+on:
+  schedule:
+    - cron: "0 4 1 * *" # le 1er de chaque mois à 4h UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  regenerer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+
+      - name: Configurer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Générer de nouvelles grilles
+        working-directory: generateur-grilles
+        run: python3 generer.py
+
+      - name: Régénérer le site (dictionnaire, grilles, pages, sitemap)
+        run: python3 scripts/build.py
+
+      - name: Committer et pousser si changement
+        run: |
+          git config user.name "kalambour-bot"
+          git config user.email "bot@kalambour.fr"
+          git add generateur-grilles/grille_*.json assets/data/grille_*.json \
+                  bibliotheque-grilles/index.html jouer-sur-mobile/index.html
+          if git diff --cached --quiet; then
+            echo "Aucun changement — rien à committer."
+          else
+            git commit -m "Régénération mensuelle automatique des grilles"
+            git push
+          fi

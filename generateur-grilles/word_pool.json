@@ -1,0 +1,1098 @@
+[
+  [
+    "CHAT",
+    "Compagnon domestique qui ronronne"
+  ],
+  [
+    "CHIEN",
+    "Meilleur ami de l'homme"
+  ],
+  [
+    "PAIN",
+    "On le coupe à table tous les jours"
+  ],
+  [
+    "EAU",
+    "Elle coule à la source"
+  ],
+  [
+    "SOLEIL",
+    "Il brille le jour"
+  ],
+  [
+    "LUNE",
+    "Elle brille la nuit"
+  ],
+  [
+    "FLEUR",
+    "Elle pousse dans le jardin"
+  ],
+  [
+    "ARBRE",
+    "Il a des feuilles et des racines"
+  ],
+  [
+    "MAISON",
+    "On y habite"
+  ],
+  [
+    "LIVRE",
+    "On le lit page après page"
+  ],
+  [
+    "TABLE",
+    "Meuble pour manger"
+  ],
+  [
+    "CHAISE",
+    "On s'y assoit"
+  ],
+  [
+    "PORTE",
+    "On l'ouvre pour entrer"
+  ],
+  [
+    "FENETRE",
+    "On regarde dehors à travers elle"
+  ],
+  [
+    "JARDIN",
+    "Coin vert avec des fleurs"
+  ],
+  [
+    "ROUTE",
+    "Les voitures y roulent"
+  ],
+  [
+    "VOYAGE",
+    "Déplacement vers une destination lointaine"
+  ],
+  [
+    "MUSIQUE",
+    "Art des sons organisés"
+  ],
+  [
+    "LECTURE",
+    "Activité que l'on fait avec un livre"
+  ],
+  [
+    "CUISINE",
+    "Pièce où l'on prépare les repas"
+  ],
+  [
+    "HISTOIRE",
+    "Récit du passé"
+  ],
+  [
+    "NATURE",
+    "Ensemble du monde vivant et physique"
+  ],
+  [
+    "VOITURE",
+    "Véhicule à quatre roues"
+  ],
+  [
+    "BUREAU",
+    "Pièce ou meuble pour travailler"
+  ],
+  [
+    "JOURNAL",
+    "Publication quotidienne d'actualités"
+  ],
+  [
+    "LUMIERE",
+    "Elle chasse l'obscurité"
+  ],
+  [
+    "MONTAGNE",
+    "Relief élevé qu'on peut escalader"
+  ],
+  [
+    "RIVIERE",
+    "Cours d'eau qui rejoint un fleuve"
+  ],
+  [
+    "VILLAGE",
+    "Petite agglomération à la campagne"
+  ],
+  [
+    "ETOILE",
+    "Point lumineux dans le ciel nocturne"
+  ],
+  [
+    "PRINTEMPS",
+    "Saison des fleurs"
+  ],
+  [
+    "AUTOMNE",
+    "Saison des feuilles mortes"
+  ],
+  [
+    "HIVER",
+    "Saison la plus froide"
+  ],
+  [
+    "ORAGE",
+    "Pluie accompagnée de tonnerre"
+  ],
+  [
+    "NUAGE",
+    "Il flotte dans le ciel avant la pluie"
+  ],
+  [
+    "FORET",
+    "Grand ensemble d'arbres"
+  ],
+  [
+    "OCEAN",
+    "Immense étendue d'eau salée"
+  ],
+  [
+    "DESERT",
+    "Étendue de sable très sèche"
+  ],
+  [
+    "VOYELLE",
+    "A, E, I, O, U en sont"
+  ],
+  [
+    "PHRASE",
+    "Suite de mots avec un sens complet"
+  ],
+  [
+    "LETTRE",
+    "Élément de l'alphabet, ou courrier"
+  ],
+  [
+    "ECOLE",
+    "Lieu où l'on apprend"
+  ],
+  [
+    "JARDINIER",
+    "Il s'occupe des plantes"
+  ],
+  [
+    "LABYRINTHE",
+    "Dédale où l'on se perd facilement"
+  ],
+  [
+    "PARAPLUIE",
+    "Objet indispensable un jour de pluie"
+  ],
+  [
+    "HORLOGE",
+    "Elle égrène les heures sans jamais se lasser"
+  ],
+  [
+    "BIBLIOTHEQUE",
+    "Temple silencieux du papier"
+  ],
+  [
+    "TELESCOPE",
+    "Il rapproche les étoiles de nos yeux"
+  ],
+  [
+    "CHOCOLAT",
+    "Péché mignon venu du cacao"
+  ],
+  [
+    "AEROPORT",
+    "Porte d'entrée vers le ciel"
+  ],
+  [
+    "GRENIER",
+    "Sous les toits, royaume des souvenirs oubliés"
+  ],
+  [
+    "CHEMINEE",
+    "Elle réchauffe le salon en hiver"
+  ],
+  [
+    "ORCHESTRE",
+    "Ensemble de musiciens qui joue à l'unisson"
+  ],
+  [
+    "VOLCAN",
+    "Montagne qui gronde parfois de colère"
+  ],
+  [
+    "PYRAMIDE",
+    "Tombeau pointu des pharaons"
+  ],
+  [
+    "GALAXIE",
+    "Notre Voie lactée en est une"
+  ],
+  [
+    "ARCHITECTE",
+    "Il dessine les bâtiments avant qu'ils existent"
+  ],
+  [
+    "MEDECIN",
+    "Il ausculte pour guérir"
+  ],
+  [
+    "JARDINAGE",
+    "Passe-temps qui salit les mains avec plaisir"
+  ],
+  [
+    "TEMPETE",
+    "Colère du ciel et de la mer réunis"
+  ],
+  [
+    "LABOURER",
+    "Retourner la terre avant de semer"
+  ],
+  [
+    "HORIZON",
+    "Ligne où le ciel semble toucher la mer"
+  ],
+  [
+    "SILENCE",
+    "Absence totale de bruit"
+  ],
+  [
+    "COURAGE",
+    "Il permet d'affronter la peur"
+  ],
+  [
+    "PATIENCE",
+    "Vertu de celui qui sait attendre"
+  ],
+  [
+    "GENEROSITE",
+    "Elle pousse à donner sans compter"
+  ],
+  [
+    "CURIOSITE",
+    "Elle pousse à toujours vouloir savoir"
+  ],
+  [
+    "TENDRESSE",
+    "Douceur affectueuse envers autrui"
+  ],
+  [
+    "AMITIE",
+    "Lien sincère entre deux personnes"
+  ],
+  [
+    "LIBERTE",
+    "Elle n'a de prix pour personne"
+  ],
+  [
+    "VOYAGEUR",
+    "Il a toujours une valise prête"
+  ],
+  [
+    "ARTISTE",
+    "Il transforme une idée en œuvre"
+  ],
+  [
+    "INVENTEUR",
+    "Il donne vie à ce qui n'existait pas"
+  ],
+  [
+    "HORTICULTEUR",
+    "Spécialiste des fleurs et des plantes"
+  ],
+  [
+    "NAVIGATEUR",
+    "Il trace sa route sur les mers"
+  ],
+  [
+    "ASTRONAUTE",
+    "Il flotte loin de la Terre"
+  ],
+  [
+    "PHOTOGRAPHE",
+    "Il fige un instant pour toujours"
+  ],
+  [
+    "ENSEIGNANT",
+    "Il transmet le savoir chaque jour"
+  ],
+  [
+    "VOISINAGE",
+    "Ensemble de ceux qui habitent tout près"
+  ],
+  [
+    "RECOLTE",
+    "Fruit du travail des champs"
+  ],
+  [
+    "SAVEUR",
+    "Ce que la langue reconnaît en premier"
+  ],
+  [
+    "TEXTURE",
+    "Ce que les doigts perçoivent au toucher"
+  ],
+  [
+    "EQUILIBRE",
+    "État stable que l'on cherche à garder"
+  ],
+  [
+    "NUIT",
+    "Elle succède au jour"
+  ],
+  [
+    "UNE",
+    "Article féminin singulier"
+  ],
+  [
+    "ANE",
+    "Il porte les bagages du randonneur"
+  ],
+  [
+    "NEZ",
+    "Il sent les odeurs"
+  ],
+  [
+    "LUI",
+    "Pronom qui le désigne"
+  ],
+  [
+    "USE",
+    "Il en fait trop, il ... sa santé"
+  ],
+  [
+    "EU",
+    "Participe passé de avoir"
+  ],
+  [
+    "AN",
+    "Une année, familièrement"
+  ],
+  [
+    "SALADE",
+    "On la prépare avec des légumes crus"
+  ],
+  [
+    "TERRE",
+    "Notre planète"
+  ],
+  [
+    "CARTE",
+    "On la consulte pour trouver son chemin"
+  ],
+  [
+    "ROSE",
+    "Fleur au parfum délicat, ou couleur pastel"
+  ],
+  [
+    "RARE",
+    "Qui ne se trouve pas facilement"
+  ],
+  [
+    "MERE",
+    "Elle a donné la vie"
+  ],
+  [
+    "PERE",
+    "Parent masculin"
+  ],
+  [
+    "LIRE",
+    "Parcourir un texte des yeux"
+  ],
+  [
+    "DIRE",
+    "Exprimer par la parole"
+  ],
+  [
+    "RIRE",
+    "Manifester sa joie à voix haute"
+  ],
+  [
+    "TIRE",
+    "Il ... la corde vers lui"
+  ],
+  [
+    "SIRE",
+    "Titre donné à un souverain"
+  ],
+  [
+    "SEL",
+    "Il relève le goût des plats"
+  ],
+  [
+    "MER",
+    "Grande étendue d'eau salée"
+  ],
+  [
+    "LAC",
+    "Étendue d'eau douce entourée de terre"
+  ],
+  [
+    "ETE",
+    "Saison la plus chaude"
+  ],
+  [
+    "ARC",
+    "Il lance des flèches"
+  ],
+  [
+    "RAT",
+    "Petit rongeur des égouts"
+  ],
+  [
+    "TAS",
+    "Amoncellement en désordre"
+  ],
+  [
+    "SOL",
+    "On y pose les pieds"
+  ],
+  [
+    "DUR",
+    "Difficile à supporter, ou peu tendre"
+  ],
+  [
+    "LIT",
+    "Meuble où l'on dort"
+  ],
+  [
+    "RIZ",
+    "Céréale de base en Asie"
+  ],
+  [
+    "CRI",
+    "Son fort poussé par la voix"
+  ],
+  [
+    "SIRENE",
+    "Créature marine mi-femme mi-poisson"
+  ],
+  [
+    "SALE",
+    "Contraire de propre"
+  ],
+  [
+    "SEUL",
+    "Sans compagnie"
+  ],
+  [
+    "REEL",
+    "Qui existe vraiment"
+  ],
+  [
+    "SATELLITE",
+    "Il orbite autour d'une planète"
+  ],
+  [
+    "LITTERAIRE",
+    "Qui concerne les livres et l'écriture"
+  ],
+  [
+    "SOLITAIRE",
+    "Qui vit ou agit seul"
+  ],
+  [
+    "RESTAURANT",
+    "On y sert des repas contre paiement"
+  ],
+  [
+    "REALISATEUR",
+    "Il dirige un film"
+  ],
+  [
+    "SALAIRE",
+    "Rémunération versée pour un travail"
+  ],
+  [
+    "RITUEL",
+    "Cérémonie répétée selon un ordre précis"
+  ],
+  [
+    "SERIEUX",
+    "Qui prend les choses au sérieux"
+  ],
+  [
+    "OURS",
+    "Il hiberne tout l'hiver"
+  ],
+  [
+    "LOUP",
+    "Il chasse en meute"
+  ],
+  [
+    "RENARD",
+    "Rusé comme lui"
+  ],
+  [
+    "LAPIN",
+    "Il a de longues oreilles"
+  ],
+  [
+    "SOURIS",
+    "Petit rongeur qui aime le fromage"
+  ],
+  [
+    "OISEAU",
+    "Il a des ailes et un bec"
+  ],
+  [
+    "POISSON",
+    "Il vit dans l'eau et respire par des branchies"
+  ],
+  [
+    "SERPENT",
+    "Reptile sans pattes"
+  ],
+  [
+    "ARAIGNEE",
+    "Elle tisse une toile"
+  ],
+  [
+    "ABEILLE",
+    "Elle produit du miel"
+  ],
+  [
+    "MOUCHE",
+    "Petit insecte qui bourdonne"
+  ],
+  [
+    "PAPILLON",
+    "Il sort de sa chrysalide"
+  ],
+  [
+    "TIGRE",
+    "Grand félin rayé"
+  ],
+  [
+    "LION",
+    "Roi de la savane"
+  ],
+  [
+    "SINGE",
+    "Il aime grimper aux arbres"
+  ],
+  [
+    "VACHE",
+    "Elle donne du lait"
+  ],
+  [
+    "COCHON",
+    "Animal de ferme rose"
+  ],
+  [
+    "MOUTON",
+    "Il donne de la laine"
+  ],
+  [
+    "CHEVAL",
+    "On le monte pour se déplacer"
+  ],
+  [
+    "POULE",
+    "Elle pond des œufs"
+  ],
+  [
+    "TETE",
+    "Elle contient le cerveau"
+  ],
+  [
+    "MAIN",
+    "Elle a cinq doigts"
+  ],
+  [
+    "PIED",
+    "On marche avec"
+  ],
+  [
+    "BRAS",
+    "Il relie l'épaule à la main"
+  ],
+  [
+    "JAMBE",
+    "Elle permet de marcher"
+  ],
+  [
+    "DOS",
+    "Partie arrière du corps"
+  ],
+  [
+    "VENTRE",
+    "Il gargouille quand on a faim"
+  ],
+  [
+    "COEUR",
+    "Il bat dans la poitrine"
+  ],
+  [
+    "OEIL",
+    "Il permet de voir"
+  ],
+  [
+    "BOUCHE",
+    "Elle sert à parler et manger"
+  ],
+  [
+    "DENT",
+    "On la brosse matin et soir"
+  ],
+  [
+    "PEAU",
+    "Elle recouvre tout le corps"
+  ],
+  [
+    "OS",
+    "Il compose le squelette"
+  ],
+  [
+    "SANG",
+    "Liquide rouge qui circule dans le corps"
+  ],
+  [
+    "SALON",
+    "Pièce où l'on reçoit les invités"
+  ],
+  [
+    "CHAMBRE",
+    "Pièce où l'on dort"
+  ],
+  [
+    "TOIT",
+    "Il protège la maison de la pluie"
+  ],
+  [
+    "MUR",
+    "Il sépare deux pièces"
+  ],
+  [
+    "ESCALIER",
+    "Il permet de monter à l'étage"
+  ],
+  [
+    "CLE",
+    "Elle ouvre la porte"
+  ],
+  [
+    "MIROIR",
+    "On s'y regarde"
+  ],
+  [
+    "LAMPE",
+    "Elle éclaire la pièce"
+  ],
+  [
+    "TAPIS",
+    "Il couvre le sol"
+  ],
+  [
+    "RIDEAU",
+    "Il habille la fenêtre"
+  ],
+  [
+    "ARMOIRE",
+    "On y range les vêtements"
+  ],
+  [
+    "CANAPE",
+    "On s'y assoit pour regarder la télévision"
+  ],
+  [
+    "DOUCHE",
+    "On s'y lave debout"
+  ],
+  [
+    "EVIER",
+    "On y fait la vaisselle"
+  ],
+  [
+    "POMME",
+    "Fruit croquant, rouge ou vert"
+  ],
+  [
+    "POIRE",
+    "Fruit à la peau fine et douce"
+  ],
+  [
+    "BANANE",
+    "Fruit jaune et courbé"
+  ],
+  [
+    "RAISIN",
+    "Petit fruit qui pousse en grappe"
+  ],
+  [
+    "FRAISE",
+    "Petit fruit rouge en forme de cœur"
+  ],
+  [
+    "CITRON",
+    "Fruit acide et jaune"
+  ],
+  [
+    "BEURRE",
+    "On le tartine sur le pain"
+  ],
+  [
+    "FROMAGE",
+    "Produit laitier affiné"
+  ],
+  [
+    "OEUF",
+    "On le cuit au plat ou à la coque"
+  ],
+  [
+    "SUCRE",
+    "Il rend les desserts doux"
+  ],
+  [
+    "SOUPE",
+    "Plat liquide et chaud"
+  ],
+  [
+    "GATEAU",
+    "Dessert que l'on partage en fête"
+  ],
+  [
+    "VIANDE",
+    "Chair d'animal que l'on cuisine"
+  ],
+  [
+    "LEGUME",
+    "Carotte, poireau, ou courgette en sont"
+  ],
+  [
+    "CAFE",
+    "Boisson chaude et corsée du matin"
+  ],
+  [
+    "THE",
+    "Boisson infusée dans l'eau chaude"
+  ],
+  [
+    "LAIT",
+    "Boisson blanche que l'on tire de la vache"
+  ],
+  [
+    "MIEL",
+    "Produit sucré fabriqué par les abeilles"
+  ],
+  [
+    "PATE",
+    "Base souple utilisée en cuisine ou en boulangerie"
+  ],
+  [
+    "PLUIE",
+    "Elle tombe du ciel"
+  ],
+  [
+    "NEIGE",
+    "Elle recouvre tout de blanc en hiver"
+  ],
+  [
+    "VENT",
+    "Il fait bouger les feuilles"
+  ],
+  [
+    "GLACE",
+    "Eau gelée, ou dessert froid"
+  ],
+  [
+    "CIEL",
+    "Il est bleu le jour, noir la nuit"
+  ],
+  [
+    "MONDE",
+    "L'ensemble de la Terre et de ses habitants"
+  ],
+  [
+    "SABLE",
+    "On en trouve sur la plage"
+  ],
+  [
+    "PIERRE",
+    "Matériau dur trouvé dans la nature"
+  ],
+  [
+    "HERBE",
+    "Elle pousse dans les prés"
+  ],
+  [
+    "FEUILLE",
+    "Elle tombe des arbres en automne"
+  ],
+  [
+    "BRANCHE",
+    "Elle porte les feuilles de l'arbre"
+  ],
+  [
+    "RACINE",
+    "Elle ancre l'arbre dans le sol"
+  ],
+  [
+    "GRAINE",
+    "Elle donne naissance à une plante"
+  ],
+  [
+    "ETRE",
+    "Verbe d'existence, le plus utilisé en français"
+  ],
+  [
+    "AVOIR",
+    "Verbe de possession"
+  ],
+  [
+    "ALLER",
+    "Se déplacer vers un endroit"
+  ],
+  [
+    "VENIR",
+    "Se déplacer vers celui qui parle"
+  ],
+  [
+    "VOIR",
+    "Percevoir par les yeux"
+  ],
+  [
+    "SAVOIR",
+    "Posséder une connaissance"
+  ],
+  [
+    "POUVOIR",
+    "Avoir la capacité de faire quelque chose"
+  ],
+  [
+    "VOULOIR",
+    "Désirer fortement"
+  ],
+  [
+    "DEVOIR",
+    "Être obligé de faire quelque chose"
+  ],
+  [
+    "PRENDRE",
+    "Saisir avec la main"
+  ],
+  [
+    "DONNER",
+    "Remettre quelque chose à quelqu'un"
+  ],
+  [
+    "PARLER",
+    "S'exprimer à voix haute"
+  ],
+  [
+    "ECOUTER",
+    "Prêter attention à un son"
+  ],
+  [
+    "REGARDER",
+    "Diriger son regard vers quelque chose"
+  ],
+  [
+    "MANGER",
+    "Avaler de la nourriture"
+  ],
+  [
+    "BOIRE",
+    "Avaler un liquide"
+  ],
+  [
+    "DORMIR",
+    "Être plongé dans le sommeil"
+  ],
+  [
+    "MARCHER",
+    "Se déplacer à pied"
+  ],
+  [
+    "CHANTER",
+    "Produire de la musique avec la voix"
+  ],
+  [
+    "DANSER",
+    "Bouger son corps en rythme"
+  ],
+  [
+    "TRAVAILLER",
+    "Exercer une activité professionnelle"
+  ],
+  [
+    "APPRENDRE",
+    "Acquérir une connaissance"
+  ],
+  [
+    "COMPRENDRE",
+    "Saisir le sens de quelque chose"
+  ],
+  [
+    "CHERCHER",
+    "Essayer de trouver quelque chose"
+  ],
+  [
+    "TROUVER",
+    "Découvrir ce que l'on cherchait"
+  ],
+  [
+    "AIDER",
+    "Apporter son soutien à quelqu'un"
+  ],
+  [
+    "AIMER",
+    "Éprouver de l'affection"
+  ],
+  [
+    "ATTENDRE",
+    "Rester en place jusqu'à un moment donné"
+  ],
+  [
+    "ARRIVER",
+    "Parvenir à destination"
+  ],
+  [
+    "PARTIR",
+    "Quitter un lieu"
+  ],
+  [
+    "GRAND",
+    "Contraire de petit"
+  ],
+  [
+    "PETIT",
+    "Contraire de grand"
+  ],
+  [
+    "BEAU",
+    "Agréable à regarder"
+  ],
+  [
+    "LAID",
+    "Contraire de beau"
+  ],
+  [
+    "JEUNE",
+    "Qui n'est pas vieux"
+  ],
+  [
+    "VIEUX",
+    "Qui a beaucoup d'années"
+  ],
+  [
+    "RAPIDE",
+    "Qui se déplace vite"
+  ],
+  [
+    "LENT",
+    "Contraire de rapide"
+  ],
+  [
+    "FORT",
+    "Qui a beaucoup de force"
+  ],
+  [
+    "FAIBLE",
+    "Contraire de fort"
+  ],
+  [
+    "CHAUD",
+    "Contraire de froid"
+  ],
+  [
+    "FROID",
+    "Contraire de chaud"
+  ],
+  [
+    "LOURD",
+    "Difficile à porter"
+  ],
+  [
+    "LEGER",
+    "Facile à porter"
+  ],
+  [
+    "PROPRE",
+    "Contraire de sale"
+  ],
+  [
+    "FACILE",
+    "Qui ne demande pas d'effort"
+  ],
+  [
+    "DIFFICILE",
+    "Qui demande beaucoup d'effort"
+  ],
+  [
+    "HEUREUX",
+    "Qui ressent de la joie"
+  ],
+  [
+    "TRISTE",
+    "Qui ressent de la peine"
+  ],
+  [
+    "CALME",
+    "Sans agitation"
+  ],
+  [
+    "TEMPS",
+    "Il passe et ne revient jamais"
+  ],
+  [
+    "ANNEE",
+    "Elle compte douze mois"
+  ],
+  [
+    "SEMAINE",
+    "Elle compte sept jours"
+  ],
+  [
+    "HEURE",
+    "Elle compte soixante minutes"
+  ],
+  [
+    "MATIN",
+    "Début de la journée"
+  ],
+  [
+    "SOIR",
+    "Fin de la journée"
+  ],
+  [
+    "FETE",
+    "Moment de célébration et de joie"
+  ],
+  [
+    "CADEAU",
+    "On l'offre pour faire plaisir"
+  ],
+  [
+    "ARGENT",
+    "Il permet d'acheter"
+  ],
+  [
+    "TRAVAIL",
+    "Activité exercée pour gagner sa vie"
+  ],
+  [
+    "VILLE",
+    "Grande agglomération urbaine"
+  ],
+  [
+    "PAYS",
+    "Territoire gouverné par un État"
+  ],
+  [
+    "LANGUE",
+    "Elle sert à parler et à goûter"
+  ],
+  [
+    "COULEUR",
+    "Rouge, bleu ou vert en sont"
+  ],
+  [
+    "NOMBRE",
+    "Il sert à compter"
+  ],
+  [
+    "SANTE",
+    "Bon état du corps"
+  ],
+  [
+    "SECRET",
+    "Ce que l'on garde caché"
+  ]
+]

@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Démêleur de mots en ligne — trouvez tous les mots avec vos lettres | Kalambour</title>
+<meta name="description" content="Démêlez des lettres mélangées et retrouvez instantanément tous les mots français valides. Outil gratuit, idéal pour le Scrabble et les mots fléchés — calcul 100% dans le navigateur.">
+<link rel="canonical" href="https://kalambour.fr/">
+<meta property="og:title" content="Démêleur de mots en ligne — trouvez tous les mots avec vos lettres | Kalambour">
+<meta property="og:description" content="Démêlez des lettres mélangées et retrouvez instantanément tous les mots français valides. Outil gratuit, idéal pour le Scrabble et les mots fléchés — calcul 100% dans le navigateur.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kalambour.fr/">
+<meta property="og:site_name" content="Kalambour">
+<meta name="theme-color" content="#4f3dfb">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@700&display=swap">
+<link rel="stylesheet" href="/assets/css/style.css">
+
+<script type="application/ld+json">{"@graph": [{"@context": "https://schema.org", "@type": "WebApplication", "name": "Démêleur de mots", "url": "https://kalambour.fr/", "description": "Trouvez tous les mots français valides à partir de lettres mélangées.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Tous (navigateur web)", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}, "inLanguage": "fr"}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://kalambour.fr/"}, {"@type": "ListItem", "position": 2, "name": "Démêleur de mots", "item": "https://kalambour.fr/"}]}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Comment fonctionne ce démêleur de mots ?", "acceptedAnswer": {"@type": "Answer", "text": "Tapez les lettres dont vous disposez (par exemple votre tirage au Scrabble) : l'outil compare vos lettres à un dictionnaire français et affiche tous les mots que vous pouvez former, du plus court au plus long."}}, {"@type": "Question", "name": "Le démêleur utilise-t-il toutes mes lettres ?", "acceptedAnswer": {"@type": "Answer", "text": "Non — contrairement au solveur d'anagrammes, le démêleur cherche des mots formés avec <em>tout ou partie</em> de vos lettres. Pour un mot utilisant exactement toutes vos lettres, direction le <a href=\"/anagramme/\">solveur d'anagrammes</a>."}}, {"@type": "Question", "name": "Mes lettres et recherches sont-elles envoyées à un serveur ?", "acceptedAnswer": {"@type": "Answer", "text": "Non : tout le calcul se fait directement dans votre navigateur, aucune donnée n'est transmise ni conservée."}}]}]}</script>
+</head>
+<body data-tool="demeleur">
+<a href="#contenu" class="skip-link">Aller au contenu</a>
+<main id="contenu">
+<div class="hero ">
+    <div class="hero-panel grid-dots-wrap">
+      <div class="grid-dots" style="position:absolute; inset:0; opacity:0.32;"></div>
+      <div class="hero-blob-a"></div><div class="hero-blob-b"></div>
+  <header class="site-header page-shell">
+    <a href="/" class="brand">
+      <svg width="38" height="38" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+        <rect x="2" y="12" width="20" height="20" rx="6" fill="#ffffff" transform="rotate(-10 2 12)"></rect>
+        <rect x="18" y="4" width="20" height="20" rx="6" fill="#c9beff" transform="rotate(10 18 4)"></rect>
+      </svg>
+      <span class="display brand-name">Kalambour</span>
+    </a>
+    <nav class="main-nav" aria-label="Navigation principale">
+        <a href="/" class="active">Accueil</a>
+        <a href="/mots-par-longueur/">Mots par longueur</a>
+        <a href="/anagramme/">Solveur d'anagrammes</a>
+        <a href="/aide-mots-croises/">Aide mots croisés</a>
+    </nav>
+    <span class="chip pill lang-chip">FR</span>
+  </header>
+      <div class="page-shell hero-inner">
+        <h1 class="display hero-title">Démêlez vos lettres,<br>trouvez le mot juste</h1>
+        <p class="hero-subtitle">Entrez des lettres mélangées, notre outil retrouve tous les mots français valides — utile pour le Scrabble, les mots fléchés ou pour débloquer une grille de mots croisés.</p>
+        <div class="card" style="display:inline-flex; flex-direction:row; align-items:center; gap:10px; padding:14px; margin-top:26px; box-shadow:var(--shadow-lg); max-width:480px; width:100%;">
+          <input type="text" id="dm-lettres" placeholder="Ex. TAHC" autocomplete="off" maxlength="20"
+                 style="flex:1; border:none; outline:none; font-size:22px; letter-spacing:0.08em; text-transform:uppercase; font-family:'Space Mono',monospace; padding:8px 12px; min-width:0;">
+          <button type="button" id="dm-chercher" class="btn-primary">Chercher</button>
+        </div>
+        <label for="dm-lettres" class="visually-hidden">Lettres mélangées à démêler</label><div style="display:flex; flex-direction:row; gap:14px; flex-wrap:wrap; justify-content:center; margin-top:28px;"><div class="stat-card" style="background:var(--indigo);"><div class="stat-number mono">9</div><div class="stat-label">outils gratuits</div></div>
+<div class="stat-card" style="background:var(--green);"><div class="stat-number mono">0€</div><div class="stat-label">pour toujours</div></div>
+<div class="stat-card" style="background:var(--coral);"><div class="stat-number mono">100%</div><div class="stat-label">calcul dans votre navigateur</div></div></div>
+      </div>
+    </div>
+  </div>  <div class="content-grid page-shell">
+    <div>
+      <h2 class="section-title">Résultats</h2>
+      <p class="section-sub" id="resultats-info">Entrez des lettres mélangées ci-dessus pour commencer.</p>
+      <div id="resultats" class="results-list"></div>  <div class="ad-banner page-shell"><span class="ad-note">Emplacement publicitaire — bannière 728×90</span></div><div class="card" style="padding:28px 30px; margin-top:32px;"><h2 class="display" style="font-size:20px; margin:0 0 18px 0;">Questions fréquentes</h2><div style="margin-bottom:18px;"><div style="font-weight:700; margin-bottom:4px;">Comment fonctionne ce démêleur de mots ?</div><div style="color:var(--muted); font-size:15px; line-height:1.6;">Tapez les lettres dont vous disposez (par exemple votre tirage au Scrabble) : l'outil compare vos lettres à un dictionnaire français et affiche tous les mots que vous pouvez former, du plus court au plus long.</div></div>
+<div style="margin-bottom:18px;"><div style="font-weight:700; margin-bottom:4px;">Le démêleur utilise-t-il toutes mes lettres ?</div><div style="color:var(--muted); font-size:15px; line-height:1.6;">Non — contrairement au solveur d'anagrammes, le démêleur cherche des mots formés avec <em>tout ou partie</em> de vos lettres. Pour un mot utilisant exactement toutes vos lettres, direction le <a href="/anagramme/">solveur d'anagrammes</a>.</div></div>
+<div style="margin-bottom:18px;"><div style="font-weight:700; margin-bottom:4px;">Mes lettres et recherches sont-elles envoyées à un serveur ?</div><div style="color:var(--muted); font-size:15px; line-height:1.6;">Non : tout le calcul se fait directement dans votre navigateur, aucune donnée n'est transmise ni conservée.</div></div></div>
+    </div>
+    <aside>
+      <div class="card sidebar-card">
+        <div class="sidebar-title">Autres outils</div>
+        <a href="/" class="tool-row active">
+          <div class="swatch bg-indigo">D</div>
+          <span class="tool-label" style="font-size:15.5px;">Démêleur de mots</span>
+          <span class="tool-arrow">●</span>
+        </a>
+        <a href="/mots-par-longueur/" class="tool-row">
+          <div class="swatch bg-amber">L</div>
+          <span class="tool-label" style="font-size:15.5px;">Mots par longueur</span>
+          <span class="tool-arrow">›</span>
+        </a>
+        <a href="/anagramme/" class="tool-row">
+          <div class="swatch bg-green">A</div>
+          <span class="tool-label" style="font-size:15.5px;">Solveur d'anagrammes</span>
+          <span class="tool-arrow">›</span>
+        </a>
+        <a href="/aide-mots-croises/" class="tool-row">
+          <div class="swatch bg-coral">C</div>
+          <span class="tool-label" style="font-size:15.5px;">Aide mots croisés</span>
+          <span class="tool-arrow">›</span>
+        </a>
+        <a href="/aide-sutom-motus/" class="tool-row">
+          <div class="swatch bg-indigo">S</div>
+          <span class="tool-label" style="font-size:15.5px;">Aide Sutom / Motus</span>
+          <span class="tool-arrow">›</span>
+        </a>
+        <a href="/generateur-de-mots/" class="tool-row">
+          <div class="swatch bg-amber">G</div>
+          <span class="tool-label" style="font-size:15.5px;">Générateur de mots</span>
+          <span class="tool-arrow">›</span>
+        </a>
+        <a href="/dictionnaire/" class="tool-row">
+          <div class="swatch bg-green">D</div>
+          <span class="tool-label" style="font-size:15.5px;">Dictionnaire (recherche)</span>
+          <span class="tool-arrow">›</span>
+        </a>
+        <a href="/aide-pendu/" class="tool-row">
+          <div class="swatch bg-coral">P</div>
+          <span class="tool-label" style="font-size:15.5px;">Jeu du pendu — aide</span>
+          <span class="tool-arrow">›</span>
+        </a>
+        <a href="/bibliotheque-grilles/" class="tool-row">
+          <div class="swatch bg-indigo">B</div>
+          <span class="tool-label" style="font-size:15.5px;">Bibliothèque de grilles</span>
+          <span class="tool-arrow">›</span>
+        </a>
+        <a href="/jouer-sur-mobile/" class="tool-row">
+          <div class="swatch bg-amber">M</div>
+          <span class="tool-label" style="font-size:15.5px;">Jouer sur mobile</span>
+          <span class="tool-arrow">›</span>
+        </a>
+      </div>
+      <div class="ad-square" style="margin-top:20px;"><span class="ad-note">Emplacement publicitaire<br>pavé 300×250</span></div>
+    </aside>
+  </div>  <section class="seo-block page-shell">
+    <h2 class="display">Le démêleur de mots, un outil pensé pour le Scrabble et les mots fléchés</h2>
+    <p>Que vous cherchiez à optimiser votre tirage au Scrabble, à finir une grille de mots fléchés ou simplement à jouer avec les lettres, le démêleur de mots explore un dictionnaire français pour vous proposer toutes les combinaisons valides. Pour aller plus loin sur l'orthographe et les définitions, ces références font autorité :</p>
+    <div style="font-size:14px; color:var(--muted); margin-top:6px; font-weight:600;">Sources &amp; liens utiles</div>
+    <div class="seo-links">
+      <a href="https://www.cnrtl.fr/" class="chip" rel="nofollow noopener" target="_blank">CNRTL — définitions et étymologie <span style="color:var(--muted); font-size:12px;">↗</span></a>
+      <a href="https://www.larousse.fr/dictionnaires/francais" class="chip" rel="nofollow noopener" target="_blank">Larousse <span style="color:var(--muted); font-size:12px;">↗</span></a>
+      <a href="https://dictionnaire.lerobert.com/" class="chip" rel="nofollow noopener" target="_blank">Le Robert <span style="color:var(--muted); font-size:12px;">↗</span></a>
+    </div>
+  </section>
+</main>
+  <footer class="site-footer">
+    <div class="page-shell">
+    <div class="footer-brand">
+      <svg width="20" height="20" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+        <rect x="2" y="12" width="20" height="20" rx="6" fill="#7c5cff" transform="rotate(-10 2 12)"></rect>
+        <rect x="18" y="4" width="20" height="20" rx="6" fill="#c9beff" transform="rotate(10 18 4)"></rect>
+      </svg>
+      <span><strong>Kalambour</strong> — © 2026</span>
+    </div>
+    <div class="footer-links">
+      <a href="/mentions-legales/">Mentions légales</a>
+      <a href="/confidentialite/">Confidentialité</a>
+      <a href="/contact/">Contact</a>
+    </div>
+    </div>
+  </footer>
+<script src="/assets/js/dictionnaire.js"></script>
+<script src="/assets/js/outils.js"></script>
+</body>
+</html>
