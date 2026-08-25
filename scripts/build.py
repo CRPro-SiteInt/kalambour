@@ -141,6 +141,7 @@ def etape_3_pages():
     # commentaire au-dessus de TOOLS, et recherche/notes-projet.md) —
     # l'ancienne URL /aide-pendu/ redirige désormais via _redirects.
     build_pages_prod3.build_mot_du_jour()
+    build_pages_prod3.build_mot_du_jour_resultat()
 
     build_pages_prod2.build_mots_par_longueur_hub()
     par_len = build_pages_prod2.longueurs_disponibles()
@@ -156,7 +157,7 @@ def etape_3_pages():
     build_pages_prod2.build_mentions_legales()
     build_pages_prod2.build_confidentialite()
     build_pages_prod2.build_contact()
-    print(f"[3/4] {6 + 1 + 1 + pages_longueur + 4} pages HTML régénérées")
+    print(f"[3/4] {6 + 1 + 2 + pages_longueur + 4} pages HTML régénérées")
 
 
 def etape_4_sitemap():
@@ -169,6 +170,15 @@ def etape_4_sitemap():
             continue
         rel = os.path.relpath(dirpath, ROOT)
         url = "/" if rel == "." else "/" + rel.replace(os.sep, "/") + "/"
+        # /mot-du-jour/resultat/ est une page de partage dont le contenu
+        # dépend entièrement de paramètres d'URL (voir
+        # build_pages_prod3.build_mot_du_jour_resultat()) : sans ces
+        # paramètres elle n'affiche rien d'utile, ce n'est donc pas une
+        # page de destination pertinente pour un moteur de recherche
+        # (cohérent avec le <meta name="robots" content="noindex"> posé
+        # sur cette page).
+        if url == "/mot-du-jour/resultat/":
+            continue
         urls.append(url)
     urls.sort()
     items = "\n".join(f"  <url><loc>{domain}{u}</loc></url>" for u in urls)

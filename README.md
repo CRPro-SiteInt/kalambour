@@ -389,6 +389,25 @@ bibliothèque de grilles. Le résultat du jour est mémorisé dans le
 `localStorage` du visiteur (pas de compte, pas de serveur) pour éviter
 de rejouer la même grille plusieurs fois dans la journée.
 
+**Partage détaillé (ajouté le 26/08/2026)** — pensé pour être posté sur
+un forum : le bouton "Partager mon résultat" copie (ou ouvre le partage
+natif du téléphone via `navigator.share`) un texte court façon Wordle
+(nom du jeu, numéro de grille, score X/6, grille en emoji 🟩🟨⬜) suivi
+d'un lien vers `/mot-du-jour/resultat/`. Cette page, entièrement
+statique et sans backend, décode l'historique de la partie (mots
+essayés + couleurs) depuis le paramètre d'URL `e` — voir
+`encoderHistorique()`/`construireLienPartage()` dans `JEU_SCRIPT` et
+`RESULTAT_SCRIPT` dans `scripts/build_pages_prod3.py` — puis affiche la
+grille de couleurs sans les lettres, et les mots essayés masqués
+(révélés individuellement au clic, pour ne pas spoiler quelqu'un qui
+n'a pas envie de voir la réponse d'un coup). Le mot secret du jour
+n'est jamais inclus dans le lien (sauf implicitement via le dernier mot
+essayé, en cas de victoire). Page volontairement non indexée
+(`<meta name="robots" content="noindex">`) et exclue du sitemap (voir
+`etape_4_sitemap()` dans `scripts/build.py`) : son contenu dépend
+entièrement des paramètres d'URL, ce n'est pas une page de destination
+pour un moteur de recherche.
+
 ## Limites connues à ce stade
 
 - **Liste de mots** (802 886 mots) — quelques noms propres/mots

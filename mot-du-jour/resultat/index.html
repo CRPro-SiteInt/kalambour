@@ -3,22 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dictionnaire français en ligne — définitions gratuites | Kalambour</title>
-<meta name="description" content="Cherchez la définition d'un mot français gratuitement. Dictionnaire en ligne simple et rapide, sans création de compte.">
-<link rel="canonical" href="https://kalambour.fr/dictionnaire/">
-<meta property="og:title" content="Dictionnaire français en ligne — définitions gratuites | Kalambour">
-<meta property="og:description" content="Cherchez la définition d'un mot français gratuitement. Dictionnaire en ligne simple et rapide, sans création de compte.">
+<title>Résultat partagé — Le mot du jour | Kalambour</title>
+<meta name="description" content="Consultez le résultat d'une partie du mot du jour Kalambour partagée par un ami, puis venez tenter votre chance sur la grille du jour.">
+<link rel="canonical" href="https://kalambour.fr/mot-du-jour/resultat/">
+<meta property="og:title" content="Résultat partagé — Le mot du jour | Kalambour">
+<meta property="og:description" content="Consultez le résultat d'une partie du mot du jour Kalambour partagée par un ami, puis venez tenter votre chance sur la grille du jour.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://kalambour.fr/dictionnaire/">
+<meta property="og:url" content="https://kalambour.fr/mot-du-jour/resultat/">
 <meta property="og:site_name" content="Kalambour">
 <meta name="theme-color" content="#4f3dfb">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@700&display=swap">
 <link rel="stylesheet" href="/assets/css/style.css">
+<meta name="robots" content="noindex, follow">
 
-<script type="application/ld+json">{"@graph": [{"@context": "https://schema.org", "@type": "WebApplication", "name": "Dictionnaire", "url": "https://kalambour.fr/dictionnaire/", "description": "Recherchez la définition d'un mot français.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Tous (navigateur web)", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}, "inLanguage": "fr"}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://kalambour.fr/"}, {"@type": "ListItem", "position": 2, "name": "Dictionnaire", "item": "https://kalambour.fr/dictionnaire/"}]}]}</script>
 </head>
-<body data-tool="dictionnaire">
+<body>
 <a href="#contenu" class="skip-link">Aller au contenu</a>
 <main id="contenu">
 <div class="hero ">
@@ -35,7 +35,7 @@
     </a>
     <nav class="main-nav" aria-label="Navigation principale">
         <a href="/">Démêleur de mots</a>
-        <a href="/mot-du-jour/">Le mot du jour</a>
+        <a href="/mot-du-jour/" class="active">Le mot du jour</a>
         <a href="/aide-mots-croises/">Aide mots croisés</a>
         <a href="/anagramme/">Anagrammeur</a>
         <a href="/mots-par-longueur/">Mots par longueur</a>
@@ -43,20 +43,22 @@
     <span class="chip pill lang-chip">FR</span>
   </header>
       <div class="page-shell hero-inner">
-        <h1 class="display hero-title">Dictionnaire (recherche)</h1>
-        <p class="hero-subtitle">Cherchez la définition d'un mot français dans notre dictionnaire.</p>
-        <div class="card" style="display:flex; flex-direction:row; align-items:center; gap:10px; padding:12px; margin-top:22px; width:100%; max-width:460px; box-shadow:var(--shadow-lg);">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="margin-left:8px; flex-shrink:0;" aria-hidden="true"><circle cx="10" cy="10" r="7" stroke="#9a958a" stroke-width="2"></circle><line x1="15.5" y1="15.5" x2="21" y2="21" stroke="#9a958a" stroke-width="2" stroke-linecap="round"></line></svg>
-          <input type="text" id="di-recherche" placeholder="Chercher un mot…" autocomplete="off"
-                 style="flex:1; border:none; outline:none; font-size:16px; padding:8px 4px; min-width:0;">
-        </div>
+        <h1 class="display hero-title">Résultat partagé</h1>
+        <p class="hero-subtitle">Une partie du mot du jour Kalambour partagée par un joueur — la grille de couleurs montre sa progression, les mots essayés restent cachés jusqu'à ce que vous cliquiez dessus.</p>
+<div class="mj-badge" id="mjr-badge">Résultat partagé</div>
       </div>
     </div>
   </div>  <div class="content-grid page-shell">
     <div>
-      <h2 class="section-title">Résultats</h2>
-      <p class="section-sub" id="resultats-info">Tapez un mot pour afficher sa définition.</p>
-      <div id="resultats" class="results-list"></div>  <div class="ad-banner page-shell"><span class="ad-note">Emplacement publicitaire — bannière 728×90</span></div>
+      <div class="card mj-console">
+        <h2 id="mjr-titre" class="display" style="font-size:20px; margin:0 0 20px 0;">Chargement du résultat…</h2>
+        <div class="mj-grille" id="mjr-grille" style="margin-bottom:28px;"></div>
+        <div style="font-weight:700; margin-bottom:12px;">Mots essayés</div>
+        <div id="mjr-mots" style="display:flex; flex-direction:column; gap:8px; align-items:flex-start;"></div>
+        <div style="display:flex; justify-content:center; margin-top:28px;">
+          <a href="/mot-du-jour/" class="btn-primary" style="text-decoration:none;">Jouer au mot du jour</a>
+        </div>
+      </div>  <div class="ad-banner page-shell"><span class="ad-note">Emplacement publicitaire — bannière 728×90</span></div>
     </div>
     <aside>
       <div class="card sidebar-card">
@@ -66,10 +68,10 @@
           <span class="tool-label" style="font-size:15.5px;">Démêleur de mots</span>
           <span class="tool-arrow">›</span>
         </a>
-        <a href="/mot-du-jour/" class="tool-row">
+        <a href="/mot-du-jour/" class="tool-row active">
           <div class="swatch bg-coral">J</div>
           <span class="tool-label" style="font-size:15.5px;">Le mot du jour</span>
-          <span class="tool-arrow">›</span>
+          <span class="tool-arrow">●</span>
         </a>
         <a href="/aide-mots-croises/" class="tool-row">
           <div class="swatch bg-coral">C</div>
@@ -86,10 +88,10 @@
           <span class="tool-label" style="font-size:15.5px;">Aide Sutom / Motus</span>
           <span class="tool-arrow">›</span>
         </a>
-        <a href="/dictionnaire/" class="tool-row active">
+        <a href="/dictionnaire/" class="tool-row">
           <div class="swatch bg-green">D</div>
           <span class="tool-label" style="font-size:15.5px;">Dictionnaire (recherche)</span>
-          <span class="tool-arrow">●</span>
+          <span class="tool-arrow">›</span>
         </a>
         <a href="/mots-par-longueur/" class="tool-row">
           <div class="swatch bg-amber">L</div>
@@ -114,18 +116,92 @@
       </div>
       <div class="ad-square" style="margin-top:20px;"><span class="ad-note">Emplacement publicitaire<br>pavé 300×250</span></div>
     </aside>
-  </div>  <section class="seo-block page-shell">
-    <h2 class="display">Un dictionnaire français en ligne, gratuit et sans pub intrusive</h2>
-    <p>Ce dictionnaire compte aujourd'hui plus de 57 000 mots français avec leur définition, et nous continuons à en ajouter régulièrement de nouvelles. Pour une couverture exhaustive de la langue française dès maintenant, ces dictionnaires de référence restent incontournables :</p>
-    <div style="font-size:14px; color:var(--muted); margin-top:6px; font-weight:600;">Sources &amp; liens utiles</div>
-    <div class="seo-links">
-      <a href="https://www.cnrtl.fr/" class="chip" rel="nofollow noopener" target="_blank">CNRTL — définitions et étymologie <span style="color:var(--muted); font-size:12px;">↗</span></a>
-      <a href="https://www.larousse.fr/dictionnaires/francais" class="chip" rel="nofollow noopener" target="_blank">Larousse <span style="color:var(--muted); font-size:12px;">↗</span></a>
-      <a href="https://dictionnaire.lerobert.com/" class="chip" rel="nofollow noopener" target="_blank">Le Robert <span style="color:var(--muted); font-size:12px;">↗</span></a>
-      <a href="https://fr.wiktionary.org/" class="chip" rel="nofollow noopener" target="_blank">Wiktionnaire <span style="color:var(--muted); font-size:12px;">↗</span></a>
-      <a href="https://www.dictionnaire-academie.fr/" class="chip" rel="nofollow noopener" target="_blank">Académie française <span style="color:var(--muted); font-size:12px;">↗</span></a>
-    </div>
-  </section>
+  </div><script>
+(function () {
+  "use strict";
+
+  function paramUrl(nom) {
+    var m = new RegExp("[?&]" + nom + "=([^&]*)").exec(location.search);
+    return m ? decodeURIComponent(m[1].replace(/\+/g, " ")) : null;
+  }
+
+  // Inverse de encoderHistorique() dans JEU_SCRIPT (build_mot_du_jour) :
+  // "MOT1:VJGGVJ.MOT2:VVVVVV" -> [{mot, etats}, ...].
+  function decoderHistorique(brut) {
+    if (!brut) return [];
+    var morceaux = brut.split(".");
+    var hist = [], i, m, sep, mot, codes, etats, c, code;
+    for (i = 0; i < morceaux.length; i++) {
+      m = morceaux[i];
+      sep = m.indexOf(":");
+      if (sep === -1) continue;
+      mot = m.slice(0, sep);
+      codes = m.slice(sep + 1);
+      etats = [];
+      for (c = 0; c < codes.length; c++) {
+        code = codes.charAt(c);
+        etats.push(code === "V" ? "vert" : code === "J" ? "jaune" : "gris");
+      }
+      hist.push({ mot: mot, etats: etats });
+    }
+    return hist;
+  }
+
+  var numero = paramUrl("n");
+  var dateISO = paramUrl("d");
+  var gagne = paramUrl("g") === "1";
+  var historique = decoderHistorique(paramUrl("e"));
+
+  var elBadge = document.getElementById("mjr-badge");
+  var elTitre = document.getElementById("mjr-titre");
+  var elGrille = document.getElementById("mjr-grille");
+  var elMots = document.getElementById("mjr-mots");
+
+  if (!historique.length || !numero) {
+    if (elTitre) elTitre.textContent = "Lien de partage invalide ou incomplet";
+    if (elBadge) elBadge.textContent = "Impossible d'afficher ce résultat.";
+  } else {
+    if (elBadge) {
+      var jourFr = dateISO ? dateISO.split("-") : null;
+      var dateTxt = (jourFr && jourFr.length === 3) ? (" — " + jourFr[2] + "/" + jourFr[1] + "/" + jourFr[0]) : "";
+      elBadge.textContent = "Grille n° " + numero + dateTxt;
+    }
+    if (elTitre) {
+      var score = (gagne ? String(historique.length) : "X") + "/6";
+      elTitre.textContent = (gagne ? "Résultat trouvé — " : "Résultat non trouvé — ") + score + " essais";
+    }
+
+    var r, c, ligneEl, caseEl;
+    for (r = 0; r < historique.length; r++) {
+      ligneEl = document.createElement("div");
+      ligneEl.className = "mj-ligne";
+      for (c = 0; c < historique[r].etats.length; c++) {
+        caseEl = document.createElement("div");
+        caseEl.className = "mj-case mj-remplie mj-" + historique[r].etats[c];
+        ligneEl.appendChild(caseEl);
+      }
+      if (elGrille) elGrille.appendChild(ligneEl);
+    }
+
+    if (elMots) {
+      for (r = 0; r < historique.length; r++) {
+        (function (mot, indexEssai) {
+          var bouton = document.createElement("button");
+          bouton.type = "button";
+          bouton.className = "mjr-mot-cache";
+          bouton.textContent = "Essai " + (indexEssai + 1) + " — cliquer pour révéler";
+          bouton.addEventListener("click", function () {
+            bouton.textContent = mot;
+            bouton.className = "mjr-mot-revele";
+            bouton.disabled = true;
+          });
+          elMots.appendChild(bouton);
+        })(historique[r].mot, r);
+      }
+    }
+  }
+})();
+</script>
 </main>
   <footer class="site-footer">
     <div class="page-shell">

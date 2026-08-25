@@ -65,7 +65,13 @@ JEU_SCRIPT = r"""<script>
   var etatClavier = {};
   var ligneCourante = 0, colCourante = 0, essaiCourant = "";
   var secret = null, motsValides = null, numero = null, dateISO = null;
-  var termine = false;
+  var termine = false, dernierGagne = false;
+  // Historique des essais joués ({mot, etats}), nécessaire pour le lien
+  // de partage détaillé (voir construireLienPartage ci-dessous) — pas
+  // seulement pour l'affichage courant, donc sauvegardé dans
+  // localStorage pour rester disponible si l'utilisateur revient plus
+  // tard dans la journée (voir sauverEtat/chargerEtat).
+  var historique = [];
   var STORAGE_KEY = "kalambour-mot-du-jour";
 
   function normaliser(s) {
@@ -82,9 +88,36 @@ JEU_SCRIPT = r"""<script>
   function sauverEtat(essais, gagne) {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify({
-        date: dateISO, numero: numero, essais: essais, gagne: gagne, fini: true
+        date: dateISO, numero: numero, essais: essais, gagne: gagne, fini: true, historique: historique
       }));
     } catch (e) {}
+  }
+
+  // --- Partage détaillé (voir /mot-du-jour/resultat/) -------------------
+  // Encode l'historique en un paramètre d'URL compact et lisible :
+  // "MOT1:VJGGVJ.MOT2:VVVVVV" (mot, deux-points, un code par lettre —
+  // V/J/G pour vert/jaune/gris — points séparant les essais). Le mot
+  // secret n'est JAMAIS inclus tel quel dans le lien : seul le dernier
+  // mot essayé s'avère être le mot secret en cas de victoire, ce qui
+  // est déjà implicite dans un partage de résultat gagné.
+  function codeEtat(e) {
+    return e === "vert" ? "V" : e === "jaune" ? "J" : "G";
+  }
+
+  function encoderHistorique(hist) {
+    var i, c, codes, parties = [];
+    for (i = 0; i < hist.length; i++) {
+      codes = "";
+      for (c = 0; c < hist[i].etats.length; c++) codes += codeEtat(hist[i].etats[c]);
+      parties.push(hist[i].mot + ":" + codes);
+    }
+    return parties.join(".");
+  }
+
+  function construireLienPartage() {
+    var base = location.origin + "/mot-du-jour/resultat/";
+    return base + "?n=" + encodeURIComponent(numero) + "&d=" + encodeURIComponent(dateISO) +
+      "&g=" + (dernierGagne ? "1" : "0") + "&e=" + encodeURIComponent(encoderHistorique(historique));
   }
 
   function message(txt) {
@@ -183,6 +216,7 @@ JEU_SCRIPT = r"""<script>
 
   function terminer(gagne) {
     termine = true;
+    dernierGagne = gagne;
     sauverEtat(ligneCourante + 1, gagne);
     afficherPartager();
     if (gagne) {
@@ -206,6 +240,7 @@ JEU_SCRIPT = r"""<script>
       return;
     }
     var etats = evaluerEssai(secret, essaiCourant);
+    historique.push({ mot: essaiCourant, etats: etats.slice() });
     var essaiFige = essaiCourant, ligneFigee = ligneCourante;
     var PAS = 220, DEMI_FLIP = 250; // le flip dure 0.5s (voir @keyframes mj-flip) : la couleur
     // change au milieu (case "de profil"), exactement comme la révélation de Wordle.
@@ -260,23 +295,32 @@ JEU_SCRIPT = r"""<script>
   var boutonPartager = document.getElementById("mj-partager");
   if (boutonPartager) {
     boutonPartager.addEventListener("click", function () {
+      var i, c, ligne;
       var lignes = [];
-      var l, c, el, ligne;
-      for (l = 0; l <= ligneCourante; l++) {
+      for (i = 0; i < historique.length; i++) {
         ligne = "";
-        for (c = 0; c < LONGUEUR; c++) {
-          el = caseEl(l, c);
-          if (!el) continue;
-          if (el.classList.contains("mj-vert")) ligne += "🟩";
-          else if (el.classList.contains("mj-jaune")) ligne += "🟨";
+        for (c = 0; c < historique[i].etats.length; c++) {
+          if (historique[i].etats[c] === "vert") ligne += "🟩";
+          else if (historique[i].etats[c] === "jaune") ligne += "🟨";
           else ligne += "⬜";
         }
         lignes.push(ligne);
       }
-      var texte = "Kalambour — Le mot du jour #" + numero + "\n" + lignes.join("\n") + "\nkalambour.fr/mot-du-jour/";
+      var score = (dernierGagne ? String(historique.length) : "X") + "/" + ESSAIS;
+      var lien = construireLienPartage();
+      // Le texte copié ne contient jamais les mots essayés en clair — la
+      // grille de couleurs suffit à montrer la progression (comme sur
+      // Wordle/Sutom) ; les mots eux-mêmes ne sont visibles qu'en ouvrant
+      // le lien de résultat détaillé, où ils restent cachés jusqu'au clic
+      // (voir /mot-du-jour/resultat/ et build_mot_du_jour_resultat()).
+      var texte = "Kalambour — Le mot du jour #" + numero + " — " + score + "\n" + lignes.join("\n") + "\n" + lien;
+      if (navigator.share) {
+        navigator.share({ title: "Kalambour — Le mot du jour", text: texte, url: lien }).catch(function () {});
+        return;
+      }
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(texte).then(function () {
-          message("Résultat copié — collez-le où vous voulez !");
+          message("Résultat copié (avec un lien de détail) — collez-le où vous voulez !");
         }, function () {
           message(texte);
         });
@@ -303,6 +347,26 @@ JEU_SCRIPT = r"""<script>
     var precedent = chargerEtat();
     if (precedent && precedent.date === dateISO && precedent.fini) {
       termine = true;
+      dernierGagne = !!precedent.gagne;
+      // Les parties d'avant le 26/08/2026 n'ont pas d'historique sauvegardé
+      // (champ ajouté ce jour-là) — le bouton Partager reste alors présent
+      // mais son lien ne contiendra aucun essai ; cas rare et transitoire
+      // (une seule journée de parties concernée), pas la peine de gérer un
+      // message d'erreur dédié pour ça.
+      historique = precedent.historique || [];
+      var r, c, etat;
+      for (r = 0; r < historique.length; r++) {
+        for (c = 0; c < historique[r].etats.length; c++) {
+          etat = historique[r].etats[c];
+          var el = caseEl(r, c);
+          if (el) {
+            el.textContent = historique[r].mot.charAt(c);
+            el.classList.add("mj-remplie", "mj-" + etat);
+          }
+          majClavier(historique[r].mot.charAt(c), etat);
+        }
+      }
+      ligneCourante = historique.length;
       afficherPartager();
       message(precedent.gagne
         ? "Vous avez déjà trouvé le mot du jour aujourd'hui (" + precedent.essais + "/" + ESSAIS + "). Revenez demain !"
@@ -321,7 +385,7 @@ def build_mot_du_jour():
     h = hero(
         "motdujour",
         "Le mot du jour",
-        "Un mot de 6 lettres à deviner chaque jour, tiré du dictionnaire de Kalambour — sans lien avec aucun autre site. Vert : bien placée. Jaune : présente, mal placée. Gris : absente.",
+        "Un mot de 6 lettres à deviner chaque jour, tiré du dictionnaire de Kalambour. Vert : bien placée. Jaune : présente, mal placée. Gris : absente.",
         inner,
     )
     main = f"""      <div class="card mj-console">
@@ -340,7 +404,7 @@ def build_mot_du_jour():
     body = hero_page_wrap(h, main + ad_banner_inline() + faq_html, "motdujour")
     body += seo_block(
         "Un jeu de lettres quotidien, à la Wordle, 100% français",
-        "Le mot du jour est un jeu gratuit inspiré du principe popularisé par Wordle (et repris en France par Motus et Sutom) : deviner un mot en un nombre d'essais limité, guidé par des indices de couleur. Ici, le mot est tiré du dictionnaire propre à Kalambour, sans dépendre d'un autre site.",
+        "Le mot du jour est un jeu gratuit inspiré du principe popularisé par Wordle : deviner un mot en un nombre d'essais limité, guidé par des indices de couleur. Ici, le mot est tiré du dictionnaire propre à Kalambour.",
     )
     schema = combine_schema(
         webapp_schema("Le mot du jour", "/mot-du-jour/", "Devinez le mot du jour en 6 essais, un nouveau mot chaque jour."),
@@ -356,5 +420,135 @@ def build_mot_du_jour():
     write("/mot-du-jour/", html)
 
 
+# =======================================================================
+# Page de résultat partagé (/mot-du-jour/resultat/)
+# =======================================================================
+# Ajout du 26/08/2026 (demande du client : permettre un partage simple
+# des parties sur des forums). Page 100% statique, sans backend : toutes
+# les données de la partie (essais + couleurs) sont encodées dans le
+# paramètre d'URL "e" par construireLienPartage() dans JEU_SCRIPT
+# ci-dessus, puis décodées ici en JavaScript côté navigateur — cohérent
+# avec l'architecture "aucune dépendance serveur" du reste du site.
+# Volontairement non indexée (voir extra_head plus bas) et exclue du
+# sitemap (voir scripts/build.py, etape_4_sitemap) : son contenu varie
+# entièrement selon les paramètres d'URL, ce n'est pas une page de
+# destination pour un moteur de recherche.
+RESULTAT_SCRIPT = r"""<script>
+(function () {
+  "use strict";
+
+  function paramUrl(nom) {
+    var m = new RegExp("[?&]" + nom + "=([^&]*)").exec(location.search);
+    return m ? decodeURIComponent(m[1].replace(/\+/g, " ")) : null;
+  }
+
+  // Inverse de encoderHistorique() dans JEU_SCRIPT (build_mot_du_jour) :
+  // "MOT1:VJGGVJ.MOT2:VVVVVV" -> [{mot, etats}, ...].
+  function decoderHistorique(brut) {
+    if (!brut) return [];
+    var morceaux = brut.split(".");
+    var hist = [], i, m, sep, mot, codes, etats, c, code;
+    for (i = 0; i < morceaux.length; i++) {
+      m = morceaux[i];
+      sep = m.indexOf(":");
+      if (sep === -1) continue;
+      mot = m.slice(0, sep);
+      codes = m.slice(sep + 1);
+      etats = [];
+      for (c = 0; c < codes.length; c++) {
+        code = codes.charAt(c);
+        etats.push(code === "V" ? "vert" : code === "J" ? "jaune" : "gris");
+      }
+      hist.push({ mot: mot, etats: etats });
+    }
+    return hist;
+  }
+
+  var numero = paramUrl("n");
+  var dateISO = paramUrl("d");
+  var gagne = paramUrl("g") === "1";
+  var historique = decoderHistorique(paramUrl("e"));
+
+  var elBadge = document.getElementById("mjr-badge");
+  var elTitre = document.getElementById("mjr-titre");
+  var elGrille = document.getElementById("mjr-grille");
+  var elMots = document.getElementById("mjr-mots");
+
+  if (!historique.length || !numero) {
+    if (elTitre) elTitre.textContent = "Lien de partage invalide ou incomplet";
+    if (elBadge) elBadge.textContent = "Impossible d'afficher ce résultat.";
+  } else {
+    if (elBadge) {
+      var jourFr = dateISO ? dateISO.split("-") : null;
+      var dateTxt = (jourFr && jourFr.length === 3) ? (" — " + jourFr[2] + "/" + jourFr[1] + "/" + jourFr[0]) : "";
+      elBadge.textContent = "Grille n° " + numero + dateTxt;
+    }
+    if (elTitre) {
+      var score = (gagne ? String(historique.length) : "X") + "/6";
+      elTitre.textContent = (gagne ? "Résultat trouvé — " : "Résultat non trouvé — ") + score + " essais";
+    }
+
+    var r, c, ligneEl, caseEl;
+    for (r = 0; r < historique.length; r++) {
+      ligneEl = document.createElement("div");
+      ligneEl.className = "mj-ligne";
+      for (c = 0; c < historique[r].etats.length; c++) {
+        caseEl = document.createElement("div");
+        caseEl.className = "mj-case mj-remplie mj-" + historique[r].etats[c];
+        ligneEl.appendChild(caseEl);
+      }
+      if (elGrille) elGrille.appendChild(ligneEl);
+    }
+
+    if (elMots) {
+      for (r = 0; r < historique.length; r++) {
+        (function (mot, indexEssai) {
+          var bouton = document.createElement("button");
+          bouton.type = "button";
+          bouton.className = "mjr-mot-cache";
+          bouton.textContent = "Essai " + (indexEssai + 1) + " — cliquer pour révéler";
+          bouton.addEventListener("click", function () {
+            bouton.textContent = mot;
+            bouton.className = "mjr-mot-revele";
+            bouton.disabled = true;
+          });
+          elMots.appendChild(bouton);
+        })(historique[r].mot, r);
+      }
+    }
+  }
+})();
+</script>"""
+
+
+def build_mot_du_jour_resultat():
+    inner = '<div class="mj-badge" id="mjr-badge">Résultat partagé</div>'
+    h = hero(
+        "motdujour",
+        "Résultat partagé",
+        "Une partie du mot du jour Kalambour partagée par un joueur — la grille de couleurs montre sa progression, les mots essayés restent cachés jusqu'à ce que vous cliquiez dessus.",
+        inner,
+    )
+    main = f"""      <div class="card mj-console">
+        <h2 id="mjr-titre" class="display" style="font-size:20px; margin:0 0 20px 0;">Chargement du résultat…</h2>
+        <div class="mj-grille" id="mjr-grille" style="margin-bottom:28px;"></div>
+        <div style="font-weight:700; margin-bottom:12px;">Mots essayés</div>
+        <div id="mjr-mots" style="display:flex; flex-direction:column; gap:8px; align-items:flex-start;"></div>
+        <div style="display:flex; justify-content:center; margin-top:28px;">
+          <a href="/mot-du-jour/" class="btn-primary" style="text-decoration:none;">Jouer au mot du jour</a>
+        </div>
+      </div>"""
+    body = hero_page_wrap(h, main + ad_banner_inline(), "motdujour")
+    body += RESULTAT_SCRIPT
+    html = page(
+        "/mot-du-jour/resultat/", f"Résultat partagé — Le mot du jour | {SITE_NAME}",
+        "Consultez le résultat d'une partie du mot du jour Kalambour partagée par un ami, puis venez tenter votre chance sur la grille du jour.",
+        "motdujour", "motdujour", body,
+        extra_head='<meta name="robots" content="noindex, follow">',
+    )
+    write("/mot-du-jour/resultat/", html)
+
+
 if __name__ == "__main__":
     build_mot_du_jour()
+    build_mot_du_jour_resultat()

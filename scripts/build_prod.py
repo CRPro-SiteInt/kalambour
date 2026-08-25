@@ -51,8 +51,14 @@ FONT_LINK = '<link rel="preconnect" href="https://fonts.googleapis.com"><link re
 # Wordle. Placé en tête de liste : c'est la fonctionnalité pensée pour
 # faire revenir un visiteur chaque jour (levier de trafic récurrent),
 # alors que les autres outils sont plutôt des recherches ponctuelles.
+#
+# Ajout du 26/08/2026 : le lien de nav vers la page d'accueil s'appelait
+# encore "Accueil", un intitulé générique qui ne dit rien de l'outil
+# réellement proposé sur cette page (le démêleur de lettres) — renommé
+# "Démêleur de mots" pour que le nom de l'outil soit visible dès la
+# navigation, cohérent avec son intitulé dans TOOLS ci-dessous.
 NAV_ITEMS = [
-    ("accueil", "/", "Accueil"),
+    ("accueil", "/", "Démêleur de mots"),
     ("motdujour", "/mot-du-jour/", "Le mot du jour"),
     ("croises", "/aide-mots-croises/", "Aide mots croisés"),
     ("anagrammes", "/anagramme/", "Anagrammeur"),

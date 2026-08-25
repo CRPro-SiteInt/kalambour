@@ -41,13 +41,22 @@ def webapp_schema(nom, url, description):
 
 
 def faq_block(items):
-    """items: liste de (question, réponse). Retourne (html, schema)."""
+    """items: liste de (question, réponse). Retourne (html, schema).
+
+    Intitulé "Aide & questions fréquentes" (et non "Questions fréquentes"
+    seul, changé le 26/08/2026) : sur la plupart des pages, ce bloc sert
+    autant à expliquer comment utiliser l'outil qu'à répondre à de
+    vraies questions ponctuelles — "Questions fréquentes" seul laissait
+    penser à tort qu'il s'agissait uniquement de la seconde catégorie.
+    Le schema.org FAQPage ci-dessous reste inchangé : il ne dépend pas
+    de cet intitulé visible, seulement du format question/réponse.
+    """
     blocs = "\n".join(
         f'<div style="margin-bottom:18px;"><div style="font-weight:700; margin-bottom:4px;">{esc(q)}</div>'
         f'<div style="color:var(--muted); font-size:15px; line-height:1.6;">{r}</div></div>'
         for q, r in items
     )
-    html = f'<div class="card" style="padding:28px 30px; margin-top:32px;"><h2 class="display" style="font-size:20px; margin:0 0 18px 0;">Questions fréquentes</h2>{blocs}</div>'
+    html = f'<div class="card" style="padding:28px 30px; margin-top:32px;"><h2 class="display" style="font-size:20px; margin:0 0 18px 0;">Aide &amp; questions fréquentes</h2>{blocs}</div>'
     schema = {
         "@context": "https://schema.org",
         "@type": "FAQPage",
@@ -106,7 +115,7 @@ def build_accueil():
     main = f"""{resultats_block("Entrez des lettres mélangées ci-dessus pour commencer.")}"""
     faq_html, faq_schema = faq_block([
         ("Comment fonctionne ce démêleur de mots ?", "Tapez les lettres dont vous disposez (par exemple votre tirage au Scrabble) : l'outil compare vos lettres à un dictionnaire français et affiche tous les mots que vous pouvez former, du plus court au plus long."),
-        ("Le démêleur utilise-t-il toutes mes lettres ?", "Non — contrairement au solveur d'anagrammes, le démêleur cherche des mots formés avec <em>tout ou partie</em> de vos lettres. Pour un mot utilisant exactement toutes vos lettres, direction le <a href=\"/anagramme/\">solveur d'anagrammes</a>."),
+        ("Le démêleur utilise-t-il toutes mes lettres ?", "Non — contrairement à l'<a href=\"/anagramme/\">Anagrammeur</a>, le démêleur cherche des mots formés avec <em>tout ou partie</em> de vos lettres. Pour un mot utilisant exactement toutes vos lettres, direction l'<a href=\"/anagramme/\">Anagrammeur</a>."),
         ("Mes lettres et recherches sont-elles envoyées à un serveur ?", "Non : tout le calcul se fait directement dans votre navigateur, aucune donnée n'est transmise ni conservée."),
     ])
     body = h + content_grid(main + ad_banner_inline() + faq_html, "demeleur")
@@ -344,7 +353,7 @@ def build_dictionnaire():
     body = hero_page_wrap(h, main, "dictionnaire")
     body += seo_block(
         "Un dictionnaire français en ligne, gratuit et sans pub intrusive",
-        "Ce dictionnaire est aujourd'hui un jeu de démarrage de quelques centaines de mots, appelé à grandir. Pour une couverture exhaustive de la langue française dès maintenant, ces dictionnaires de référence restent incontournables :",
+        "Ce dictionnaire compte aujourd'hui plus de 57 000 mots français avec leur définition, et nous continuons à en ajouter régulièrement de nouvelles. Pour une couverture exhaustive de la langue française dès maintenant, ces dictionnaires de référence restent incontournables :",
         AUTORITES,
     )
     schema = combine_schema(

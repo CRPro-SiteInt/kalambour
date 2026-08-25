@@ -34,7 +34,7 @@
       <span class="display brand-name">Kalambour</span>
     </a>
     <nav class="main-nav" aria-label="Navigation principale">
-        <a href="/">Accueil</a>
+        <a href="/">Démêleur de mots</a>
         <a href="/mot-du-jour/" class="active">Le mot du jour</a>
         <a href="/aide-mots-croises/">Aide mots croisés</a>
         <a href="/anagramme/">Anagrammeur</a>
@@ -44,7 +44,7 @@
   </header>
       <div class="page-shell hero-inner">
         <h1 class="display hero-title">Le mot du jour</h1>
-        <p class="hero-subtitle">Un mot de 6 lettres à deviner chaque jour, tiré du dictionnaire de Kalambour — sans lien avec aucun autre site. Vert : bien placée. Jaune : présente, mal placée. Gris : absente.</p>
+        <p class="hero-subtitle">Un mot de 6 lettres à deviner chaque jour, tiré du dictionnaire de Kalambour. Vert : bien placée. Jaune : présente, mal placée. Gris : absente.</p>
 <div class="mj-badge" id="mj-badge">Chargement de la grille du jour…</div>
       </div>
     </div>
@@ -57,7 +57,7 @@
         <div style="display:flex; justify-content:center; margin-top:22px;">
           <button type="button" id="mj-partager" class="btn-primary" style="display:none;">Partager mon résultat</button>
         </div>
-      </div>  <div class="ad-banner page-shell"><span class="ad-note">Emplacement publicitaire — bannière 728×90</span></div><div class="card" style="padding:28px 30px; margin-top:32px;"><h2 class="display" style="font-size:20px; margin:0 0 18px 0;">Questions fréquentes</h2><div style="margin-bottom:18px;"><div style="font-weight:700; margin-bottom:4px;">Le mot du jour est-il le même que sur Sutom ou Motus ?</div><div style="color:var(--muted); font-size:15px; line-height:1.6;">Non : c'est un mot différent, propre à Kalambour, tiré de notre propre dictionnaire par un calcul indépendant. Kalambour n'est affilié ni à Sutom ni à Motus (marque de France Télévisions).</div></div>
+      </div>  <div class="ad-banner page-shell"><span class="ad-note">Emplacement publicitaire — bannière 728×90</span></div><div class="card" style="padding:28px 30px; margin-top:32px;"><h2 class="display" style="font-size:20px; margin:0 0 18px 0;">Aide &amp; questions fréquentes</h2><div style="margin-bottom:18px;"><div style="font-weight:700; margin-bottom:4px;">Le mot du jour est-il le même que sur Sutom ou Motus ?</div><div style="color:var(--muted); font-size:15px; line-height:1.6;">Non : c'est un mot différent, propre à Kalambour, tiré de notre propre dictionnaire par un calcul indépendant. Kalambour n'est affilié ni à Sutom ni à Motus (marque de France Télévisions).</div></div>
 <div style="margin-bottom:18px;"><div style="font-weight:700; margin-bottom:4px;">Le mot change-t-il à minuit ?</div><div style="color:var(--muted); font-size:15px; line-height:1.6;">Oui, à minuit heure de Paris. Un seul mot par jour, à deviner en 6 essais maximum.</div></div>
 <div style="margin-bottom:18px;"><div style="font-weight:700; margin-bottom:4px;">Mes parties sont-elles sauvegardées ?</div><div style="color:var(--muted); font-size:15px; line-height:1.6;">Votre résultat du jour reste dans votre navigateur (aucun compte requis) : si vous revenez plus tard dans la journée, vous retrouvez l'état de votre grille.</div></div></div>
     </div>
@@ -119,7 +119,7 @@
     </aside>
   </div>  <section class="seo-block page-shell">
     <h2 class="display">Un jeu de lettres quotidien, à la Wordle, 100% français</h2>
-    <p>Le mot du jour est un jeu gratuit inspiré du principe popularisé par Wordle (et repris en France par Motus et Sutom) : deviner un mot en un nombre d'essais limité, guidé par des indices de couleur. Ici, le mot est tiré du dictionnaire propre à Kalambour, sans dépendre d'un autre site.</p>
+    <p>Le mot du jour est un jeu gratuit inspiré du principe popularisé par Wordle : deviner un mot en un nombre d'essais limité, guidé par des indices de couleur. Ici, le mot est tiré du dictionnaire propre à Kalambour.</p>
     <div style="font-size:14px; color:var(--muted); margin-top:6px; font-weight:600;">Sources &amp; liens utiles</div>
     <div class="seo-links">
       <a href="https://www.cnrtl.fr/" class="chip" rel="nofollow noopener" target="_blank">CNRTL — définitions et étymologie <span style="color:var(--muted); font-size:12px;">↗</span></a>
@@ -134,7 +134,13 @@
   var etatClavier = {};
   var ligneCourante = 0, colCourante = 0, essaiCourant = "";
   var secret = null, motsValides = null, numero = null, dateISO = null;
-  var termine = false;
+  var termine = false, dernierGagne = false;
+  // Historique des essais joués ({mot, etats}), nécessaire pour le lien
+  // de partage détaillé (voir construireLienPartage ci-dessous) — pas
+  // seulement pour l'affichage courant, donc sauvegardé dans
+  // localStorage pour rester disponible si l'utilisateur revient plus
+  // tard dans la journée (voir sauverEtat/chargerEtat).
+  var historique = [];
   var STORAGE_KEY = "kalambour-mot-du-jour";
 
   function normaliser(s) {
@@ -151,9 +157,36 @@
   function sauverEtat(essais, gagne) {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify({
-        date: dateISO, numero: numero, essais: essais, gagne: gagne, fini: true
+        date: dateISO, numero: numero, essais: essais, gagne: gagne, fini: true, historique: historique
       }));
     } catch (e) {}
+  }
+
+  // --- Partage détaillé (voir /mot-du-jour/resultat/) -------------------
+  // Encode l'historique en un paramètre d'URL compact et lisible :
+  // "MOT1:VJGGVJ.MOT2:VVVVVV" (mot, deux-points, un code par lettre —
+  // V/J/G pour vert/jaune/gris — points séparant les essais). Le mot
+  // secret n'est JAMAIS inclus tel quel dans le lien : seul le dernier
+  // mot essayé s'avère être le mot secret en cas de victoire, ce qui
+  // est déjà implicite dans un partage de résultat gagné.
+  function codeEtat(e) {
+    return e === "vert" ? "V" : e === "jaune" ? "J" : "G";
+  }
+
+  function encoderHistorique(hist) {
+    var i, c, codes, parties = [];
+    for (i = 0; i < hist.length; i++) {
+      codes = "";
+      for (c = 0; c < hist[i].etats.length; c++) codes += codeEtat(hist[i].etats[c]);
+      parties.push(hist[i].mot + ":" + codes);
+    }
+    return parties.join(".");
+  }
+
+  function construireLienPartage() {
+    var base = location.origin + "/mot-du-jour/resultat/";
+    return base + "?n=" + encodeURIComponent(numero) + "&d=" + encodeURIComponent(dateISO) +
+      "&g=" + (dernierGagne ? "1" : "0") + "&e=" + encodeURIComponent(encoderHistorique(historique));
   }
 
   function message(txt) {
@@ -252,6 +285,7 @@
 
   function terminer(gagne) {
     termine = true;
+    dernierGagne = gagne;
     sauverEtat(ligneCourante + 1, gagne);
     afficherPartager();
     if (gagne) {
@@ -275,6 +309,7 @@
       return;
     }
     var etats = evaluerEssai(secret, essaiCourant);
+    historique.push({ mot: essaiCourant, etats: etats.slice() });
     var essaiFige = essaiCourant, ligneFigee = ligneCourante;
     var PAS = 220, DEMI_FLIP = 250; // le flip dure 0.5s (voir @keyframes mj-flip) : la couleur
     // change au milieu (case "de profil"), exactement comme la révélation de Wordle.
@@ -329,23 +364,32 @@
   var boutonPartager = document.getElementById("mj-partager");
   if (boutonPartager) {
     boutonPartager.addEventListener("click", function () {
+      var i, c, ligne;
       var lignes = [];
-      var l, c, el, ligne;
-      for (l = 0; l <= ligneCourante; l++) {
+      for (i = 0; i < historique.length; i++) {
         ligne = "";
-        for (c = 0; c < LONGUEUR; c++) {
-          el = caseEl(l, c);
-          if (!el) continue;
-          if (el.classList.contains("mj-vert")) ligne += "🟩";
-          else if (el.classList.contains("mj-jaune")) ligne += "🟨";
+        for (c = 0; c < historique[i].etats.length; c++) {
+          if (historique[i].etats[c] === "vert") ligne += "🟩";
+          else if (historique[i].etats[c] === "jaune") ligne += "🟨";
           else ligne += "⬜";
         }
         lignes.push(ligne);
       }
-      var texte = "Kalambour — Le mot du jour #" + numero + "\n" + lignes.join("\n") + "\nkalambour.fr/mot-du-jour/";
+      var score = (dernierGagne ? String(historique.length) : "X") + "/" + ESSAIS;
+      var lien = construireLienPartage();
+      // Le texte copié ne contient jamais les mots essayés en clair — la
+      // grille de couleurs suffit à montrer la progression (comme sur
+      // Wordle/Sutom) ; les mots eux-mêmes ne sont visibles qu'en ouvrant
+      // le lien de résultat détaillé, où ils restent cachés jusqu'au clic
+      // (voir /mot-du-jour/resultat/ et build_mot_du_jour_resultat()).
+      var texte = "Kalambour — Le mot du jour #" + numero + " — " + score + "\n" + lignes.join("\n") + "\n" + lien;
+      if (navigator.share) {
+        navigator.share({ title: "Kalambour — Le mot du jour", text: texte, url: lien }).catch(function () {});
+        return;
+      }
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(texte).then(function () {
-          message("Résultat copié — collez-le où vous voulez !");
+          message("Résultat copié (avec un lien de détail) — collez-le où vous voulez !");
         }, function () {
           message(texte);
         });
@@ -372,6 +416,26 @@
     var precedent = chargerEtat();
     if (precedent && precedent.date === dateISO && precedent.fini) {
       termine = true;
+      dernierGagne = !!precedent.gagne;
+      // Les parties d'avant le 26/08/2026 n'ont pas d'historique sauvegardé
+      // (champ ajouté ce jour-là) — le bouton Partager reste alors présent
+      // mais son lien ne contiendra aucun essai ; cas rare et transitoire
+      // (une seule journée de parties concernée), pas la peine de gérer un
+      // message d'erreur dédié pour ça.
+      historique = precedent.historique || [];
+      var r, c, etat;
+      for (r = 0; r < historique.length; r++) {
+        for (c = 0; c < historique[r].etats.length; c++) {
+          etat = historique[r].etats[c];
+          var el = caseEl(r, c);
+          if (el) {
+            el.textContent = historique[r].mot.charAt(c);
+            el.classList.add("mj-remplie", "mj-" + etat);
+          }
+          majClavier(historique[r].mot.charAt(c), etat);
+        }
+      }
+      ligneCourante = historique.length;
       afficherPartager();
       message(precedent.gagne
         ? "Vous avez déjà trouvé le mot du jour aujourd'hui (" + precedent.essais + "/" + ESSAIS + "). Revenez demain !"

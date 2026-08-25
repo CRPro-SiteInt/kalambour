@@ -140,6 +140,20 @@ main{ flex:1 0 auto; display:flex; flex-direction:column; }
   padding:8px 16px; border-radius:999px; font-size:14px; font-weight:600; margin-top:18px;
 }
 
+/* Page /mot-du-jour/resultat/ — mots essayés cachés par défaut (voir
+   RESULTAT_SCRIPT dans scripts/build_pages_prod3.py), révélés au clic. */
+.mjr-mot-cache{
+  font-family:'Space Mono',monospace; letter-spacing:0.06em; font-size:14px;
+  padding:9px 16px; border-radius:10px; border:2px dashed #c9c4b4; background:#f4f2ea;
+  color:var(--muted); cursor:pointer;
+}
+.mjr-mot-cache:hover{ background:#eceae1; border-color:#b6b09c; }
+.mjr-mot-revele{
+  font-family:'Space Mono',monospace; letter-spacing:0.06em; font-size:14px; font-weight:700;
+  padding:9px 16px; border-radius:10px; border:2px solid var(--indigo); background:#fff;
+  color:var(--indigo); cursor:default;
+}
+
 @media (max-width: 480px){
   .mj-console{ padding:20px 8px 24px 8px; }
   .mj-case{ width:42px; height:42px; font-size:19px; border-radius:6px; }
