@@ -207,14 +207,19 @@ JEU_SCRIPT = r"""<script>
     }
     var etats = evaluerEssai(secret, essaiCourant);
     var essaiFige = essaiCourant, ligneFigee = ligneCourante;
+    var PAS = 220, DEMI_FLIP = 250; // le flip dure 0.5s (voir @keyframes mj-flip) : la couleur
+    // change au milieu (case "de profil"), exactement comme la révélation de Wordle.
     var c;
     for (c = 0; c < LONGUEUR; c++) {
       (function (c) {
+        var el = caseEl(ligneFigee, c);
         setTimeout(function () {
-          var el = caseEl(ligneFigee, c);
+          if (el) el.classList.add("mj-flip");
+        }, c * PAS);
+        setTimeout(function () {
           if (el) el.classList.add("mj-" + etats[c]);
           majClavier(essaiFige[c], etats[c]);
-        }, c * 180);
+        }, c * PAS + DEMI_FLIP);
       })(c);
     }
     var gagne = true;
@@ -230,7 +235,7 @@ JEU_SCRIPT = r"""<script>
         essaiCourant = "";
         message("");
       }
-    }, LONGUEUR * 180 + 200);
+    }, (LONGUEUR - 1) * PAS + DEMI_FLIP + 300);
   }
 
   function toucheAppuyee(touche) {
@@ -319,11 +324,13 @@ def build_mot_du_jour():
         "Un mot de 6 lettres à deviner chaque jour, tiré du dictionnaire de Kalambour — sans lien avec aucun autre site. Vert : bien placée. Jaune : présente, mal placée. Gris : absente.",
         inner,
     )
-    main = f"""      <div id="mj-message" class="mj-message" aria-live="polite"></div>
+    main = f"""      <div class="card mj-console">
+        <div id="mj-message" class="mj-message" aria-live="polite"></div>
 {_grille_html()}
 {_clavier_html()}
-      <div style="display:flex; justify-content:center; margin-top:22px;">
-        <button type="button" id="mj-partager" class="btn-primary" style="display:none;">Partager mon résultat</button>
+        <div style="display:flex; justify-content:center; margin-top:22px;">
+          <button type="button" id="mj-partager" class="btn-primary" style="display:none;">Partager mon résultat</button>
+        </div>
       </div>"""
     faq_html, faq_schema = faq_block([
         ("Le mot du jour est-il le même que sur Sutom ou Motus ?", "Non : c'est un mot différent, propre à Kalambour, tiré de notre propre dictionnaire par un calcul indépendant. Kalambour n'est affilié ni à Sutom ni à Motus (marque de France Télévisions)."),

@@ -79,49 +79,64 @@ main{ flex:1 0 auto; display:flex; flex-direction:column; }
 .bg-indigo{ background:var(--indigo); } .bg-green{ background:var(--green); }
 .bg-amber{ background:var(--amber); } .bg-coral{ background:var(--coral); }
 
-/* ---------- Jeu "Le mot du jour" (/mot-du-jour/) ---------- */
-.mj-grille{ display:flex; flex-direction:column; gap:8px; align-items:center; margin:8px auto 4px auto; }
-.mj-ligne{ display:flex; flex-direction:row; gap:8px; }
-.mj-case{
-  width:52px; height:52px; display:flex; align-items:center; justify-content:center;
-  font-family:'Space Mono', monospace; font-weight:700; font-size:24px; text-transform:uppercase;
-  border-radius:10px; border:2px solid var(--border); background:var(--surface); color:var(--ink);
+/* ---------- Jeu "Le mot du jour" (/mot-du-jour/) ----------
+   Design calqué sur Wordle (NYT) — choix du client le 25/08/2026 après
+   comparaison avec Sutom : plus simple, plus propre, plus facile à
+   fondre dans la charte Kalambour déjà claire/blanche. Cases carrées
+   qui se retournent (flip) pour révéler la couleur, recoloriage plein
+   (pas de pastille/cercle), clavier clair qui se recolore à l'usage.
+   Le widget est posé dans une carte blanche (`.card`, déjà utilisée
+   ailleurs sur le site) pour lui donner un contour net sur la page. */
+.mj-console{
+  background:var(--surface); border-radius:var(--radius-lg); padding:28px 18px 32px 18px;
+  display:flex; flex-direction:column; align-items:center; box-shadow:var(--shadow-md);
 }
-.mj-case.mj-remplie{ border-color:#b9b6ac; }
+
+.mj-grille{ display:flex; flex-direction:column; gap:6px; align-items:center; margin:4px auto 4px auto; }
+.mj-ligne{ display:flex; flex-direction:row; gap:6px; }
+.mj-case{
+  width:58px; height:58px; display:flex; align-items:center; justify-content:center;
+  font-family:'Space Grotesk', 'Inter', sans-serif; font-weight:700; font-size:28px; text-transform:uppercase;
+  border-radius:8px; border:2px solid var(--border); background:#ffffff; color:var(--ink);
+}
+.mj-case.mj-remplie{ border-color:#8a8778; }
 .mj-case.mj-pop{ animation:mj-pop 0.14s ease; }
+.mj-case.mj-flip{ animation:mj-flip 0.5s ease; }
 .mj-case.mj-vert{ background:var(--green); border-color:var(--green); color:#fff; }
 .mj-case.mj-jaune{ background:var(--amber); border-color:var(--amber); color:#fff; }
-.mj-case.mj-gris{ background:#8a8778; border-color:#8a8778; color:#fff; }
+.mj-case.mj-gris{ background:#787c7f; border-color:#787c7f; color:#fff; }
 .mj-case.mj-shake{ animation:mj-shake 0.4s ease; }
 @keyframes mj-pop{ 0%{ transform:scale(1); } 45%{ transform:scale(1.08); } 100%{ transform:scale(1); } }
+@keyframes mj-flip{ 0%{ transform:scaleY(1); } 50%{ transform:scaleY(0); } 100%{ transform:scaleY(1); } }
 @keyframes mj-shake{
   10%,90%{ transform:translateX(-2px); } 20%,80%{ transform:translateX(4px); }
   30%,50%,70%{ transform:translateX(-8px); } 40%,60%{ transform:translateX(8px); }
 }
 
-.mj-clavier{ display:flex; flex-direction:column; gap:8px; align-items:center; margin-top:22px; }
-.mj-rangee{ display:flex; flex-direction:row; gap:6px; }
+.mj-clavier{ display:flex; flex-direction:column; gap:8px; align-items:center; margin-top:24px; width:100%; max-width:460px; }
+.mj-rangee{ display:flex; flex-direction:row; gap:6px; justify-content:center; width:100%; }
 .mj-touche{
-  min-width:34px; height:46px; padding:0 8px; border-radius:8px; border:none; background:#e5e2d9;
-  color:var(--ink); font-weight:700; font-size:13px; display:flex; align-items:center; justify-content:center;
+  flex:1; max-width:40px; height:50px; padding:0; border-radius:8px; border:none; background:#e7e3d8;
+  color:var(--ink); font-weight:700; font-size:14px; display:flex; align-items:center; justify-content:center;
   font-family:'Inter', sans-serif;
 }
-.mj-touche:hover{ background:#dbd7cb; }
-.mj-touche.mj-large{ min-width:56px; font-size:11px; }
+.mj-touche:hover{ background:#ddd9cb; }
+.mj-touche.mj-large{ flex:1.4; max-width:58px; font-size:17px; }
 .mj-touche.mj-vert{ background:var(--green); color:#fff; }
 .mj-touche.mj-jaune{ background:var(--amber); color:#fff; }
-.mj-touche.mj-gris{ background:#8a8778; color:#fff; }
+.mj-touche.mj-gris{ background:#787c7f; color:#fff; }
 
-.mj-message{ text-align:center; font-weight:600; font-size:15px; min-height:22px; margin:14px 0 4px 0; }
+.mj-message{ text-align:center; font-weight:600; font-size:15px; min-height:22px; margin:0 0 14px 0; color:var(--ink); }
 .mj-badge{
   display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.16); color:#fff;
   padding:8px 16px; border-radius:999px; font-size:14px; font-weight:600; margin-top:18px;
 }
 
 @media (max-width: 480px){
-  .mj-case{ width:42px; height:42px; font-size:19px; }
-  .mj-touche{ min-width:26px; height:42px; font-size:12px; padding:0 5px; }
-  .mj-touche.mj-large{ min-width:44px; font-size:10px; }
+  .mj-console{ padding:20px 8px 24px 8px; }
+  .mj-case{ width:42px; height:42px; font-size:19px; border-radius:6px; }
+  .mj-touche{ max-width:30px; height:44px; font-size:12px; }
+  .mj-touche.mj-large{ max-width:46px; font-size:14px; }
 }
 
 .tool-row{
