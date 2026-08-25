@@ -1,0 +1,7 @@
+# Redirections Cloudflare Pages (format Netlify-style, une règle par ligne :
+# source destination code). Voir README.md pour le contexte de chaque règle.
+
+# "Jeu du pendu — aide" retiré du site le 25/08/2026 (outil jugé peu
+# identifiable/utile par le client) — on redirige vers l'outil le plus
+# proche encore en place plutôt que de laisser un 404 sec.
+/aide-pendu/*  /aide-mots-croises/  301

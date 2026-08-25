@@ -1,11 +1,15 @@
 # Kalambour — site statique
 
-Neuf outils de mots en français (démêleur, anagrammes, aide mots
-croisés, aide Sutom/Motus, générateur, dictionnaire, aide au pendu,
-bibliothèque de grilles, jouer sur mobile) + pages "Mots par longueur",
-en HTML/CSS/JS pur (aucun framework, aucune étape de build obligatoire)
+Huit outils de mots en français (démêleur, aide mots croisés,
+anagrammeur, aide Sutom/Motus, dictionnaire, générateur, bibliothèque
+de grilles, jouer sur mobile) + pages "Mots par longueur", en
+HTML/CSS/JS pur (aucun framework, aucune étape de build obligatoire)
 plus deux fonctions Cloudflare Pages (dictionnaire à la demande,
 formulaire de contact).
+
+*(Un neuvième outil, "aide au jeu du pendu", a été retiré le
+25/08/2026 — jugé trop peu identifiable par le client. L'ancienne URL
+`/aide-pendu/` redirige vers `/aide-mots-croises/` via `_redirects`.)*
 
 **Pourquoi pas de framework (Astro) ?** Le plan initial prévoyait Astro,
 mais l'environnement où ce site a été généré n'a pas d'accès réseau
@@ -41,6 +45,8 @@ functions/api/contact.js  réception du formulaire de contact (envoi via Resend)
 generateur-grilles/     générateur de grilles Python (déjà écrit, réutilisé tel quel)
 scripts/build.py        régénère TOUT le site (dictionnaire + grilles + pages HTML + sitemap)
 .github/workflows/      régénération mensuelle automatique des grilles
+_headers                règles de cache Cloudflare Pages
+_redirects              redirections Cloudflare Pages (ex. anciennes URLs retirées)
 ```
 
 ## Régénérer le site après une modification
@@ -184,7 +190,7 @@ Deux besoins bien distincts, avec des sources différentes :
 
 **a) La liste de mots** (existence seule, pas de définition) — utilisée
 par démêleur, anagrammes, aide mots croisés (mode motif), Sutom/Motus,
-générateur, pendu. Fichier `assets/data/mots.json`, régénéré par
+générateur. Fichier `assets/data/mots.json`, régénéré par
 `scripts/build.py` à partir de QUATRE sources fusionnées :
 `generateur-grilles/word_pool.json` (la liste curée, voir b),
 `generateur-grilles/sources/fr_50k.txt` (FrequencyWords, voir
@@ -283,6 +289,36 @@ vers `env.ASSETS.fetch(...)` (voir ci-dessus). Sur la liste de mots
 (a), la piste résiduelle serait d'affiner encore l'heuristique
 noms-propres ou de croiser avec une liste de référence orthographique
 supplémentaire pour traquer les derniers faux positifs/négatifs.
+
+## Mots par longueur — découpage par première lettre
+
+Les pages "Mots par longueur" (`/mots-de-{n}-lettres/`) sont générées
+par `scripts/build_pages_prod2.py` à partir du dictionnaire complet
+(b) — ce qui a posé un problème dès que ce dernier a grossi (274 →
+57 420 mots, voir ci-dessus) : une page listant d'un bloc, par exemple,
+les ~17 000 mots de 5 lettres serait à la fois illisible et mauvaise
+pour le référencement. **Solution retenue (25/08/2026)** : au-delà de
+`SEUIL_DECOUPAGE_LETTRE` (60 mots) pour une longueur donnée, la page
+`/mots-de-{n}-lettres/` devient un sommaire des 26 lettres présentes
+(compteur par lettre), chacune renvoyant vers sa propre page
+`/mots-de-{n}-lettres/commencant-par-{lettre}/`. En dessous du seuil
+(longueurs très courtes ou très longues, peu de mots), la page reste
+une liste unique comme avant.
+
+Cette approche sert un double objectif : garder des pages statiques
+d'une taille raisonnable (la plus grosse aujourd'hui, `mots de 5
+lettres commençant par C`, pèse ~230 Ko pour 1299 mots, contre 2,8 Mo
+avant correction pour la même longueur non découpée), et surtout
+générer des centaines de pages supplémentaires indexables sur des
+requêtes longue traîne réelles ("mots de 6 lettres commençant par
+A"...) — exactement le motif identifié comme porteur dans
+`recherche/seo-geo-strategie.md` (§2, "Carte des mots-clés par page").
+Résultat : le site passe de 24 à 362 pages statiques (largement sous la
+limite de 20 000 fichiers du plan gratuit Cloudflare Pages).
+
+Pour ajuster le seuil de découpage ou le format d'URL, voir
+`SEUIL_DECOUPAGE_LETTRE`, `build_page_longueur_hub_lettres()` et
+`build_page_longueur_lettre()` dans `scripts/build_pages_prod2.py`.
 
 ## Limites connues à ce stade
 

@@ -11,38 +11,50 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # racine du 
 SITE_NAME = "Kalambour"
 DOMAIN = "https://kalambour.fr"
 
-# NB : on lit ici generateur-grilles/word_pool.json (la liste curée à la
-# main, 274 mots) et NON assets/data/dictionnaire.json — ce dernier
-# contient aussi les définitions issues du Wiktionnaire (dizaines de
-# milliers de mots, voir README.md) et grossira encore. DICT sert
-# uniquement à générer les pages statiques "Mots par longueur"
-# (build_pages_prod2.longueurs_disponibles) : une page par longueur
-# listant tous les mots correspondants avec leur définition — brancher
-# ça sur la liste complète produirait des pages de dizaines de milliers
-# d'entrées, illisibles et mauvaises pour le référencement. Ces pages
-# restent donc volontairement sur le jeu curé, quelle que soit la
-# taille du dictionnaire de définitions par ailleurs.
-with open(os.path.join(ROOT, "generateur-grilles/word_pool.json"), encoding="utf-8") as f:
-    DICT = [{"m": w, "d": d} for w, d in json.load(f)]  # [{"m": "CHAT", "d": "..."}]
+# DICT alimente les pages statiques "Mots par longueur"
+# (build_pages_prod2.longueurs_disponibles) à partir du dictionnaire
+# COMPLET (assets/data/dictionnaire.json, définitions curées + issues du
+# Wiktionnaire — voir README.md). Jusqu'au 25/08/2026, ces pages étaient
+# rebranchées sur le seul jeu curé (274 mots) pour éviter que les pages
+# n'explosent en taille une fois le dictionnaire agrandi (cf. incident
+# documenté dans recherche/notes-projet.md) — désormais résolu
+# autrement : build_pages_prod2.py découpe automatiquement une longueur
+# par première lettre dès qu'elle dépasse SEUIL_DECOUPAGE_LETTRE mots,
+# ce qui permet de rebrancher DICT sur la liste complète sans reproduire
+# l'incident, tout en gagnant des centaines de pages indexables
+# supplémentaires (stratégie SEO "longue traîne", voir
+# recherche/seo-geo-strategie.md).
+with open(os.path.join(ROOT, "assets/data/dictionnaire.json"), encoding="utf-8") as f:
+    DICT = json.load(f)  # [{"m": "CHAT", "d": "..."}]
 
 FONT_LINK = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@700&display=swap">'
 
+# Ordre revu le 25/08/2026 avec le client : priorité aux outils jugés
+# les plus identifiables/utiles (démêleur, aide mots croisés,
+# anagrammeur, Sutom/Motus — ce dernier moins évident en apparence mais
+# à fort volume de recherche quotidien, voir recherche/notes-projet.md),
+# puis dictionnaire/longueur/générateur (utilitaires), puis grilles et
+# mobile en dernier (nature différente : grilles imprimables et usage
+# mobile, pas des "solveurs"). "Solveur d'anagrammes" renommé
+# "Anagrammeur" (plus court, aligné sur le nom du concurrent direct
+# anagrammeur.com et sur la requête la plus tapée). "Jeu du pendu —
+# aide" retiré (le client ne le trouvait pas assez identifiable/utile) —
+# voir _redirects pour la redirection de l'ancienne URL /aide-pendu/.
 NAV_ITEMS = [
     ("accueil", "/", "Accueil"),
-    ("longueur", "/mots-par-longueur/", "Mots par longueur"),
-    ("anagrammes", "/anagramme/", "Solveur d'anagrammes"),
     ("croises", "/aide-mots-croises/", "Aide mots croisés"),
+    ("anagrammes", "/anagramme/", "Anagrammeur"),
+    ("longueur", "/mots-par-longueur/", "Mots par longueur"),
 ]
 
 TOOLS = [
     ("demeleur", "/", "D", "Démêleur de mots", "indigo"),
-    ("longueur", "/mots-par-longueur/", "L", "Mots par longueur", "amber"),
-    ("anagrammes", "/anagramme/", "A", "Solveur d'anagrammes", "green"),
     ("croises", "/aide-mots-croises/", "C", "Aide mots croisés", "coral"),
+    ("anagrammes", "/anagramme/", "A", "Anagrammeur", "green"),
     ("sutom", "/aide-sutom-motus/", "S", "Aide Sutom / Motus", "indigo"),
-    ("generateur", "/generateur-de-mots/", "G", "Générateur de mots", "amber"),
     ("dictionnaire", "/dictionnaire/", "D", "Dictionnaire (recherche)", "green"),
-    ("pendu", "/aide-pendu/", "P", "Jeu du pendu — aide", "coral"),
+    ("longueur", "/mots-par-longueur/", "L", "Mots par longueur", "amber"),
+    ("generateur", "/generateur-de-mots/", "G", "Générateur de mots", "amber"),
     ("grilles", "/bibliotheque-grilles/", "B", "Bibliothèque de grilles", "indigo"),
     ("mobile", "/jouer-sur-mobile/", "M", "Jouer sur mobile", "amber"),
 ]

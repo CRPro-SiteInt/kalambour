@@ -4,7 +4,7 @@
 une liste de mots français valides, au même format que le reste du site
 (majuscules, sans accent, A-Z uniquement) — utilisée pour agrandir la
 "grande liste de mots" (assets/data/mots.json) consommée par les outils
-démêleur / anagrammes / Sutom / pendu / générateur / aide mots croisés
+démêleur / anagrammes / Sutom / générateur / aide mots croisés
 (mode motif).
 
 Source : github.com/hermitdave/FrequencyWords (Hermit Dave), fichier

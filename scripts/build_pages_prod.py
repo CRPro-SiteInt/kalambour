@@ -144,28 +144,28 @@ def build_anagramme():
         </div>"""
     h = hero(
         "anagrammes",
-        "Solveur d'anagrammes",
+        "Anagrammeur",
         "Formez tous les mots possibles en utilisant exactement vos lettres, dans un ordre différent.",
         inner,
     )
     faq_html, faq_schema = faq_block([
         ("Quelle est la différence avec le démêleur de mots ?", "L'anagramme utilise <strong>exactement</strong> toutes les lettres saisies, ni plus ni moins. Le <a href=\"/\">démêleur</a>, lui, accepte des mots plus courts formés avec une partie seulement de vos lettres."),
-        ("Combien de lettres puis-je saisir ?", "Autant que vous voulez : le solveur s'adapte à la longueur de votre mot ou de votre tirage."),
+        ("Combien de lettres puis-je saisir ?", "Autant que vous voulez : l'anagrammeur s'adapte à la longueur de votre mot ou de votre tirage."),
     ])
     main = resultats_block("Entrez des lettres pour former un anagramme exact.") + ad_banner_inline() + faq_html
     body = hero_page_wrap(h, main, "anagrammes")
     body += seo_block(
         "Anagramme en ligne : réorganisez vos lettres",
-        "Un anagramme est un mot formé en réarrangeant toutes les lettres d'un autre mot. Ce solveur d'anagramme gratuit compare vos lettres à un dictionnaire français pour afficher tous les mots correspondants, utile pour le Scrabble, le Countdown ou simplement par curiosité linguistique.",
+        "Un anagramme est un mot formé en réarrangeant toutes les lettres d'un autre mot. Cet anagrammeur gratuit compare vos lettres à un dictionnaire français pour afficher tous les mots correspondants, utile pour le Scrabble, le Countdown ou simplement par curiosité linguistique.",
     )
     schema = combine_schema(
-        webapp_schema("Solveur d'anagrammes", "/anagramme/", "Trouvez tous les anagrammes exacts d'un mot ou d'un ensemble de lettres."),
-        breadcrumb_schema("Solveur d'anagrammes", "/anagramme/"),
+        webapp_schema("Anagrammeur", "/anagramme/", "Trouvez tous les anagrammes exacts d'un mot ou d'un ensemble de lettres."),
+        breadcrumb_schema("Anagrammeur", "/anagramme/"),
         faq_schema,
     )
     html = page(
-        "/anagramme/", f"Anagramme en ligne — solveur d'anagrammes gratuit | {SITE_NAME}",
-        "Trouvez tous les anagrammes exacts d'un mot ou d'un tirage de lettres. Solveur d'anagramme français gratuit, calcul instantané dans le navigateur.",
+        "/anagramme/", f"Anagrammeur — solveur d'anagrammes en ligne gratuit | {SITE_NAME}",
+        "Anagrammeur gratuit : trouvez tous les anagrammes exacts d'un mot ou d'un tirage de lettres. Solveur d'anagramme français, calcul instantané dans le navigateur.",
         "anagrammes", "anagrammes", body, data_tool="anagrammes", schema_json=schema,
     )
     write("/anagramme/", html)
@@ -359,46 +359,6 @@ def build_dictionnaire():
     write("/dictionnaire/", html)
 
 
-# =======================================================================
-# 7. JEU DU PENDU — AIDE (/aide-pendu/)
-# =======================================================================
-
-def build_pendu():
-    inner = """        <div class="card" style="display:flex; flex-direction:column; gap:14px; padding:18px; margin-top:22px; box-shadow:var(--shadow-lg); max-width:480px; width:100%; align-items:center;">
-          <div style="display:flex; flex-direction:column; gap:6px; align-items:flex-start; width:100%;">
-            <label for="pe-motif" style="font-size:12px; font-weight:600; color:var(--muted);">Lettres déjà trouvées (_ pour les cases vides)</label>
-            <div class="field" style="height:48px;"><input type="text" id="pe-motif" placeholder="Ex. _H_T" maxlength="20" style="text-transform:uppercase; font-family:'Space Mono',monospace; letter-spacing:0.08em;"></div>
-          </div>
-          <div style="display:flex; flex-direction:column; gap:6px; align-items:flex-start; width:100%;">
-            <label for="pe-exclues" style="font-size:12px; font-weight:600; color:var(--muted);">Lettres déjà éliminées</label>
-            <div class="field" style="height:48px;"><input type="text" id="pe-exclues" placeholder="Ex. A S D" maxlength="26" style="text-transform:uppercase;"></div>
-          </div>
-          <button type="button" id="pe-chercher" class="btn-primary" style="width:100%;">Chercher</button>
-        </div>"""
-    h = hero(
-        "pendu",
-        "Jeu du pendu — aide",
-        "Entrez les lettres déjà trouvées et celles déjà éliminées pour découvrir le mot.",
-        inner,
-    )
-    main = resultats_block("Entrez le mot partiellement trouvé pour commencer.") + ad_banner_inline()
-    body = hero_page_wrap(h, main, "pendu")
-    body += seo_block(
-        "Aide au jeu du pendu",
-        "Coincé sur une partie de pendu ? Indiquez le motif du mot déjà découvert (avec des underscores pour les lettres manquantes) et les lettres déjà proposées à tort : la liste des mots français encore possibles s'affiche instantanément.",
-    )
-    schema = combine_schema(
-        webapp_schema("Aide au jeu du pendu", "/aide-pendu/", "Trouvez les mots possibles au jeu du pendu à partir des lettres connues et éliminées."),
-        breadcrumb_schema("Jeu du pendu — aide", "/aide-pendu/"),
-    )
-    html = page(
-        "/aide-pendu/", f"Aide au jeu du pendu — trouvez le mot | {SITE_NAME}",
-        "Trouvez le mot du jeu du pendu à partir des lettres déjà découvertes et de celles déjà éliminées. Aide gratuite et instantanée.",
-        "pendu", "pendu", body, data_tool="pendu", schema_json=schema,
-    )
-    write("/aide-pendu/", html)
-
-
 if __name__ == "__main__":
     build_accueil()
     build_anagramme()
@@ -406,5 +366,4 @@ if __name__ == "__main__":
     build_sutom()
     build_generateur()
     build_dictionnaire()
-    build_pendu()
-    print("Partie 1 (7 pages) terminée.")
+    print("Partie 1 (6 pages) terminée.")

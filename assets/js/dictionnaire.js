@@ -1,16 +1,16 @@
 /* Kalambour — chargement des données de mots, en deux fichiers séparés :
    - /assets/data/mots.json          grande liste de mots (existence
-     seule, ~44 000 mots dont la majorité vient de FrequencyWords, licence
-     CC BY-SA 4.0 — voir /mentions-legales/), utilisée par la plupart des
-     outils.
-   - /assets/data/dictionnaire.json  liste curée avec définitions (jeu de
-     démarrage, voir README.md "Étendre le dictionnaire"), utilisée
-     seulement là où une définition est affichée ou recherchée
-     (Dictionnaire, aide mots croisés).
+     seule, ~803 000 mots — FrequencyWords + Wiktionnaire, licences
+     CC BY-SA (+ GFDL pour le Wiktionnaire) — voir /mentions-legales/),
+     utilisée par la plupart des outils.
+   - /assets/data/dictionnaire.json  mots avec définition (jeu curé à la
+     main + définitions Wiktionnaire, voir README.md "Le dictionnaire —
+     architecture à deux fichiers"), utilisée seulement là où une
+     définition est affichée ou recherchée (Dictionnaire, aide mots
+     croisés, pages "Mots par longueur").
    Séparer les deux évite que les outils qui n'ont besoin que de savoir
-   qu'un mot existe (démêleur, anagrammes, Sutom, pendu, générateur)
-   téléchargent des définitions dont ils ne se servent pas — important le
-   jour où le fichier de définitions grandira à son tour. */
+   qu'un mot existe (démêleur, anagrammes, Sutom, générateur)
+   téléchargent des définitions dont ils ne se servent pas. */
 (function (global) {
   "use strict";
 

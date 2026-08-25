@@ -62,7 +62,7 @@ def etape_1_dictionnaire():
           f"({len(curated_defs)} curés à la main, {len(out) - len(curated_defs)} issus du Wiktionnaire)")
 
     # --- Grande liste de mots (existence seule, pas de définition) -----
-    # Utilisée côté navigateur par démêleur / anagrammes / Sutom / pendu /
+    # Utilisée côté navigateur par démêleur / anagrammes / Sutom /
     # générateur / aide mots croisés (mode motif) — voir README.md,
     # "Le dictionnaire — architecture à deux fichiers", et
     # assets/js/dictionnaire.js.
@@ -118,18 +118,25 @@ def etape_3_pages():
     build_pages_prod.build_sutom()
     build_pages_prod.build_generateur()
     build_pages_prod.build_dictionnaire()
-    build_pages_prod.build_pendu()
+    # "Jeu du pendu — aide" retiré le 25/08/2026 (voir build_prod.py,
+    # commentaire au-dessus de TOOLS, et recherche/notes-projet.md) —
+    # l'ancienne URL /aide-pendu/ redirige désormais via _redirects.
 
     build_pages_prod2.build_mots_par_longueur_hub()
     par_len = build_pages_prod2.longueurs_disponibles()
+    pages_longueur = 0
     for n, mots in par_len.items():
-        build_pages_prod2.build_page_longueur(n, mots)
+        if len(mots) > build_pages_prod2.SEUIL_DECOUPAGE_LETTRE:
+            pages_longueur += build_pages_prod2.build_page_longueur_hub_lettres(n, mots)
+        else:
+            build_pages_prod2.build_page_longueur(n, mots)
+            pages_longueur += 1
     build_pages_prod2.build_grilles()
     build_pages_prod2.build_jouer_mobile()
     build_pages_prod2.build_mentions_legales()
     build_pages_prod2.build_confidentialite()
     build_pages_prod2.build_contact()
-    print(f"[3/4] {7 + 2 + len(par_len) + 4} pages HTML régénérées")
+    print(f"[3/4] {6 + 1 + pages_longueur + 4} pages HTML régénérées")
 
 
 def etape_4_sitemap():

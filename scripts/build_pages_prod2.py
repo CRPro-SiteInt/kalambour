@@ -58,16 +58,35 @@ def build_mots_par_longueur_hub():
 
 
 NOMBRES_LETTRES = {
-    2: "deux", 3: "trois", 4: "quatre", 5: "cinq", 6: "six", 7: "sept",
-    8: "huit", 9: "neuf", 10: "dix", 11: "onze", 12: "douze",
+    1: "une", 2: "deux", 3: "trois", 4: "quatre", 5: "cinq", 6: "six", 7: "sept",
+    8: "huit", 9: "neuf", 10: "dix", 11: "onze", 12: "douze", 13: "treize",
+    14: "quatorze", 15: "quinze", 16: "seize", 17: "dix-sept", 18: "dix-huit",
+    19: "dix-neuf", 20: "vingt",
 }
 
+# Au-delà de ce nombre de mots pour une longueur donnée, la page est
+# découpée par première lettre (voir README.md, "Mots par longueur —
+# découpage par première lettre") plutôt que listée d'un bloc — c'est ce
+# qui a permis de rebrancher ces pages sur le dictionnaire complet
+# (dizaines de milliers de définitions issues du Wiktionnaire) sans
+# reproduire l'incident du 25/08/2026 (pages de plusieurs dizaines de
+# milliers de mots). En dessous du seuil, une seule page reste plus
+# simple et tout aussi lisible.
+SEUIL_DECOUPAGE_LETTRE = 60
+ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-def build_page_longueur(n, mots):
-    lignes = "\n".join(
+
+def _lignes_mots(mots):
+    return "\n".join(
         f'<div class="card result-card"><div class="result-word mono">{esc(e["m"])}</div><div class="result-def">{esc(e["d"])}</div></div>'
         for e in sorted(mots, key=lambda e: e["m"])
     )
+
+
+def build_page_longueur(n, mots):
+    """Page complète (une seule liste) — utilisée quand le nombre de mots
+    de cette longueur reste sous SEUIL_DECOUPAGE_LETTRE."""
+    lignes = _lignes_mots(mots)
     h = hero(
         "longueur",
         f"Mots de {n} lettres",
@@ -92,6 +111,88 @@ def build_page_longueur(n, mots):
         "longueur", "longueur", body, data_tool=None, schema_json=schema,
     )
     write(f"/mots-de-{n}-lettres/", html)
+
+
+def build_page_longueur_hub_lettres(n, mots):
+    """Remplace la page /mots-de-{n}-lettres/ par un sommaire des lettres
+    disponibles quand la liste complète dépasse SEUIL_DECOUPAGE_LETTRE —
+    chaque lettre renvoie vers /mots-de-{n}-lettres/commencant-par-{x}/."""
+    par_lettre = {}
+    for e in mots:
+        par_lettre.setdefault(e["m"][0], []).append(e)
+    lettres_dispo = [l for l in ALPHABET if l in par_lettre]
+
+    items = "\n".join(
+        f'<a href="/mots-de-{n}-lettres/commencant-par-{l.lower()}/">{l} <span class="count">{len(par_lettre[l])}</span></a>'
+        for l in lettres_dispo
+    )
+    h = hero(
+        "longueur",
+        f"Mots de {n} lettres",
+        f"{len(mots)} mots de {n} lettres dans notre dictionnaire, classés par première lettre.",
+    )
+    main = f"""      <h2 class="section-title">Choisissez une première lettre</h2>
+      <p class="section-sub"><a href="/mots-par-longueur/">← Toutes les longueurs</a> — {len(mots)} mots de {n} lettres au total</p>
+      <div class="grid-length-list">{items}</div>"""
+    body = hero_page_wrap(h, main + ad_banner_inline(), "longueur")
+    body += seo_block(
+        f"Mots de {n} lettres par première lettre",
+        f"Avec {len(mots)} mots, la liste des mots de {n} lettres ({NOMBRES_LETTRES.get(n, str(n))} lettres) est classée ici par première lettre pour rester facile à parcourir — cliquez sur une lettre pour voir tous les mots correspondants avec leur définition.",
+    )
+    schema = combine_schema(
+        webapp_schema(f"Mots de {n} lettres", f"/mots-de-{n}-lettres/", f"Mots français de {n} lettres, classés par première lettre."),
+        breadcrumb_schema(f"Mots de {n} lettres", f"/mots-de-{n}-lettres/"),
+    )
+    html = page(
+        f"/mots-de-{n}-lettres/",
+        f"Mots de {n} lettres — {len(mots)} mots par première lettre | {SITE_NAME}",
+        f"Retrouvez les {len(mots)} mots français de {n} lettres, classés par première lettre, avec leur définition, sur {SITE_NAME}.",
+        "longueur", "longueur", body, data_tool=None, schema_json=schema,
+    )
+    write(f"/mots-de-{n}-lettres/", html)
+
+    pages_ecrites = 1
+    for l in lettres_dispo:
+        build_page_longueur_lettre(n, l, par_lettre[l], lettres_dispo)
+        pages_ecrites += 1
+    return pages_ecrites
+
+
+def build_page_longueur_lettre(n, lettre, mots, lettres_dispo):
+    """Page /mots-de-{n}-lettres/commencant-par-{lettre}/ — sous-page d'une
+    longueur découpée, voir build_page_longueur_hub_lettres."""
+    lignes = _lignes_mots(mots)
+    autres = " ".join(
+        f'<a href="/mots-de-{n}-lettres/commencant-par-{l.lower()}/" class="chip">{l}</a>'
+        if l != lettre else f'<span class="chip" style="opacity:0.5;">{l}</span>'
+        for l in lettres_dispo
+    )
+    h = hero(
+        "longueur",
+        f"Mots de {n} lettres commençant par {lettre}",
+        f"Liste complète des {len(mots)} mots de {n} lettres commençant par {lettre}, avec leur définition.",
+    )
+    main = f"""      <h2 class="section-title">{len(mots)} mots de {n} lettres commençant par {lettre}</h2>
+      <p class="section-sub"><a href="/mots-de-{n}-lettres/">← Toutes les lettres</a> · <a href="/mots-par-longueur/">Toutes les longueurs</a></p>
+      <div class="results-list">{lignes}</div>
+      <div style="margin-top:28px;"><div style="font-size:14px; color:var(--muted); font-weight:600; margin-bottom:8px;">Autres lettres, mots de {n} lettres</div><div style="display:flex; flex-wrap:wrap; gap:8px;">{autres}</div></div>"""
+    body = hero_page_wrap(h, main + ad_banner_inline(), "longueur")
+    body += seo_block(
+        f"Mots de {n} lettres commençant par {lettre}",
+        f"Cette page recense tous les mots de {n} lettres commençant par la lettre {lettre} présents dans le dictionnaire de {SITE_NAME}, avec leur définition — pratique pour les mots croisés, mots fléchés, le Scrabble ou pour enrichir son vocabulaire.",
+    )
+    url = f"/mots-de-{n}-lettres/commencant-par-{lettre.lower()}/"
+    schema = combine_schema(
+        webapp_schema(f"Mots de {n} lettres commençant par {lettre}", url, f"Liste des mots français de {n} lettres commençant par {lettre}."),
+        breadcrumb_schema(f"Mots de {n} lettres commençant par {lettre}", url),
+    )
+    html = page(
+        url,
+        f"Mots de {n} lettres commençant par {lettre} | {SITE_NAME}",
+        f"Liste complète des {len(mots)} mots français de {n} lettres commençant par {lettre}, avec leur définition, sur {SITE_NAME}.",
+        "longueur", "longueur", body, data_tool=None, schema_json=schema,
+    )
+    write(url, html)
 
 
 # ---------------------------------------------------------------------

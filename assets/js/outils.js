@@ -398,34 +398,6 @@
     }
   };
 
-  INIT.pendu = function (dict) {
-    var inputMotif = document.getElementById("pe-motif");
-    var inputExclues = document.getElementById("pe-exclues");
-    var bouton = document.getElementById("pe-chercher");
-
-    function rechercher() {
-      var brut = (inputMotif ? inputMotif.value : "").toUpperCase();
-      var motif = brut.replace(/[^A-Z_.?]/g, "").replace(/[.?]/g, "_");
-      var exclues = D.normaliser(inputExclues ? inputExclues.value : "").split("");
-      if (!motif) {
-        afficherResultats("resultats", "resultats-info", [], {
-          messageVide: "Entrez le mot partiellement trouvé, ex. _H_T",
-        });
-        return;
-      }
-      var trouves = dict.filter(function (e) {
-        if (!correspondMotif(motif, e.cle)) return false;
-        for (var i = 0; i < exclues.length; i++) {
-          if (e.cle.indexOf(exclues[i]) !== -1) return false;
-        }
-        return true;
-      });
-      afficherResultats("resultats", "resultats-info", trouves);
-    }
-    attacherRecherche(inputMotif, bouton, rechercher);
-    attacherRecherche(inputExclues, bouton, rechercher);
-  };
-
   INIT.dictionnaire = function (dict) {
     var input = document.getElementById("di-recherche");
     function rechercher() {
