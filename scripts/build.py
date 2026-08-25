@@ -22,8 +22,10 @@ mensuelle automatique des grilles.
 """
 import json
 import os
+import re
 import shutil
 import sys
+import unicodedata
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)  # site/
@@ -160,6 +162,15 @@ def etape_3_pages():
     print(f"[3/4] {6 + 1 + 2 + pages_longueur + 4} pages HTML régénérées")
 
 
+def _normaliser_mot(mot):
+    """Doit rester identique à normaliser() dans functions/mot/[mot].js —
+    c'est ce qui détermine l'URL /mot/{slug}/ que la fonction Cloudflare
+    résoudra réellement pour un mot donné (voir etape_4_sitemap)."""
+    m = unicodedata.normalize("NFD", mot)
+    m = "".join(c for c in m if unicodedata.category(c) != "Mn")
+    return re.sub(r"[^A-Z]", "", m.upper())
+
+
 def etape_4_sitemap():
     domain = "https://kalambour.fr"
     urls = []
@@ -181,15 +192,63 @@ def etape_4_sitemap():
             continue
         urls.append(url)
     urls.sort()
-    items = "\n".join(f"  <url><loc>{domain}{u}</loc></url>" for u in urls)
-    xml = (
+
+    # --- Pages "mot" individuelles (/mot/{slug}/), servies à la demande
+    # par functions/mot/[mot].js -----------------------------------------
+    # Ajout du 26/08/2026 : ces pages existent et fonctionnent depuis le
+    # tout premier déploiement du site (une page par mot avec définition,
+    # exactement le modèle "fsolver" retenu comme priorité — voir
+    # seo-geo-strategie.md §8/§10) mais n'apparaissaient dans AUCUN
+    # sitemap et n'étaient liées depuis AUCUNE page statique : elles
+    # étaient donc invisibles pour Google malgré les 57 420 définitions
+    # disponibles. Un sitemap classique est limité à 50 000 URLs
+    # (protocole sitemaps.org) — au-delà, il faut découper en plusieurs
+    # fichiers référencés par un sitemap-index. sitemap.xml devient donc
+    # cet index (même URL que celle déjà déclarée dans robots.txt, aucun
+    # changement nécessaire côté robots.txt : les moteurs suivent les
+    # sitemaps enfants automatiquement).
+    dict_path = os.path.join(ROOT, "assets", "data", "dictionnaire.json")
+    with open(dict_path, encoding="utf-8") as f:
+        dictionnaire = json.load(f)
+    slugs = sorted({_normaliser_mot(e["m"]).lower() for e in dictionnaire if _normaliser_mot(e["m"])})
+    mots_urls = [f"/mot/{s}/" for s in slugs]
+
+    MAX_URLS_PAR_SITEMAP = 50000  # limite du protocole sitemaps.org
+
+    def _ecrire_urlset(nom_fichier, liste_urls):
+        items = "\n".join(f"  <url><loc>{domain}{u}</loc></url>" for u in liste_urls)
+        xml = (
+            '<?xml version="1.0" encoding="UTF-8"?>\n'
+            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+            f"{items}\n</urlset>\n"
+        )
+        with open(os.path.join(ROOT, nom_fichier), "w", encoding="utf-8") as f:
+            f.write(xml)
+
+    _ecrire_urlset("sitemap-pages.xml", urls)
+
+    noms_sitemaps_mots = []
+    for i in range(0, len(mots_urls), MAX_URLS_PAR_SITEMAP):
+        n = i // MAX_URLS_PAR_SITEMAP + 1
+        nom = f"sitemap-mots-{n}.xml"
+        _ecrire_urlset(nom, mots_urls[i:i + MAX_URLS_PAR_SITEMAP])
+        noms_sitemaps_mots.append(nom)
+
+    entries = "\n".join(
+        f"  <sitemap><loc>{domain}/{nom}</loc></sitemap>"
+        for nom in ["sitemap-pages.xml"] + noms_sitemaps_mots
+    )
+    index_xml = (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
-        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-        f"{items}\n</urlset>\n"
+        '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        f"{entries}\n</sitemapindex>\n"
     )
     with open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8") as f:
-        f.write(xml)
-    print(f"[4/4] sitemap.xml régénéré — {len(urls)} URLs")
+        f.write(index_xml)
+
+    print(f"[4/4] sitemap régénéré — {len(urls)} pages statiques (sitemap-pages.xml) + "
+          f"{len(mots_urls)} pages mot dans {len(noms_sitemaps_mots)} fichier(s) "
+          f"({', '.join(noms_sitemaps_mots)}) — sitemap.xml est l'index des deux")
 
 
 if __name__ == "__main__":

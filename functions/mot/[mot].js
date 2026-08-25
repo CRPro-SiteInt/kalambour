@@ -73,8 +73,9 @@ function page({ title, description, canonical, bodyHtml, statusNote = "" }) {
       <span class="display brand-name" style="color:#16151c;">${SITE_NAME}</span>
     </a>
     <nav class="main-nav" aria-label="Navigation principale">
-      <a href="/">Accueil</a><a href="/mots-par-longueur/">Mots par longueur</a>
-      <a href="/anagramme/">Solveur d'anagrammes</a><a href="/dictionnaire/">Dictionnaire</a>
+      <a href="/">Démêleur de mots</a><a href="/mot-du-jour/">Le mot du jour</a>
+      <a href="/mots-par-longueur/">Mots par longueur</a>
+      <a href="/anagramme/">Anagrammeur</a><a href="/dictionnaire/">Dictionnaire</a>
     </nav>
   </header>
   <div class="page-shell" style="padding:24px 0 48px 0;">

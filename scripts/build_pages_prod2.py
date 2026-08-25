@@ -13,7 +13,7 @@ from build_prod import (
 from grille_render import render_grille_jouable, render_definitions, GRILLE_JOUABLE_SCRIPT
 from build_pages_prod import breadcrumb_schema, webapp_schema, combine_schema, hero_page_wrap, ad_banner_inline
 
-TODAY = "21 août 2026"
+TODAY = "26 août 2026"
 
 # ---------------------------------------------------------------------
 # 8. MOTS PAR LONGUEUR — hub  (/mots-par-longueur/)  + pages par longueur

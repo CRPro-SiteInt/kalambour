@@ -422,9 +422,25 @@ pour un moteur de recherche.
   site, à améliorer plus tard si besoin.
 - **Pas de compte utilisateur, pas de sauvegarde de progression** —
   non prévu dans le cahier des charges actuel.
-- **`sitemap.xml`** couvre les 24 pages statiques mais pas les pages
-  `/mot/...` générées à la demande (par nature imprévisibles à
-  l'avance) — pas bloquant pour le référencement, mais à savoir.
+- ~~`sitemap.xml` couvre les pages statiques mais pas les pages
+  `/mot/...` générées à la demande~~ **Corrigé le 26/08/2026** : ces
+  pages ne sont pas "imprévisibles" en réalité, elles sont entièrement
+  déterminées par `assets/data/dictionnaire.json` (une page par mot
+  avec définition) — `etape_4_sitemap()` dans `scripts/build.py` génère
+  désormais leurs URLs (`/mot/{slug}/`, slug = mot normalisé comme dans
+  `functions/mot/[mot].js`) dans `sitemap-mots-1.xml`/`-2.xml` (le
+  protocole sitemaps.org plafonne un fichier à 50 000 URLs, d'où le
+  découpage), et `sitemap.xml` est devenu un **sitemap-index** qui
+  référence `sitemap-pages.xml` (les pages statiques) et les fichiers
+  `sitemap-mots-*.xml`. `robots.txt` n'a pas eu besoin de changer (il
+  pointe déjà vers `sitemap.xml`, qui reste la bonne URL). Ces ~57 000
+  pages étaient jusque-là invisibles pour les moteurs de recherche —
+  faute de sitemap ET de lien interne — malgré tout le travail
+  d'extension du dictionnaire ; corrigé en même temps : la navigation
+  de `functions/mot/[mot].js` (dupliquée en dur, pas générée par
+  `build_prod.py`) affichait encore d'anciens intitulés ("Accueil",
+  "Solveur d'anagrammes") et n'avait pas de lien vers "Le mot du jour"
+  — mise à jour pour rester cohérente avec `NAV_ITEMS`.
 
 ## Pour aller plus loin (facultatif)
 
