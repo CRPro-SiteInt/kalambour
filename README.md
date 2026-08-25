@@ -178,30 +178,119 @@ déclencher manuellement depuis l'onglet **Actions** du dépôt.
 6. Compte Resend → domaine vérifié → clé API → variables Cloudflare Pages
 7. (rien à faire) tâche planifiée mensuelle déjà en place
 
-## Étendre le dictionnaire
+## Le dictionnaire — architecture à deux fichiers
 
-Le dictionnaire actuel (`generateur-grilles/word_pool.json`, 274 mots)
-est un jeu de démarrage, pas un dictionnaire français complet — c'est
-la limite la plus importante à connaître avant la mise en ligne
-publique. Pour l'agrandir :
+Deux besoins bien distincts, avec des sources différentes :
 
-1. Trouvez une source **ouverte** (pas l'ODS, protégé) : Dicollecte
-   (dictionnaires LibreOffice, licence libre), Lexique383 (base
-   lexicale académique), ou Morphalou (CNRTL/ATILF, licence libre).
-2. Constituez une liste `[[mot, définition], ...]` au même format que
-   `word_pool.json`.
-3. Relancez `python3 scripts/build.py` — tout le site (dictionnaire,
-   pages "Mots par longueur", fonction `/mot/...`) se met à jour
-   automatiquement à partir de cette seule source.
+**a) La liste de mots** (existence seule, pas de définition) — utilisée
+par démêleur, anagrammes, aide mots croisés (mode motif), Sutom/Motus,
+générateur, pendu. Fichier `assets/data/mots.json`, régénéré par
+`scripts/build.py` à partir de QUATRE sources fusionnées :
+`generateur-grilles/word_pool.json` (la liste curée, voir b),
+`generateur-grilles/sources/fr_50k.txt` (FrequencyWords, voir
+attribution ci-dessous),
+`generateur-grilles/sources/wiktionnaire_mots_invalides.json` (mots
+FrequencyWords écartés car absents du Wiktionnaire — voir plus bas) et
+`generateur-grilles/sources/wiktionnaire_mots_supplementaires.json`
+(nouveaux mots apportés par le Wiktionnaire). **802 886 mots** au
+25/08/2026 (35 663 issus de FrequencyWords, 767 222 du Wiktionnaire, le
+reste de la liste curée).
 
-Cette étape n'a pas pu être faite dans cet environnement de travail,
-qui n'a pas d'accès réseau sortant pour télécharger un tel fichier —
-elle nécessite soit que vous fournissiez le fichier, soit une session
-avec accès réseau.
+FrequencyWords ([hermitdave/FrequencyWords](https://github.com/hermitdave/FrequencyWords)),
+dérivé du corpus OpenSubtitles (projet OPUS), est **distribué sous
+licence Creative Commons BY-SA 4.0** — attribution présente sur la page
+`/mentions-legales/` du site, comme l'exige cette licence. Le nettoyage
+(`scripts/mots_externes.py`) retire les fragments d'élision (`c'`,
+`qu'`...), les mots à trait d'union, les nombres, et applique une liste
+positive stricte pour les mots de 2 lettres (le corpus de sous-titres y
+est presque entièrement composé de bruit : initiales, abréviations,
+mots anglais). Pour en retirer un mot repéré en usage, ajoutez-le à
+`generateur-grilles/mots_exclus.txt` (un mot par ligne) et relancez
+`python3 scripts/build.py`.
+
+**Croisement avec le Wiktionnaire (25/08/2026)** : la limite
+« quelques noms propres/mots étrangers résiduels » ci-dessus a été
+en grande partie levée en croisant la liste FrequencyWords avec
+l'export complet du [Wiktionnaire
+français](https://fr.wiktionary.org/) (édition `fr.wiktionary.org`,
+via [kaikki.org/frwiktionary/Français/](https://kaikki.org/frwiktionary/Fran%C3%A7ais/),
+1 931 709 entrées après filtrage langue et noms propres). Ce
+croisement a permis de : (1) confirmer 35 663 mots FrequencyWords comme
+mots français valides, (2) identifier et exclure 8 029 mots
+FrequencyWords absents du Wiktionnaire (noms propres/mots étrangers
+résiduels, voir `wiktionnaire_mots_invalides.json`), (3) ajouter 767 222
+mots supplémentaires validés par le Wiktionnaire mais absents de
+FrequencyWords (formes conjuguées, vocabulaire plus rare). Contenu
+Wiktionnaire distribué sous licences **CC BY-SA + GNU Free
+Documentation License** — attribution également présente sur
+`/mentions-legales/`.
+
+Le filtrage des noms propres se fait par une heuristique sur le début
+de la définition Wiktionnaire (marqueurs comme « Prénom », « Commune »,
+« Nom de famille », « Village », « Ville », etc. — voir
+`PROPRE_MARQUEURS` dans le script de traitement). **Piège rencontré et
+corrigé** : les marqueurs « Région » et « Pays » excluaient à tort des
+mots communs comme EST (dont la définition Wiktionnaire, « Région
+située à l'est... », décrit un point cardinal et non un lieu) ainsi que
+PED/PMA/POM — ces deux marqueurs ont été retirés après vérification que
+les 15 autres ne produisaient aucun faux positif sur échantillon.
+**Limite connue restante** : cette heuristique reste approximative ;
+d'éventuels autres faux positifs/négatifs peuvent subsister et seront
+corrigés au fil de l'eau via `mots_exclus.txt` (mots à exclure) ou en
+ajustant la liste de marqueurs (mots à réintégrer).
+
+**b) Les définitions** (pour l'outil Dictionnaire, l'onglet « par
+définition » de l'aide mots croisés, et la fonction `/mot/...`) :
+fichier `assets/data/dictionnaire.json`, fusion de
+`generateur-grilles/word_pool.json` (274 mots curés à la main, la
+priorité en cas de doublon) et de
+`generateur-grilles/sources/wiktionnaire_definitions.json` (définitions
+issues du même croisement Wiktionnaire que ci-dessus : les mots
+FrequencyWords validés, plus les nouveaux mots Wiktionnaire de 5
+lettres ou moins). **57 420 mots avec définition** au 25/08/2026 (274
+curés à la main, 57 146 issus du Wiktionnaire).
+
+Ce sous-ensemble (mots ≤5 lettres, plutôt que l'intégralité des 1,48
+million de mots valides trouvés dans le Wiktionnaire) est un choix
+délibéré : `functions/mot/[mot].js` importe `dictionnaire.json`
+directement dans son script (`import dictionnaire from ...`), ce que
+Cloudflare **compile à l'intérieur du Worker** — et un Worker
+Cloudflare Pages est limité à 3 Mo compressé sur le plan gratuit (10 Mo
+sur le plan payant). Au 25/08/2026, `dictionnaire.json` pèse ~4,7 Mo
+(~1,3 Mo compressé) : large marge, mais l'intégralité du Wiktionnaire
+(~134 Mo bruts) aurait dépassé la limite et cassé le déploiement. Voir
+le commentaire en tête de `functions/mot/[mot].js` pour le seuil
+d'alerte (~130-150 000 mots) et la piste pour dépasser cette limite un
+jour (lire le fichier comme asset statique à la demande via
+`env.ASSETS.fetch(...)` plutôt que de l'importer — non testé dans ce
+projet à ce jour).
+
+Architecture : deux fichiers JSON séparés plutôt qu'un seul — la
+grande liste de mots (a) est chargée côté client par tous les outils
+qui n'ont besoin que de savoir qu'un mot existe, et peut grandir sans
+coût de performance perceptible ; le fichier de définitions (b) n'est
+chargé que là où une définition est effectivement affichée ou
+recherchée (voir `assets/js/dictionnaire.js`,
+`chargerDictionnaire(avecDefinitions)`). Ainsi (b) peut grossir encore
+(sous réserve de la limite Worker ci-dessus) sans jamais ralentir les 5
+outils qui n'en ont pas besoin. Pas besoin de base de données : deux
+fichiers JSON suffisent, cohérent avec l'architecture statique du
+site.
+
+Pour aller plus loin : élargir encore les définitions (au-delà des
+mots ≤5 lettres) nécessite d'abord de migrer `functions/mot/[mot].js`
+vers `env.ASSETS.fetch(...)` (voir ci-dessus). Sur la liste de mots
+(a), la piste résiduelle serait d'affiner encore l'heuristique
+noms-propres ou de croiser avec une liste de référence orthographique
+supplémentaire pour traquer les derniers faux positifs/négatifs.
 
 ## Limites connues à ce stade
 
-- **Dictionnaire de démonstration** (274 mots) — voir ci-dessus.
+- **Liste de mots** (802 886 mots) — quelques noms propres/mots
+  étrangers résiduels possibles malgré le croisement Wiktionnaire,
+  **définitions** disponibles pour 57 420 mots (limitées aux mots ≤5
+  lettres côté Wiktionnaire, pour rester sous la limite de taille d'un
+  Worker Cloudflare) — voir ci-dessus.
 - **Grilles algorithmiques simples** : le générateur (préexistant à
   cette phase du projet) place les mots par intersections gloutonnes ;
   les grilles produites sont correctes mais pas aussi denses qu'une

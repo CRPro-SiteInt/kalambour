@@ -30,37 +30,70 @@ ROOT = os.path.dirname(HERE)  # site/
 sys.path.insert(0, HERE)
 
 
+def _charger_json_source(nom_fichier, defaut):
+    chemin = os.path.join(ROOT, "generateur-grilles", "sources", nom_fichier)
+    if not os.path.exists(chemin):
+        return defaut
+    with open(chemin, encoding="utf-8") as f:
+        return json.load(f)
+
+
 def etape_1_dictionnaire():
     src = os.path.join(ROOT, "generateur-grilles", "word_pool.json")
-    dst = os.path.join(ROOT, "assets", "data", "dictionnaire.json")
     with open(src, encoding="utf-8") as f:
         pool = json.load(f)
-    out = [{"m": w, "d": d} for w, d in sorted(pool, key=lambda x: (len(x[0]), x[0]))]
+    curated_defs = {w: d for w, d in pool}
+    curated_words = set(curated_defs)
+
+    # --- Définitions ---------------------------------------------------
+    # Priorité aux définitions curées à la main (plus soignées) ; complétées
+    # par les définitions issues du Wiktionnaire français (voir
+    # generateur-grilles/sources/wiktionnaire_definitions.json et
+    # README.md, "Le dictionnaire — architecture à deux fichiers").
+    defs_wiktionnaire = _charger_json_source("wiktionnaire_definitions.json", [])
+    toutes_defs = {e["m"]: e["d"] for e in defs_wiktionnaire}
+    toutes_defs.update(curated_defs)  # les définitions curées ont le dernier mot
+
+    dst = os.path.join(ROOT, "assets", "data", "dictionnaire.json")
+    out = [{"m": w, "d": d} for w, d in sorted(toutes_defs.items(), key=lambda x: (len(x[0]), x[0]))]
     with open(dst, "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, separators=(",", ":"))
-    print(f"[1/4] dictionnaire.json régénéré — {len(out)} mots (avec définitions)")
+    print(f"[1/4] dictionnaire.json régénéré — {len(out)} mots avec définition "
+          f"({len(curated_defs)} curés à la main, {len(out) - len(curated_defs)} issus du Wiktionnaire)")
 
-    # Grande liste de mots (existence seule, pas de définition) : utilisée
-    # côté navigateur par démêleur / anagrammes / Sutom / pendu / générateur
-    # / aide mots croisés (mode motif) — voir README.md, "Étendre le
-    # dictionnaire", et assets/js/dictionnaire.js.
+    # --- Grande liste de mots (existence seule, pas de définition) -----
+    # Utilisée côté navigateur par démêleur / anagrammes / Sutom / pendu /
+    # générateur / aide mots croisés (mode motif) — voir README.md,
+    # "Le dictionnaire — architecture à deux fichiers", et
+    # assets/js/dictionnaire.js.
     import mots_externes
 
     src_freq = os.path.join(ROOT, "generateur-grilles", "sources", "fr_50k.txt")
     src_exclus = os.path.join(ROOT, "generateur-grilles", "mots_exclus.txt")
     exclus = mots_externes.charger_mots_exclus(src_exclus)
+    # Mots FrequencyWords qui se sont révélés absents du Wiktionnaire (noms
+    # propres, mots étrangers résiduels) — voir generateur-grilles/sources/
+    # wiktionnaire_mots_invalides.json, produit lors du croisement avec le
+    # Wiktionnaire du 25/08/2026.
+    exclus |= set(_charger_json_source("wiktionnaire_mots_invalides.json", []))
+
     if os.path.exists(src_freq):
         mots_freq, stats_freq = mots_externes.charger_frequencywords(src_freq, exclus=exclus)
     else:
         mots_freq, stats_freq = set(), None
 
-    mots_pool = {w for w, _ in pool} - exclus
-    tous_mots = sorted(mots_pool | mots_freq, key=lambda w: (len(w), w))
+    # Mots supplémentaires apportés par le Wiktionnaire (mots valides absents
+    # de FrequencyWords — formes conjuguées, vocabulaire plus rare...).
+    mots_wiktionnaire = set(_charger_json_source("wiktionnaire_mots_supplementaires.json", []))
+
+    mots_pool = curated_words - exclus
+    tous_mots = sorted(mots_pool | mots_freq | mots_wiktionnaire, key=lambda w: (len(w), w))
     dst_mots = os.path.join(ROOT, "assets", "data", "mots.json")
     with open(dst_mots, "w", encoding="utf-8") as f:
         json.dump(tous_mots, f, ensure_ascii=False, separators=(",", ":"))
     print(f"[1/4] mots.json régénéré — {len(tous_mots)} mots "
-          f"({len(mots_freq)} issus de FrequencyWords, licence CC BY-SA 4.0 — voir /mentions-legales/)")
+          f"({len(mots_freq)} issus de FrequencyWords, {len(mots_wiktionnaire)} issus du Wiktionnaire — "
+          f"licences CC BY-SA, voir /mentions-legales/)")
 
 
 def etape_2_grilles():

@@ -11,8 +11,19 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # racine du 
 SITE_NAME = "Kalambour"
 DOMAIN = "https://kalambour.fr"
 
-with open(os.path.join(ROOT, "assets/data/dictionnaire.json"), encoding="utf-8") as f:
-    DICT = json.load(f)  # [{"m": "CHAT", "d": "..."}]
+# NB : on lit ici generateur-grilles/word_pool.json (la liste curée à la
+# main, 274 mots) et NON assets/data/dictionnaire.json — ce dernier
+# contient aussi les définitions issues du Wiktionnaire (dizaines de
+# milliers de mots, voir README.md) et grossira encore. DICT sert
+# uniquement à générer les pages statiques "Mots par longueur"
+# (build_pages_prod2.longueurs_disponibles) : une page par longueur
+# listant tous les mots correspondants avec leur définition — brancher
+# ça sur la liste complète produirait des pages de dizaines de milliers
+# d'entrées, illisibles et mauvaises pour le référencement. Ces pages
+# restent donc volontairement sur le jeu curé, quelle que soit la
+# taille du dictionnaire de définitions par ailleurs.
+with open(os.path.join(ROOT, "generateur-grilles/word_pool.json"), encoding="utf-8") as f:
+    DICT = [{"m": w, "d": d} for w, d in json.load(f)]  # [{"m": "CHAT", "d": "..."}]
 
 FONT_LINK = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@700&display=swap">'
 

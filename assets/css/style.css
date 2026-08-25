@@ -196,10 +196,10 @@ main{ flex:1 0 auto; display:flex; flex-direction:column; }
 .contact-form{ display:flex; flex-direction:column; gap:16px; max-width:560px; }
 .contact-form label{ font-size:14px; font-weight:600; }
 .contact-form textarea{
-     display:block; width:100%;
-     border-radius:12px; border:1.5px solid var(--border); background:var(--surface); font-size:15px;
-     color:var(--ink); padding:12px 14px; font-family:inherit; resize:vertical; min-height:140px;
-   }
+  display:block; width:100%;
+  border-radius:12px; border:1.5px solid var(--border); background:var(--surface); font-size:15px;
+  color:var(--ink); padding:12px 14px; font-family:inherit; resize:vertical; min-height:140px;
+}
 .contact-form textarea:focus{ outline:none; border-color:var(--indigo); box-shadow:0 0 0 3px var(--indigo-tint); }
 .form-status{ font-size:14px; padding:10px 14px; border-radius:10px; display:none; }
 .form-status.show{ display:block; }

@@ -10,10 +10,19 @@
  * sans re-solliciter cette fonction. Voir recherche/hebergement-architecture.md
  * pour le détail de ce choix.
  *
- * Aujourd'hui, avec seulement ~274 mots, cette fonction lit le même
- * dictionnaire JSON que le site statique — mais le mécanisme de rendu à
- * la demande + cache est déjà celui qu'il faudra à grande échelle : rien
- * à changer le jour où le dictionnaire grandit.
+ * Cette fonction importe assets/data/dictionnaire.json directement
+ * (`import dictionnaire from ...`) : Cloudflare l'intègre alors DANS le
+ * script de la fonction au moment du build, ce qui compte dans la limite
+ * de taille d'un Worker Cloudflare (3 Mo compressé sur le plan gratuit,
+ * 10 Mo sur le plan payant). Au 25/08/2026, dictionnaire.json pèse
+ * ~4,7 Mo (~1,3 Mo compressé) pour 57 420 mots — large marge sous la
+ * limite. ATTENTION avant d'agrandir encore ce fichier (ex. en
+ * intégrant tout le Wiktionnaire, ~134 Mo bruts) : au-delà d'environ
+ * 130-150 000 mots, il faudra arrêter d'importer le fichier directement
+ * et le lire à la place comme un asset statique à la demande (méthode
+ * `env.ASSETS.fetch(...)`, non testée dans ce projet à ce jour) —
+ * sans quoi le déploiement de cette fonction échouera purement et
+ * simplement.
  */
 import dictionnaire from "../../assets/data/dictionnaire.json";
 
