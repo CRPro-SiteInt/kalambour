@@ -38,7 +38,29 @@ def etape_1_dictionnaire():
     out = [{"m": w, "d": d} for w, d in sorted(pool, key=lambda x: (len(x[0]), x[0]))]
     with open(dst, "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, separators=(",", ":"))
-    print(f"[1/4] dictionnaire.json régénéré — {len(out)} mots")
+    print(f"[1/4] dictionnaire.json régénéré — {len(out)} mots (avec définitions)")
+
+    # Grande liste de mots (existence seule, pas de définition) : utilisée
+    # côté navigateur par démêleur / anagrammes / Sutom / pendu / générateur
+    # / aide mots croisés (mode motif) — voir README.md, "Étendre le
+    # dictionnaire", et assets/js/dictionnaire.js.
+    import mots_externes
+
+    src_freq = os.path.join(ROOT, "generateur-grilles", "sources", "fr_50k.txt")
+    src_exclus = os.path.join(ROOT, "generateur-grilles", "mots_exclus.txt")
+    exclus = mots_externes.charger_mots_exclus(src_exclus)
+    if os.path.exists(src_freq):
+        mots_freq, stats_freq = mots_externes.charger_frequencywords(src_freq, exclus=exclus)
+    else:
+        mots_freq, stats_freq = set(), None
+
+    mots_pool = {w for w, _ in pool} - exclus
+    tous_mots = sorted(mots_pool | mots_freq, key=lambda w: (len(w), w))
+    dst_mots = os.path.join(ROOT, "assets", "data", "mots.json")
+    with open(dst_mots, "w", encoding="utf-8") as f:
+        json.dump(tous_mots, f, ensure_ascii=False, separators=(",", ":"))
+    print(f"[1/4] mots.json régénéré — {len(tous_mots)} mots "
+          f"({len(mots_freq)} issus de FrequencyWords, licence CC BY-SA 4.0 — voir /mentions-legales/)")
 
 
 def etape_2_grilles():

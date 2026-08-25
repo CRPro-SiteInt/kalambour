@@ -1,0 +1,23 @@
+# Liste d'exclusion manuelle — un mot par ligne (majuscules, sans accent),
+# "#" pour les commentaires. Sert à retirer de la grande liste de mots
+# (assets/data/mots.json) des entrées repérées comme noms propres, mots
+# étrangers ou bruit provenant de la source FrequencyWords (sous-titres de
+# films/séries) — voir scripts/mots_externes.py.
+#
+# Pour signaler un mot à retirer : ajoutez-le ci-dessous puis relancez
+# `python3 scripts/build.py`. Aucune autre modification n'est nécessaire.
+
+# Repérés lors du contrôle qualité initial (2026-08-25) — noms de
+# personnages, lieux ou marques issus des sous-titres :
+CTHULHU
+MACGYVER
+SINBAD
+POOTIE
+TRACI
+MATTHIAS
+WISCONSIN
+ASTA
+CADY
+FANTA
+INDIA
+COMPADRE

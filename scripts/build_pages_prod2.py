@@ -210,6 +210,7 @@ def build_mentions_legales():
         ("Éditeur du site", f"{SITE_NAME} est édité par [Raison sociale / nom du responsable de publication à compléter], [adresse à compléter]. Contact : <a href=\"/contact/\" style=\"color:var(--indigo-deep); text-decoration:underline;\">page Contact</a>."),
         ("Hébergement", "Ce site est hébergé par Cloudflare, Inc. — 101 Townsend St, San Francisco, CA 94107, États-Unis (Cloudflare Pages)."),
         ("Propriété intellectuelle", f"Les outils, listes de mots et grilles proposés sur ce site sont produits par {SITE_NAME} à partir de ressources ouvertes et de contenus créés spécifiquement pour le site — aucune liste officielle protégée (type liste officielle du Scrabble) n'est utilisée."),
+        ("Crédits — liste de mots", "La grande liste de mots utilisée par les outils du site s'appuie en partie sur le jeu de données <a href=\"https://github.com/hermitdave/FrequencyWords\" style=\"color:var(--indigo-deep); text-decoration:underline;\" rel=\"nofollow\">FrequencyWords</a> (Hermit Dave), dérivé du corpus OpenSubtitles (projet OPUS), distribué sous licence <a href=\"https://creativecommons.org/licenses/by-sa/4.0/\" style=\"color:var(--indigo-deep); text-decoration:underline;\" rel=\"nofollow\">Creative Commons BY-SA 4.0</a>."),
         ("Contact", "Pour toute question relative à ces mentions légales, voir la page <a href=\"/contact/\" style=\"color:var(--indigo-deep); text-decoration:underline;\">Contact</a>."),
     ]
     build = legal_page(

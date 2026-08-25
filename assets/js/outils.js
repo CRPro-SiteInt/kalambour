@@ -504,11 +504,15 @@
   // Démarrage
   // ---------------------------------------------------------------
 
+  // Outils qui affichent/recherchent une définition : eux seuls chargent
+  // aussi dictionnaire.json en plus de la grande liste de mots.
+  var OUTILS_AVEC_DEFINITIONS = { croises: true, dictionnaire: true };
+
   document.addEventListener("DOMContentLoaded", function () {
     initContact();
     var outil = document.body.getAttribute("data-tool");
     if (!outil || !INIT[outil]) return;
-    D.chargerDictionnaire()
+    D.chargerDictionnaire(!!OUTILS_AVEC_DEFINITIONS[outil])
       .then(INIT[outil])
       .catch(function (err) {
         var info = document.getElementById("resultats-info");

@@ -1,11 +1,23 @@
-/* Kalambour — chargement du dictionnaire partagé.
-   Le dictionnaire est actuellement un jeu de démarrage (274 mots) — voir
-   README.md, section "Étendre le dictionnaire", pour le faire grandir. */
+/* Kalambour — chargement des données de mots, en deux fichiers séparés :
+   - /assets/data/mots.json          grande liste de mots (existence
+     seule, ~44 000 mots dont la majorité vient de FrequencyWords, licence
+     CC BY-SA 4.0 — voir /mentions-legales/), utilisée par la plupart des
+     outils.
+   - /assets/data/dictionnaire.json  liste curée avec définitions (jeu de
+     démarrage, voir README.md "Étendre le dictionnaire"), utilisée
+     seulement là où une définition est affichée ou recherchée
+     (Dictionnaire, aide mots croisés).
+   Séparer les deux évite que les outils qui n'ont besoin que de savoir
+   qu'un mot existe (démêleur, anagrammes, Sutom, pendu, générateur)
+   téléchargent des définitions dont ils ne se servent pas — important le
+   jour où le fichier de définitions grandira à son tour. */
 (function (global) {
   "use strict";
 
-  var DICT_URL = "/assets/data/dictionnaire.json";
-  var _promise = null;
+  var MOTS_URL = "/assets/data/mots.json";
+  var DEFS_URL = "/assets/data/dictionnaire.json";
+  var _motsPromise = null;
+  var _defsPromise = null;
 
   function normaliser(s) {
     return (s || "")
@@ -16,9 +28,25 @@
       .replace(/[^A-Z]/g, "");
   }
 
-  function chargerDictionnaire() {
-    if (!_promise) {
-      _promise = fetch(DICT_URL)
+  function chargerMots() {
+    if (!_motsPromise) {
+      _motsPromise = fetch(MOTS_URL)
+        .then(function (r) {
+          if (!r.ok) throw new Error("HTTP " + r.status);
+          return r.json();
+        })
+        .then(function (liste) {
+          return liste.map(function (m) {
+            return { mot: m, def: "", cle: normaliser(m), longueur: m.length };
+          });
+        });
+    }
+    return _motsPromise;
+  }
+
+  function chargerDefinitions() {
+    if (!_defsPromise) {
+      _defsPromise = fetch(DEFS_URL)
         .then(function (r) {
           if (!r.ok) throw new Error("HTTP " + r.status);
           return r.json();
@@ -29,10 +57,32 @@
           });
         });
     }
-    return _promise;
+    return _defsPromise;
+  }
+
+  // avecDefinitions=false (par défaut) : seulement la grande liste de mots,
+  // rapide, sans définition.
+  // avecDefinitions=true : grande liste + définitions fusionnées (pour les
+  // outils qui affichent ou recherchent une définition).
+  function chargerDictionnaire(avecDefinitions) {
+    if (!avecDefinitions) return chargerMots();
+    return Promise.all([chargerMots(), chargerDefinitions()]).then(function (r) {
+      var mots = r[0];
+      var defs = r[1];
+      var table = {};
+      defs.forEach(function (e) {
+        table[e.cle] = e.def;
+      });
+      mots.forEach(function (e) {
+        if (table[e.cle] !== undefined) e.def = table[e.cle];
+      });
+      return mots;
+    });
   }
 
   global.Kalambour = global.Kalambour || {};
   global.Kalambour.chargerDictionnaire = chargerDictionnaire;
+  global.Kalambour.chargerMots = chargerMots;
+  global.Kalambour.chargerDefinitions = chargerDefinitions;
   global.Kalambour.normaliser = normaliser;
 })(window);
