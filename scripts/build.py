@@ -95,6 +95,24 @@ def etape_1_dictionnaire():
           f"({len(mots_freq)} issus de FrequencyWords, {len(mots_wiktionnaire)} issus du Wiktionnaire — "
           f"licences CC BY-SA, voir /mentions-legales/)")
 
+    # --- Liste de validation pour le jeu "Le mot du jour" (/mot-du-jour/) --
+    # Sous-ensemble léger de mots.json (mots de 6 lettres uniquement) servi
+    # au navigateur pour vérifier qu'un essai est un mot français existant
+    # — beaucoup plus rapide à charger que les 9 Mo complets de mots.json,
+    # importants pour un jeu pensé pour être rejoué chaque jour, y compris
+    # sur mobile. À ne pas confondre avec la séquence des RÉPONSES du jeu
+    # (generateur-grilles/sources/mot_du_jour_reponses.json, curée à part
+    # et jamais exposée publiquement — voir scripts/generer_mot_du_jour.py
+    # et functions/api/mot-du-jour.js) : ici, on accepte large (n'importe
+    # quel mot de 6 lettres reconnu du site), comme le ferait la liste des
+    # "mots acceptés" (plus permissive que celle des réponses) de Wordle.
+    mots_6 = [m for m in tous_mots if len(m) == 6]
+    dst_mots6 = os.path.join(ROOT, "assets", "data", "mots-jeu-6.json")
+    with open(dst_mots6, "w", encoding="utf-8") as f:
+        json.dump(mots_6, f, ensure_ascii=False, separators=(",", ":"))
+    print(f"[1/4] mots-jeu-6.json régénéré — {len(mots_6)} mots de 6 lettres "
+          f"(validation des essais pour /mot-du-jour/)")
+
 
 def etape_2_grilles():
     src_dir = os.path.join(ROOT, "generateur-grilles")
@@ -111,6 +129,7 @@ def etape_2_grilles():
 def etape_3_pages():
     import build_pages_prod
     import build_pages_prod2
+    import build_pages_prod3
 
     build_pages_prod.build_accueil()
     build_pages_prod.build_anagramme()
@@ -121,6 +140,7 @@ def etape_3_pages():
     # "Jeu du pendu — aide" retiré le 25/08/2026 (voir build_prod.py,
     # commentaire au-dessus de TOOLS, et recherche/notes-projet.md) —
     # l'ancienne URL /aide-pendu/ redirige désormais via _redirects.
+    build_pages_prod3.build_mot_du_jour()
 
     build_pages_prod2.build_mots_par_longueur_hub()
     par_len = build_pages_prod2.longueurs_disponibles()
@@ -136,7 +156,7 @@ def etape_3_pages():
     build_pages_prod2.build_mentions_legales()
     build_pages_prod2.build_confidentialite()
     build_pages_prod2.build_contact()
-    print(f"[3/4] {6 + 1 + pages_longueur + 4} pages HTML régénérées")
+    print(f"[3/4] {6 + 1 + 1 + pages_longueur + 4} pages HTML régénérées")
 
 
 def etape_4_sitemap():

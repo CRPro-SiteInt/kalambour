@@ -93,7 +93,7 @@ def build_accueil():
         </div>
         <label for="dm-lettres" class="visually-hidden">Lettres mélangées à démêler</label>"""
     stats = stat_row([
-        ("9", "outils gratuits", "var(--indigo)"),
+        ("10", "outils gratuits", "var(--indigo)"),
         ("0€", "pour toujours", "var(--green)"),
         ("100%", "calcul dans votre navigateur", "var(--coral)"),
     ])

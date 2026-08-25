@@ -79,6 +79,51 @@ main{ flex:1 0 auto; display:flex; flex-direction:column; }
 .bg-indigo{ background:var(--indigo); } .bg-green{ background:var(--green); }
 .bg-amber{ background:var(--amber); } .bg-coral{ background:var(--coral); }
 
+/* ---------- Jeu "Le mot du jour" (/mot-du-jour/) ---------- */
+.mj-grille{ display:flex; flex-direction:column; gap:8px; align-items:center; margin:8px auto 4px auto; }
+.mj-ligne{ display:flex; flex-direction:row; gap:8px; }
+.mj-case{
+  width:52px; height:52px; display:flex; align-items:center; justify-content:center;
+  font-family:'Space Mono', monospace; font-weight:700; font-size:24px; text-transform:uppercase;
+  border-radius:10px; border:2px solid var(--border); background:var(--surface); color:var(--ink);
+}
+.mj-case.mj-remplie{ border-color:#b9b6ac; }
+.mj-case.mj-pop{ animation:mj-pop 0.14s ease; }
+.mj-case.mj-vert{ background:var(--green); border-color:var(--green); color:#fff; }
+.mj-case.mj-jaune{ background:var(--amber); border-color:var(--amber); color:#fff; }
+.mj-case.mj-gris{ background:#8a8778; border-color:#8a8778; color:#fff; }
+.mj-case.mj-shake{ animation:mj-shake 0.4s ease; }
+@keyframes mj-pop{ 0%{ transform:scale(1); } 45%{ transform:scale(1.08); } 100%{ transform:scale(1); } }
+@keyframes mj-shake{
+  10%,90%{ transform:translateX(-2px); } 20%,80%{ transform:translateX(4px); }
+  30%,50%,70%{ transform:translateX(-8px); } 40%,60%{ transform:translateX(8px); }
+}
+
+.mj-clavier{ display:flex; flex-direction:column; gap:8px; align-items:center; margin-top:22px; }
+.mj-rangee{ display:flex; flex-direction:row; gap:6px; }
+.mj-touche{
+  min-width:34px; height:46px; padding:0 8px; border-radius:8px; border:none; background:#e5e2d9;
+  color:var(--ink); font-weight:700; font-size:13px; display:flex; align-items:center; justify-content:center;
+  font-family:'Inter', sans-serif;
+}
+.mj-touche:hover{ background:#dbd7cb; }
+.mj-touche.mj-large{ min-width:56px; font-size:11px; }
+.mj-touche.mj-vert{ background:var(--green); color:#fff; }
+.mj-touche.mj-jaune{ background:var(--amber); color:#fff; }
+.mj-touche.mj-gris{ background:#8a8778; color:#fff; }
+
+.mj-message{ text-align:center; font-weight:600; font-size:15px; min-height:22px; margin:14px 0 4px 0; }
+.mj-badge{
+  display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.16); color:#fff;
+  padding:8px 16px; border-radius:999px; font-size:14px; font-weight:600; margin-top:18px;
+}
+
+@media (max-width: 480px){
+  .mj-case{ width:42px; height:42px; font-size:19px; }
+  .mj-touche{ min-width:26px; height:42px; font-size:12px; padding:0 5px; }
+  .mj-touche.mj-large{ min-width:44px; font-size:10px; }
+}
+
 .tool-row{
   display:flex; flex-direction:row; align-items:center; gap:12px; padding:12px 14px; border-radius:14px;
 }

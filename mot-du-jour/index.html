@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Le mot du jour — jeu de lettres quotidien gratuit | Kalambour</title>
+<meta name="description" content="Devinez le mot du jour en 6 essais : un nouveau mot de 6 lettres chaque jour, jeu gratuit et 100% français, inspiré de Wordle. Aucune inscription requise.">
+<link rel="canonical" href="https://kalambour.fr/mot-du-jour/">
+<meta property="og:title" content="Le mot du jour — jeu de lettres quotidien gratuit | Kalambour">
+<meta property="og:description" content="Devinez le mot du jour en 6 essais : un nouveau mot de 6 lettres chaque jour, jeu gratuit et 100% français, inspiré de Wordle. Aucune inscription requise.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kalambour.fr/mot-du-jour/">
+<meta property="og:site_name" content="Kalambour">
+<meta name="theme-color" content="#4f3dfb">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@700&display=swap">
+<link rel="stylesheet" href="/assets/css/style.css">
+
+<script type="application/ld+json">{"@graph": [{"@context": "https://schema.org", "@type": "WebApplication", "name": "Le mot du jour", "url": "https://kalambour.fr/mot-du-jour/", "description": "Devinez le mot du jour en 6 essais, un nouveau mot chaque jour.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Tous (navigateur web)", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}, "inLanguage": "fr"}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://kalambour.fr/"}, {"@type": "ListItem", "position": 2, "name": "Le mot du jour", "item": "https://kalambour.fr/mot-du-jour/"}]}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Le mot du jour est-il le même que sur Sutom ou Motus ?", "acceptedAnswer": {"@type": "Answer", "text": "Non : c'est un mot différent, propre à Kalambour, tiré de notre propre dictionnaire par un calcul indépendant. Kalambour n'est affilié ni à Sutom ni à Motus (marque de France Télévisions)."}}, {"@type": "Question", "name": "Le mot change-t-il à minuit ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, à minuit heure de Paris. Un seul mot par jour, à deviner en 6 essais maximum."}}, {"@type": "Question", "name": "Mes parties sont-elles sauvegardées ?", "acceptedAnswer": {"@type": "Answer", "text": "Votre résultat du jour reste dans votre navigateur (aucun compte requis) : si vous revenez plus tard dans la journée, vous retrouvez l'état de votre grille."}}]}]}</script>
+</head>
+<body>
+<a href="#contenu" class="skip-link">Aller au contenu</a>
+<main id="contenu">
+<div class="hero ">
+    <div class="hero-panel grid-dots-wrap">
+      <div class="grid-dots" style="position:absolute; inset:0; opacity:0.32;"></div>
+      <div class="hero-blob-a"></div><div class="hero-blob-b"></div>
+  <header class="site-header page-shell">
+    <a href="/" class="brand">
+      <svg width="38" height="38" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+        <rect x="2" y="12" width="20" height="20" rx="6" fill="#ffffff" transform="rotate(-10 2 12)"></rect>
+        <rect x="18" y="4" width="20" height="20" rx="6" fill="#c9beff" transform="rotate(10 18 4)"></rect>
+      </svg>
+      <span class="display brand-name">Kalambour</span>
+    </a>
+    <nav class="main-nav" aria-label="Navigation principale">
+        <a href="/">Accueil</a>
+        <a href="/mot-du-jour/" class="active">Le mot du jour</a>
+        <a href="/aide-mots-croises/">Aide mots croisés</a>
+        <a href="/anagramme/">Anagrammeur</a>
+        <a href="/mots-par-longueur/">Mots par longueur</a>
+    </nav>
+    <span class="chip pill lang-chip">FR</span>
+  </header>
+      <div class="page-shell hero-inner">
+        <h1 class="display hero-title">Le mot du jour</h1>
+        <p class="hero-subtitle">Un mot de 6 lettres à deviner chaque jour, tiré du dictionnaire de Kalambour — sans lien avec aucun autre site. Vert : bien placée. Jaune : présente, mal placée. Gris : absente.</p>
+<div class="mj-badge" id="mj-badge">Chargement de la grille du jour…</div>
+      </div>
+    </div>
+  </div>  <div class="content-grid page-shell">
+    <div>
+      <div id="mj-message" class="mj-message" aria-live="polite"></div>
+<div class="mj-grille" id="mj-grille"><div class="mj-ligne"><div class="mj-case" id="mj-case-0-0" data-ligne="0" data-col="0"></div><div class="mj-case" id="mj-case-0-1" data-ligne="0" data-col="1"></div><div class="mj-case" id="mj-case-0-2" data-ligne="0" data-col="2"></div><div class="mj-case" id="mj-case-0-3" data-ligne="0" data-col="3"></div><div class="mj-case" id="mj-case-0-4" data-ligne="0" data-col="4"></div><div class="mj-case" id="mj-case-0-5" data-ligne="0" data-col="5"></div></div><div class="mj-ligne"><div class="mj-case" id="mj-case-1-0" data-ligne="1" data-col="0"></div><div class="mj-case" id="mj-case-1-1" data-ligne="1" data-col="1"></div><div class="mj-case" id="mj-case-1-2" data-ligne="1" data-col="2"></div><div class="mj-case" id="mj-case-1-3" data-ligne="1" data-col="3"></div><div class="mj-case" id="mj-case-1-4" data-ligne="1" data-col="4"></div><div class="mj-case" id="mj-case-1-5" data-ligne="1" data-col="5"></div></div><div class="mj-ligne"><div class="mj-case" id="mj-case-2-0" data-ligne="2" data-col="0"></div><div class="mj-case" id="mj-case-2-1" data-ligne="2" data-col="1"></div><div class="mj-case" id="mj-case-2-2" data-ligne="2" data-col="2"></div><div class="mj-case" id="mj-case-2-3" data-ligne="2" data-col="3"></div><div class="mj-case" id="mj-case-2-4" data-ligne="2" data-col="4"></div><div class="mj-case" id="mj-case-2-5" data-ligne="2" data-col="5"></div></div><div class="mj-ligne"><div class="mj-case" id="mj-case-3-0" data-ligne="3" data-col="0"></div><div class="mj-case" id="mj-case-3-1" data-ligne="3" data-col="1"></div><div class="mj-case" id="mj-case-3-2" data-ligne="3" data-col="2"></div><div class="mj-case" id="mj-case-3-3" data-ligne="3" data-col="3"></div><div class="mj-case" id="mj-case-3-4" data-ligne="3" data-col="4"></div><div class="mj-case" id="mj-case-3-5" data-ligne="3" data-col="5"></div></div><div class="mj-ligne"><div class="mj-case" id="mj-case-4-0" data-ligne="4" data-col="0"></div><div class="mj-case" id="mj-case-4-1" data-ligne="4" data-col="1"></div><div class="mj-case" id="mj-case-4-2" data-ligne="4" data-col="2"></div><div class="mj-case" id="mj-case-4-3" data-ligne="4" data-col="3"></div><div class="mj-case" id="mj-case-4-4" data-ligne="4" data-col="4"></div><div class="mj-case" id="mj-case-4-5" data-ligne="4" data-col="5"></div></div><div class="mj-ligne"><div class="mj-case" id="mj-case-5-0" data-ligne="5" data-col="0"></div><div class="mj-case" id="mj-case-5-1" data-ligne="5" data-col="1"></div><div class="mj-case" id="mj-case-5-2" data-ligne="5" data-col="2"></div><div class="mj-case" id="mj-case-5-3" data-ligne="5" data-col="3"></div><div class="mj-case" id="mj-case-5-4" data-ligne="5" data-col="4"></div><div class="mj-case" id="mj-case-5-5" data-ligne="5" data-col="5"></div></div></div>
+<div class="mj-clavier" id="mj-clavier"><div class="mj-rangee"><button type="button" class="mj-touche" id="mj-touche-A" data-touche="A">A</button><button type="button" class="mj-touche" id="mj-touche-Z" data-touche="Z">Z</button><button type="button" class="mj-touche" id="mj-touche-E" data-touche="E">E</button><button type="button" class="mj-touche" id="mj-touche-R" data-touche="R">R</button><button type="button" class="mj-touche" id="mj-touche-T" data-touche="T">T</button><button type="button" class="mj-touche" id="mj-touche-Y" data-touche="Y">Y</button><button type="button" class="mj-touche" id="mj-touche-U" data-touche="U">U</button><button type="button" class="mj-touche" id="mj-touche-I" data-touche="I">I</button><button type="button" class="mj-touche" id="mj-touche-O" data-touche="O">O</button><button type="button" class="mj-touche" id="mj-touche-P" data-touche="P">P</button></div><div class="mj-rangee"><button type="button" class="mj-touche" id="mj-touche-Q" data-touche="Q">Q</button><button type="button" class="mj-touche" id="mj-touche-S" data-touche="S">S</button><button type="button" class="mj-touche" id="mj-touche-D" data-touche="D">D</button><button type="button" class="mj-touche" id="mj-touche-F" data-touche="F">F</button><button type="button" class="mj-touche" id="mj-touche-G" data-touche="G">G</button><button type="button" class="mj-touche" id="mj-touche-H" data-touche="H">H</button><button type="button" class="mj-touche" id="mj-touche-J" data-touche="J">J</button><button type="button" class="mj-touche" id="mj-touche-K" data-touche="K">K</button><button type="button" class="mj-touche" id="mj-touche-L" data-touche="L">L</button><button type="button" class="mj-touche" id="mj-touche-M" data-touche="M">M</button></div><div class="mj-rangee"><button type="button" class="mj-touche mj-large" data-touche="ENTREE">Entrée</button><button type="button" class="mj-touche" id="mj-touche-W" data-touche="W">W</button><button type="button" class="mj-touche" id="mj-touche-X" data-touche="X">X</button><button type="button" class="mj-touche" id="mj-touche-C" data-touche="C">C</button><button type="button" class="mj-touche" id="mj-touche-V" data-touche="V">V</button><button type="button" class="mj-touche" id="mj-touche-B" data-touche="B">B</button><button type="button" class="mj-touche" id="mj-touche-N" data-touche="N">N</button><button type="button" class="mj-touche mj-large" data-touche="EFFACER">Effacer</button></div></div>
+      <div style="display:flex; justify-content:center; margin-top:22px;">
+        <button type="button" id="mj-partager" class="btn-primary" style="display:none;">Partager mon résultat</button>
+      </div>  <div class="ad-banner page-shell"><span class="ad-note">Emplacement publicitaire — bannière 728×90</span></div><div class="card" style="padding:28px 30px; margin-top:32px;"><h2 class="display" style="font-size:20px; margin:0 0 18px 0;">Questions fréquentes</h2><div style="margin-bottom:18px;"><div style="font-weight:700; margin-bottom:4px;">Le mot du jour est-il le même que sur Sutom ou Motus ?</div><div style="color:var(--muted); font-size:15px; line-height:1.6;">Non : c'est un mot différent, propre à Kalambour, tiré de notre propre dictionnaire par un calcul indépendant. Kalambour n'est affilié ni à Sutom ni à Motus (marque de France Télévisions).</div></div>
+<div style="margin-bottom:18px;"><div style="font-weight:700; margin-bottom:4px;">Le mot change-t-il à minuit ?</div><div style="color:var(--muted); font-size:15px; line-height:1.6;">Oui, à minuit heure de Paris. Un seul mot par jour, à deviner en 6 essais maximum.</div></div>
+<div style="margin-bottom:18px;"><div style="font-weight:700; margin-bottom:4px;">Mes parties sont-elles sauvegardées ?</div><div style="color:var(--muted); font-size:15px; line-height:1.6;">Votre résultat du jour reste dans votre navigateur (aucun compte requis) : si vous revenez plus tard dans la journée, vous retrouvez l'état de votre grille.</div></div></div>
+    </div>
+    <aside>
+      <div class="card sidebar-card">
+        <div class="sidebar-title">Autres outils</div>
+        <a href="/" class="tool-row">
+          <div class="swatch bg-indigo">D</div>
+          <span class="tool-label" style="font-size:15.5px;">Démêleur de mots</span>
+          <span class="tool-arrow">›</span>
+        </a>
+        <a href="/mot-du-jour/" class="tool-row active">
+          <div class="swatch bg-coral">J</div>
+          <span class="tool-label" style="font-size:15.5px;">Le mot du jour</span>
+          <span class="tool-arrow">●</span>
+        </a>
+        <a href="/aide-mots-croises/" class="tool-row">
+          <div class="swatch bg-coral">C</div>
+          <span class="tool-label" style="font-size:15.5px;">Aide mots croisés</span>
+          <span class="tool-arrow">›</span>
+        </a>
+        <a href="/anagramme/" class="tool-row">
+          <div class="swatch bg-green">A</div>
+          <span class="tool-label" style="font-size:15.5px;">Anagrammeur</span>
+          <span class="tool-arrow">›</span>
+        </a>
+        <a href="/aide-sutom-motus/" class="tool-row">
+          <div class="swatch bg-indigo">S</div>
+          <span class="tool-label" style="font-size:15.5px;">Aide Sutom / Motus</span>
+          <span class="tool-arrow">›</span>
+        </a>
+        <a href="/dictionnaire/" class="tool-row">
+          <div class="swatch bg-green">D</div>
+          <span class="tool-label" style="font-size:15.5px;">Dictionnaire (recherche)</span>
+          <span class="tool-arrow">›</span>
+        </a>
+        <a href="/mots-par-longueur/" class="tool-row">
+          <div class="swatch bg-amber">L</div>
+          <span class="tool-label" style="font-size:15.5px;">Mots par longueur</span>
+          <span class="tool-arrow">›</span>
+        </a>
+        <a href="/generateur-de-mots/" class="tool-row">
+          <div class="swatch bg-amber">G</div>
+          <span class="tool-label" style="font-size:15.5px;">Générateur de mots</span>
+          <span class="tool-arrow">›</span>
+        </a>
+        <a href="/bibliotheque-grilles/" class="tool-row">
+          <div class="swatch bg-indigo">B</div>
+          <span class="tool-label" style="font-size:15.5px;">Bibliothèque de grilles</span>
+          <span class="tool-arrow">›</span>
+        </a>
+        <a href="/jouer-sur-mobile/" class="tool-row">
+          <div class="swatch bg-amber">M</div>
+          <span class="tool-label" style="font-size:15.5px;">Jouer sur mobile</span>
+          <span class="tool-arrow">›</span>
+        </a>
+      </div>
+      <div class="ad-square" style="margin-top:20px;"><span class="ad-note">Emplacement publicitaire<br>pavé 300×250</span></div>
+    </aside>
+  </div>  <section class="seo-block page-shell">
+    <h2 class="display">Un jeu de lettres quotidien, à la Wordle, 100% français</h2>
+    <p>Le mot du jour est un jeu gratuit inspiré du principe popularisé par Wordle (et repris en France par Motus et Sutom) : deviner un mot en un nombre d'essais limité, guidé par des indices de couleur. Ici, le mot est tiré du dictionnaire propre à Kalambour, sans dépendre d'un autre site.</p>
+    <div style="font-size:14px; color:var(--muted); margin-top:6px; font-weight:600;">Sources &amp; liens utiles</div>
+    <div class="seo-links">
+      <a href="https://www.cnrtl.fr/" class="chip" rel="nofollow noopener" target="_blank">CNRTL — définitions et étymologie <span style="color:var(--muted); font-size:12px;">↗</span></a>
+      <a href="https://www.larousse.fr/dictionnaires/francais" class="chip" rel="nofollow noopener" target="_blank">Larousse <span style="color:var(--muted); font-size:12px;">↗</span></a>
+      <a href="https://dictionnaire.lerobert.com/" class="chip" rel="nofollow noopener" target="_blank">Le Robert <span style="color:var(--muted); font-size:12px;">↗</span></a>
+      <a href="https://fr.wiktionary.org/" class="chip" rel="nofollow noopener" target="_blank">Wiktionnaire <span style="color:var(--muted); font-size:12px;">↗</span></a>
+    </div>
+  </section><script>
+(function () {
+  "use strict";
+  var LONGUEUR = 6, ESSAIS = 6;
+  var etatClavier = {};
+  var ligneCourante = 0, colCourante = 0, essaiCourant = "";
+  var secret = null, motsValides = null, numero = null, dateISO = null;
+  var termine = false;
+  var STORAGE_KEY = "kalambour-mot-du-jour";
+
+  function normaliser(s) {
+    return (s || "").toString().normalize("NFD").replace(/[̀-ͯ]/g, "").toUpperCase().replace(/[^A-Z]/g, "");
+  }
+
+  function chargerEtat() {
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) { return null; }
+  }
+
+  function sauverEtat(essais, gagne) {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        date: dateISO, numero: numero, essais: essais, gagne: gagne, fini: true
+      }));
+    } catch (e) {}
+  }
+
+  function message(txt) {
+    var el = document.getElementById("mj-message");
+    if (el) el.textContent = txt;
+  }
+
+  function badge(txt) {
+    var el = document.getElementById("mj-badge");
+    if (el) el.textContent = txt;
+  }
+
+  function caseEl(l, c) {
+    return document.getElementById("mj-case-" + l + "-" + c);
+  }
+
+  // Algorithme standard (2 passes) pour gérer correctement les lettres
+  // répétées : d'abord les positions exactes (vert), puis, sur les
+  // lettres du secret non encore "consommées", les lettres présentes
+  // mais mal placées (jaune).
+  function evaluerEssai(secretMot, essai) {
+    var n = secretMot.length;
+    var etats = [];
+    var restant = {};
+    var i, l;
+    for (i = 0; i < n; i++) etats.push("gris");
+    for (i = 0; i < n; i++) {
+      if (essai[i] === secretMot[i]) {
+        etats[i] = "vert";
+      } else {
+        l = secretMot[i];
+        restant[l] = (restant[l] || 0) + 1;
+      }
+    }
+    for (i = 0; i < n; i++) {
+      if (etats[i] === "vert") continue;
+      l = essai[i];
+      if (restant[l] > 0) {
+        etats[i] = "jaune";
+        restant[l]--;
+      }
+    }
+    return etats;
+  }
+
+  function majClavier(lettre, etat) {
+    var rang = { gris: 0, jaune: 1, vert: 2 };
+    var actuel = etatClavier[lettre];
+    if (actuel && rang[actuel] >= rang[etat]) return;
+    etatClavier[lettre] = etat;
+    var touche = document.getElementById("mj-touche-" + lettre);
+    if (touche) {
+      touche.classList.remove("mj-gris", "mj-jaune", "mj-vert");
+      touche.classList.add("mj-" + etat);
+    }
+  }
+
+  function poserLettre(l) {
+    if (termine || colCourante >= LONGUEUR) return;
+    var el = caseEl(ligneCourante, colCourante);
+    if (el) {
+      el.textContent = l;
+      el.classList.add("mj-remplie", "mj-pop");
+      setTimeout(function () { el.classList.remove("mj-pop"); }, 140);
+    }
+    essaiCourant += l;
+    colCourante++;
+  }
+
+  function effacerLettre() {
+    if (termine || colCourante === 0) return;
+    colCourante--;
+    essaiCourant = essaiCourant.slice(0, -1);
+    var el = caseEl(ligneCourante, colCourante);
+    if (el) { el.textContent = ""; el.classList.remove("mj-remplie"); }
+  }
+
+  function secouerLigne() {
+    var c, el;
+    for (c = 0; c < LONGUEUR; c++) {
+      el = caseEl(ligneCourante, c);
+      if (el) el.classList.add("mj-shake");
+    }
+    setTimeout(function () {
+      for (c = 0; c < LONGUEUR; c++) {
+        el = caseEl(ligneCourante, c);
+        if (el) el.classList.remove("mj-shake");
+      }
+    }, 420);
+  }
+
+  function afficherPartager() {
+    var bouton = document.getElementById("mj-partager");
+    if (bouton) bouton.style.display = "inline-flex";
+  }
+
+  function terminer(gagne) {
+    termine = true;
+    sauverEtat(ligneCourante + 1, gagne);
+    afficherPartager();
+    if (gagne) {
+      var felicitations = ["Bravo !", "Excellent !", "Bien joué !", "Superbe !", "Ouf, de justesse !", "In extremis !"];
+      message(felicitations[ligneCourante] || "Bravo !");
+    } else {
+      message("Le mot était " + secret + ". Revenez demain pour une nouvelle grille !");
+    }
+  }
+
+  function validerEssai() {
+    if (termine) return;
+    if (essaiCourant.length !== LONGUEUR) {
+      message("Le mot doit faire " + LONGUEUR + " lettres.");
+      secouerLigne();
+      return;
+    }
+    if (motsValides && !motsValides[essaiCourant]) {
+      message("Mot inconnu de notre dictionnaire.");
+      secouerLigne();
+      return;
+    }
+    var etats = evaluerEssai(secret, essaiCourant);
+    var essaiFige = essaiCourant, ligneFigee = ligneCourante;
+    var c;
+    for (c = 0; c < LONGUEUR; c++) {
+      (function (c) {
+        setTimeout(function () {
+          var el = caseEl(ligneFigee, c);
+          if (el) el.classList.add("mj-" + etats[c]);
+          majClavier(essaiFige[c], etats[c]);
+        }, c * 180);
+      })(c);
+    }
+    var gagne = true;
+    for (c = 0; c < LONGUEUR; c++) { if (etats[c] !== "vert") { gagne = false; break; } }
+    setTimeout(function () {
+      if (gagne) {
+        terminer(true);
+      } else if (ligneFigee >= ESSAIS - 1) {
+        terminer(false);
+      } else {
+        ligneCourante++;
+        colCourante = 0;
+        essaiCourant = "";
+        message("");
+      }
+    }, LONGUEUR * 180 + 200);
+  }
+
+  function toucheAppuyee(touche) {
+    if (touche === "ENTREE") { validerEssai(); return; }
+    if (touche === "EFFACER") { effacerLettre(); return; }
+    if (/^[A-Z]$/.test(touche)) poserLettre(touche);
+  }
+
+  document.addEventListener("keydown", function (e) {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    if (e.key === "Enter") { toucheAppuyee("ENTREE"); return; }
+    if (e.key === "Backspace") { toucheAppuyee("EFFACER"); return; }
+    var l = normaliser(e.key);
+    if (l.length === 1) toucheAppuyee(l);
+  });
+
+  document.addEventListener("click", function (e) {
+    var touche = e.target && e.target.getAttribute ? e.target.getAttribute("data-touche") : null;
+    if (touche) toucheAppuyee(touche);
+  });
+
+  var boutonPartager = document.getElementById("mj-partager");
+  if (boutonPartager) {
+    boutonPartager.addEventListener("click", function () {
+      var lignes = [];
+      var l, c, el, ligne;
+      for (l = 0; l <= ligneCourante; l++) {
+        ligne = "";
+        for (c = 0; c < LONGUEUR; c++) {
+          el = caseEl(l, c);
+          if (!el) continue;
+          if (el.classList.contains("mj-vert")) ligne += "🟩";
+          else if (el.classList.contains("mj-jaune")) ligne += "🟨";
+          else ligne += "⬜";
+        }
+        lignes.push(ligne);
+      }
+      var texte = "Kalambour — Le mot du jour #" + numero + "\n" + lignes.join("\n") + "\nkalambour.fr/mot-du-jour/";
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(texte).then(function () {
+          message("Résultat copié — collez-le où vous voulez !");
+        }, function () {
+          message(texte);
+        });
+      }
+    });
+  }
+
+  Promise.all([
+    fetch("/api/mot-du-jour").then(function (r) { return r.json(); }),
+    fetch("/assets/data/mots-jeu-6.json").then(function (r) { return r.json(); }),
+  ]).then(function (res) {
+    var info = res[0];
+    var liste = res[1];
+    var i;
+    secret = normaliser(info.mot);
+    numero = info.numero;
+    dateISO = info.date;
+    motsValides = {};
+    for (i = 0; i < liste.length; i++) motsValides[liste[i]] = true;
+
+    var jourFr = dateISO.split("-");
+    badge("Grille n° " + numero + " — " + jourFr[2] + "/" + jourFr[1] + "/" + jourFr[0]);
+
+    var precedent = chargerEtat();
+    if (precedent && precedent.date === dateISO && precedent.fini) {
+      termine = true;
+      afficherPartager();
+      message(precedent.gagne
+        ? "Vous avez déjà trouvé le mot du jour aujourd'hui (" + precedent.essais + "/" + ESSAIS + "). Revenez demain !"
+        : "Vous avez déjà joué la grille d'aujourd'hui. Le mot était " + secret + ". Revenez demain !");
+    }
+  }).catch(function () {
+    badge("Grille indisponible pour le moment");
+    message("Impossible de charger la grille du jour — réessayez plus tard.");
+  });
+})();
+</script>
+</main>
+  <footer class="site-footer">
+    <div class="page-shell">
+    <div class="footer-brand">
+      <svg width="20" height="20" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+        <rect x="2" y="12" width="20" height="20" rx="6" fill="#7c5cff" transform="rotate(-10 2 12)"></rect>
+        <rect x="18" y="4" width="20" height="20" rx="6" fill="#c9beff" transform="rotate(10 18 4)"></rect>
+      </svg>
+      <span><strong>Kalambour</strong> — © 2026</span>
+    </div>
+    <div class="footer-links">
+      <a href="/mentions-legales/">Mentions légales</a>
+      <a href="/confidentialite/">Confidentialité</a>
+      <a href="/contact/">Contact</a>
+    </div>
+    </div>
+  </footer>
+<script src="/assets/js/dictionnaire.js"></script>
+<script src="/assets/js/outils.js"></script>
+</body>
+</html>

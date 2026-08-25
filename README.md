@@ -1,15 +1,23 @@
 # Kalambour — site statique
 
-Huit outils de mots en français (démêleur, aide mots croisés,
-anagrammeur, aide Sutom/Motus, dictionnaire, générateur, bibliothèque
-de grilles, jouer sur mobile) + pages "Mots par longueur", en
-HTML/CSS/JS pur (aucun framework, aucune étape de build obligatoire)
-plus deux fonctions Cloudflare Pages (dictionnaire à la demande,
-formulaire de contact).
+Neuf outils de mots en français (démêleur, le mot du jour, aide mots
+croisés, anagrammeur, aide Sutom/Motus, dictionnaire, générateur,
+bibliothèque de grilles, jouer sur mobile) + pages "Mots par longueur",
+en HTML/CSS/JS pur (aucun framework, aucune étape de build obligatoire)
+plus trois fonctions Cloudflare Pages (dictionnaire à la demande, mot
+du jour, formulaire de contact).
 
-*(Un neuvième outil, "aide au jeu du pendu", a été retiré le
-25/08/2026 — jugé trop peu identifiable par le client. L'ancienne URL
-`/aide-pendu/` redirige vers `/aide-mots-croises/` via `_redirects`.)*
+*(Un outil, "aide au jeu du pendu", a été retiré le 25/08/2026 — jugé
+trop peu identifiable par le client. L'ancienne URL `/aide-pendu/`
+redirige vers `/aide-mots-croises/` via `_redirects`.)*
+
+*("Le mot du jour" a été ajouté le 25/08/2026 : un vrai jeu façon
+Wordle natif à Kalambour — voir `/mot-du-jour/`,
+`functions/api/mot-du-jour.js` et "Le jeu Le mot du jour" plus bas pour
+l'architecture complète. Fait suite à l'abandon d'une piste concurrente
+— republier la "solution Sutom/Motus du jour" en la récupérant sur un
+site fan tiers — jugée trop dépendante d'un service externe qui n'est
+lui-même qu'un clone de Wordle.)*
 
 **Pourquoi pas de framework (Astro) ?** Le plan initial prévoyait Astro,
 mais l'environnement où ce site a été généré n'a pas d'accès réseau
@@ -39,11 +47,14 @@ accès npm, donc à faire sur votre machine plutôt qu'ici).
 /                       pages statiques (une page = un dossier + index.html)
 assets/css/style.css    feuille de style partagée (design v2)
 assets/js/              logique des 6 outils interactifs (100% navigateur)
-assets/data/            dictionnaire.json + grille_facile/moyen/difficile.json
+assets/data/            dictionnaire.json + mots.json + mots-jeu-6.json + grille_facile/moyen/difficile.json
 functions/mot/[mot].js  page "Dictionnaire" rendue à la demande (Cloudflare Pages Function)
+functions/api/mot-du-jour.js  calcule et renvoie le mot du jour du jeu /mot-du-jour/
 functions/api/contact.js  réception du formulaire de contact (envoi via Resend)
+generateur-grilles/sources/mot_du_jour_reponses.json  séquence des réponses du jeu (curée, voir plus bas)
 generateur-grilles/     générateur de grilles Python (déjà écrit, réutilisé tel quel)
 scripts/build.py        régénère TOUT le site (dictionnaire + grilles + pages HTML + sitemap)
+scripts/generer_mot_du_jour.py  génère (UNE FOIS, pas à chaque build) la séquence de réponses du jeu
 .github/workflows/      régénération mensuelle automatique des grilles
 _headers                règles de cache Cloudflare Pages
 _redirects              redirections Cloudflare Pages (ex. anciennes URLs retirées)
@@ -319,6 +330,64 @@ limite de 20 000 fichiers du plan gratuit Cloudflare Pages).
 Pour ajuster le seuil de découpage ou le format d'URL, voir
 `SEUIL_DECOUPAGE_LETTRE`, `build_page_longueur_hub_lettres()` et
 `build_page_longueur_lettre()` dans `scripts/build_pages_prod2.py`.
+
+## Le jeu "Le mot du jour" (/mot-du-jour/)
+
+Ajouté le 25/08/2026 : un jeu de lettres quotidien façon Wordle/Sutom,
+mais **natif à Kalambour** — aucune dépendance à un site tiers. Fait
+suite à l'étude puis à l'abandon d'une piste concurrente (récupérer la
+"solution Sutom/Motus du jour" en la lisant sur un site fan tiers,
+sutom.nocle.fr) que le client a jugée trop fragile : ce site n'est
+lui-même qu'un déploiement communautaire d'un projet open-source
+("Sutom", voir recherche/notes-projet.md pour le détail du
+rétro-engineering de son mécanisme). Construire notre propre jeu règle
+le problème à la racine.
+
+**Trois pièces, à ne pas confondre :**
+
+1. `assets/data/mots-jeu-6.json` — la liste des mots de 6 lettres
+   acceptés comme ESSAI par un joueur. Régénérée automatiquement à
+   chaque `python3 scripts/build.py` (sous-ensemble de mots.json, voir
+   `etape_1_dictionnaire()` dans `scripts/build.py`). Volontairement
+   permissive — comme la liste des "mots acceptés" (par opposition à
+   celle des réponses) de Wordle.
+2. `generateur-grilles/sources/mot_du_jour_reponses.json` — la
+   séquence des 1500 mots-RÉPONSES, dans un ordre mélangé une fois pour
+   toutes. Beaucoup plus stricte : générée par
+   `scripts/generer_mot_du_jour.py` à partir des mots les plus
+   fréquents du français (`fr_50k.txt`) déjà validés par le pipeline du
+   dictionnaire, puis épurée à la main d'une liste d'exclusion
+   (`EXCLUSIONS_REPONSES` dans ce script) qui retire noms propres,
+   prénoms de personnages (bruit résiduel des sous-titres de
+   FrequencyWords), mots anglais non traduits, mots grossiers et termes
+   sensibles — une réponse quotidienne mise en avant publiquement
+   demande une curation plus stricte qu'un simple mot accepté en essai.
+   **Ne JAMAIS relancer ce script une fois en production** (voir
+   l'avertissement en tête du fichier) : cela changerait rétroactivement
+   la réponse de tous les jours déjà écoulés ou déjà consultés par
+   avance par un joueur curieux. Pour allonger la liste (elle couvre
+   ~4 ans), ajoutez un nouveau lot À LA SUITE du fichier existant.
+3. `functions/api/mot-du-jour.js` — Cloudflare Pages Function qui
+   calcule le jour courant (fuseau Europe/Paris, jour 0 = 25/08/2026) et
+   renvoie le mot du jour correspondant. Une fonction plutôt qu'un
+   fichier statique daté à l'avance : tant qu'elle n'a pas tourné pour
+   le jour J, le mot du jour J n'existe nulle part côté serveur.
+
+**Limite assumée, documentée en toute transparence dans le code** de
+`functions/api/mot-du-jour.js` : comme tout jeu "à la Wordle" sans
+serveur de partie complet, le mot du jour est renvoyé en clair dès le
+chargement de la page — un visiteur qui inspecte l'onglet réseau de son
+navigateur peut voir la réponse avant de jouer. C'est exactement la
+même limite que Sutom lui-même. Un vrai serveur de partie (qui ne
+renverrait que vert/jaune/gris essai par essai, sans jamais exposer le
+mot) réglerait ce point mais dépasse le périmètre de cette v1.
+
+La logique de jeu (grille, clavier, validation, partage du résultat)
+est un script inline généré par `scripts/build_pages_prod3.py`
+(`JEU_SCRIPT`) — même approche que `GRILLE_JOUABLE_SCRIPT` pour la
+bibliothèque de grilles. Le résultat du jour est mémorisé dans le
+`localStorage` du visiteur (pas de compte, pas de serveur) pour éviter
+de rejouer la même grille plusieurs fois dans la journée.
 
 ## Limites connues à ce stade
 

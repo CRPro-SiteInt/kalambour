@@ -40,8 +40,20 @@ FONT_LINK = '<link rel="preconnect" href="https://fonts.googleapis.com"><link re
 # anagrammeur.com et sur la requête la plus tapée). "Jeu du pendu —
 # aide" retiré (le client ne le trouvait pas assez identifiable/utile) —
 # voir _redirects pour la redirection de l'ancienne URL /aide-pendu/.
+#
+# Ajout du 25/08/2026 : "Le mot du jour", un vrai jeu façon Wordle natif
+# à Kalambour (mot tiré du dictionnaire du site, aucune dépendance à un
+# site tiers) — voir /mot-du-jour/, functions/api/mot-du-jour.js et
+# recherche/notes-projet.md. Fait suite à l'étude puis à l'abandon d'une
+# piste concurrente ("solution Sutom/Motus du jour" obtenue en
+# récupérant la réponse d'un site fan tiers) que le client a jugée trop
+# dépendante d'un service externe qui n'est lui-même qu'un clone de
+# Wordle. Placé en tête de liste : c'est la fonctionnalité pensée pour
+# faire revenir un visiteur chaque jour (levier de trafic récurrent),
+# alors que les autres outils sont plutôt des recherches ponctuelles.
 NAV_ITEMS = [
     ("accueil", "/", "Accueil"),
+    ("motdujour", "/mot-du-jour/", "Le mot du jour"),
     ("croises", "/aide-mots-croises/", "Aide mots croisés"),
     ("anagrammes", "/anagramme/", "Anagrammeur"),
     ("longueur", "/mots-par-longueur/", "Mots par longueur"),
@@ -49,6 +61,7 @@ NAV_ITEMS = [
 
 TOOLS = [
     ("demeleur", "/", "D", "Démêleur de mots", "indigo"),
+    ("motdujour", "/mot-du-jour/", "J", "Le mot du jour", "coral"),
     ("croises", "/aide-mots-croises/", "C", "Aide mots croisés", "coral"),
     ("anagrammes", "/anagramme/", "A", "Anagrammeur", "green"),
     ("sutom", "/aide-sutom-motus/", "S", "Aide Sutom / Motus", "indigo"),
