@@ -59,19 +59,32 @@ ADSENSE_SCRIPT = '<script async src="https://pagead2.googlesyndication.com/pagea
 # faire revenir un visiteur chaque jour (levier de trafic récurrent),
 # alors que les autres outils sont plutôt des recherches ponctuelles.
 #
-# Ajout du 26/08/2026 : le lien de nav vers la page d'accueil s'appelait
-# encore "Accueil", un intitulé générique qui ne dit rien de l'outil
-# réellement proposé sur cette page (le démêleur de lettres) — renommé
-# "Démêleur de mots" pour que le nom de l'outil soit visible dès la
-# navigation, cohérent avec son intitulé dans TOOLS ci-dessous.
-NAV_ITEMS = [
+# Refonte du 26/08/2026 (retour client) : la nav mélangeait des AIDES
+# (outils de recherche ponctuels : démêleur, aide mots croisés,
+# anagrammeur) et des JEUX (mot du jour, grille du jour) sans aucune
+# distinction visuelle — "aucune logique" selon le retour. Scindée en
+# deux groupes désormais, séparés par un fin trait vertical, les jeux
+# en pastille pour bien les distinguer des aides. "Mots par longueur"
+# est retiré de l'accès direct en nav (reste accessible depuis "Autres
+# outils" et les milliers de liens internes) au profit de "La grille du
+# jour", nom unifié partout sur le site (nav, page, sidebar) sur le
+# modèle de "Le mot du jour" — fini le mélange "grille" / "mots
+# croisés" / "bibliothèque de grilles" pour désigner la même chose.
+NAV_AIDES = [
     ("accueil", "/", "Démêleur de mots"),
-    ("motdujour", "/mot-du-jour/", "Le mot du jour"),
     ("croises", "/aide-mots-croises/", "Aide mots croisés"),
     ("anagrammes", "/anagramme/", "Anagrammeur"),
-    ("longueur", "/mots-par-longueur/", "Mots par longueur"),
+]
+NAV_JEUX = [
+    ("motdujour", "/mot-du-jour/", "Le mot du jour"),
+    ("grilles", "/bibliotheque-grilles/", "La grille du jour"),
 ]
 
+# Mise à jour du 26/08/2026 : "Jouer sur mobile" (/jouer-sur-mobile/) a
+# été retiré de cette liste — fusionné dans "La grille du jour",
+# devenue une grille interactive quotidienne (3 niveaux + archive par
+# date) plutôt que deux pages séparées. L'ancienne URL redirige vers la
+# nouvelle (voir _redirects). Voir notes-projet.md pour le détail.
 TOOLS = [
     ("demeleur", "/", "D", "Démêleur de mots", "indigo"),
     ("motdujour", "/mot-du-jour/", "J", "Le mot du jour", "coral"),
@@ -81,8 +94,7 @@ TOOLS = [
     ("dictionnaire", "/dictionnaire/", "D", "Dictionnaire (recherche)", "green"),
     ("longueur", "/mots-par-longueur/", "L", "Mots par longueur", "amber"),
     ("generateur", "/generateur-de-mots/", "G", "Générateur de mots", "amber"),
-    ("grilles", "/bibliotheque-grilles/", "B", "Bibliothèque de grilles", "indigo"),
-    ("mobile", "/jouer-sur-mobile/", "M", "Jouer sur mobile", "amber"),
+    ("grilles", "/bibliotheque-grilles/", "G", "La grille du jour", "indigo"),
 ]
 
 AUTORITES = [
@@ -99,11 +111,13 @@ def esc(s):
 
 
 def header(active_nav):
-    links = []
-    for key, href, label in NAV_ITEMS:
-        cls = "active" if key == active_nav else ""
-        links.append(f'<a href="{href}" class="{cls}">{label}</a>'.replace(' class=""', ""))
-    nav = "\n        ".join(links)
+    def _link(key, href, label, extra_cls=""):
+        cls = " ".join(c for c in [extra_cls, "active" if key == active_nav else ""] if c)
+        cls_attr = f' class="{cls}"' if cls else ""
+        return f'<a href="{href}"{cls_attr}>{label}</a>'
+
+    aides = "\n        ".join(_link(k, h, l) for k, h, l in NAV_AIDES)
+    jeux = "\n        ".join(_link(k, h, l, "jeu") for k, h, l in NAV_JEUX)
     return f"""  <header class="site-header page-shell">
     <a href="/" class="brand">
       <svg width="38" height="38" viewBox="0 0 44 44" fill="none" aria-hidden="true">
@@ -113,7 +127,13 @@ def header(active_nav):
       <span class="display brand-name">{SITE_NAME}</span>
     </a>
     <nav class="main-nav" aria-label="Navigation principale">
-        {nav}
+      <div class="nav-group">
+        {aides}
+      </div>
+      <div class="nav-divider"></div>
+      <div class="nav-group">
+        {jeux}
+      </div>
     </nav>
     <span class="chip pill lang-chip">FR</span>
   </header>"""
@@ -155,12 +175,15 @@ def sidebar(active_key):
     return f"""      <div class="card sidebar-card">
         <div class="sidebar-title">Autres outils</div>
 {rows_html}
-      </div>
-      <div class="ad-square" style="margin-top:20px;"><span class="ad-note">Emplacement publicitaire<br>pavé 300×250</span></div>"""
+      </div>"""
 
 
 def ad_banner():
-    return '  <div class="ad-banner page-shell"><span class="ad-note">Emplacement publicitaire — bannière 728×90</span></div>'
+    # Emplacements "Emplacement publicitaire" retirés le 26/08/2026 :
+    # redondants avec les Auto ads AdSense (voir seo-geo-strategie.md /
+    # notes-projet.md) — ces blocs n'affichaient jamais de vraie publicité,
+    # juste un texte de substitution visible par tous les visiteurs.
+    return ""
 
 
 def seo_block(title, text, liens=None):

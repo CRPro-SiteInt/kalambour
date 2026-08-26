@@ -101,16 +101,29 @@ def build_accueil():
           <button type="button" id="dm-chercher" class="btn-primary">Chercher</button>
         </div>
         <label for="dm-lettres" class="visually-hidden">Lettres mélangées à démêler</label>"""
-    stats = stat_row([
-        ("10", "outils gratuits", "var(--indigo)"),
-        ("0€", "pour toujours", "var(--green)"),
-        ("100%", "calcul dans votre navigateur", "var(--coral)"),
-    ])
+    # Remplace les anciens badges "10 outils gratuits / 0€ pour toujours /
+    # 100% dans le navigateur" (retour client du 26/08/2026) : la page
+    # d'accueil met désormais en avant les deux jeux quotidiens du site,
+    # cohérent avec le groupe "Jeux" de la nav (voir build_prod.py).
+    jeux_du_jour = """      <div class="game-cards">
+        <a href="/mot-du-jour/" class="game-card mot">
+          <div class="icon">🔤</div>
+          <h3 class="display">Le mot du jour</h3>
+          <p>Devinez le mot mystère en 6 essais, comme Motus/Wordle.</p>
+          <span class="cta">Jouer aujourd'hui →</span>
+        </a>
+        <a href="/bibliotheque-grilles/" class="game-card grille">
+          <div class="icon">✏️</div>
+          <h3 class="display">La grille du jour</h3>
+          <p>Une nouvelle grille de mots croisés chaque jour, 3 niveaux.</p>
+          <span class="cta">Jouer aujourd'hui →</span>
+        </a>
+      </div>"""
     h = hero(
         "accueil",
         "Démêlez vos lettres,<br>trouvez le mot juste",
         "Entrez des lettres mélangées, notre outil retrouve tous les mots français valides — utile pour le Scrabble, les mots fléchés ou pour débloquer une grille de mots croisés.",
-        inner + stats,
+        inner + jeux_du_jour,
     )
     main = f"""{resultats_block("Entrez des lettres mélangées ci-dessus pour commencer.")}"""
     faq_html, faq_schema = faq_block([

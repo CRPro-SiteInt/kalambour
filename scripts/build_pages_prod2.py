@@ -196,7 +196,7 @@ def build_page_longueur_lettre(n, lettre, mots, lettres_dispo):
 
 
 # ---------------------------------------------------------------------
-# 9. BIBLIOTHÈQUE DE GRILLES (/bibliotheque-grilles/)
+# 9. LA GRILLE DU JOUR (/bibliotheque-grilles/)
 # ---------------------------------------------------------------------
 # Réécrite le 26/08/2026 : fusionne l'ancienne "Bibliothèque de
 # grilles" (3 grilles statiques, mises à jour une fois par mois) et
@@ -209,6 +209,13 @@ def build_page_longueur_lettre(n, lettre, mots, lettres_dispo):
 # contexte complet de cette décision et son inspiration (UX de
 # référence du secteur, jamais son code ni son contenu — voir la note
 # en tête de grille_render.py).
+#
+# Renommée "La grille du jour" le 26/08/2026 (retour client) : le nom
+# doit être le même PARTOUT sur le site (nav, page, sidebar "Autres
+# outils") — fini le mélange "Bibliothèque de grilles" / "mots croisés
+# du jour" pour désigner la même chose, sur le modèle de "Le mot du
+# jour". L'URL /bibliotheque-grilles/ est conservée (pas de risque de
+# lien cassé, pas de redirection à gérer) : seul le nom affiché change.
 
 MOIS_FR = ["janv.", "févr.", "mars", "avr.", "mai", "juin",
            "juil.", "août", "sept.", "oct.", "nov.", "déc."]
@@ -281,7 +288,7 @@ def build_grilles():
 
     h = hero(
         "grilles",
-        "Bibliothèque de grilles",
+        "La grille du jour",
         "Une nouvelle grille de mots croisés chaque jour, trois niveaux de difficulté — jouable en ligne ou à imprimer, avec l'historique des jours précédents.",
     )
     main = f"""      <div role="tablist" style="display:flex; flex-direction:row; margin-top:8px;">{''.join(onglets)}</div>
@@ -295,11 +302,11 @@ def build_grilles():
         "Une nouvelle grille est générée automatiquement chaque jour pour chacun des trois niveaux, à partir du dictionnaire complet de Kalambour (pas d'une source tierce, pas de l'ODS) — voir les jours précédents directement dans la page.",
     )
     schema = combine_schema(
-        webapp_schema("Bibliothèque de grilles", "/bibliotheque-grilles/", "Grille de mots croisés du jour à jouer en ligne ou à imprimer, trois niveaux de difficulté, avec historique par date."),
-        breadcrumb_schema("Bibliothèque de grilles", "/bibliotheque-grilles/"),
+        webapp_schema("La grille du jour", "/bibliotheque-grilles/", "Grille de mots croisés du jour à jouer en ligne ou à imprimer, trois niveaux de difficulté, avec historique par date."),
+        breadcrumb_schema("La grille du jour", "/bibliotheque-grilles/"),
     )
     html = page(
-        "/bibliotheque-grilles/", f"Mots croisés du jour, gratuits, à imprimer ou à jouer en ligne | {SITE_NAME}",
+        "/bibliotheque-grilles/", f"La grille du jour — mots croisés gratuits, à imprimer ou à jouer en ligne | {SITE_NAME}",
         "Une nouvelle grille de mots croisés chaque jour, trois niveaux de difficulté — jouez en ligne ou imprimez, avec l'historique des jours précédents.",
         "accueil", "grilles", body, data_tool=None, schema_json=schema,
     )

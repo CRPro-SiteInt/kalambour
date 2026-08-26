@@ -205,6 +205,15 @@ main{ flex:1 0 auto; display:flex; flex-direction:column; }
 .main-nav a{ padding:9px 16px; border-radius:999px; color:rgba(255,255,255,0.75); white-space:nowrap; }
 .main-nav a:hover{ color:#fff; }
 .main-nav a.active{ background:rgba(255,255,255,0.16); color:#ffffff; }
+/* Nav scindée en 2 groupes (26/08/2026) : "Aides" (outils de recherche
+   ponctuels) vs "Jeux" (mot du jour, grille du jour), avec un trait
+   séparateur et les jeux en pastille pour bien les distinguer — voir
+   NAV_AIDES / NAV_JEUX dans build_prod.py. */
+.nav-group{ display:flex; flex-direction:row; align-items:center; gap:4px; flex-wrap:wrap; }
+.nav-divider{ width:1px; height:22px; background:rgba(255,255,255,0.25); margin:0 8px; flex-shrink:0; }
+.main-nav a.jeu{ background:rgba(255,255,255,0.14); }
+.main-nav a.jeu:hover{ background:rgba(255,255,255,0.24); color:#fff; }
+.main-nav a.jeu.active{ background:#ffffff; color:var(--indigo-deep); }
 .lang-chip{ color:#ffffff; font-weight:500; background:rgba(255,255,255,0.14); border-color:rgba(255,255,255,0.28); flex-shrink:0; }
 
 .hero{ position:relative; }
@@ -231,6 +240,24 @@ main{ flex:1 0 auto; display:flex; flex-direction:column; }
   border:1.5px dashed var(--border); border-radius:16px; background:#f4f2ec; text-align:center; padding:12px;
 }
 .ad-note{ font-size:13px; color:var(--muted); }
+
+/* Cartes "jeux du jour" mises en avant sur l'accueil, à la place des
+   anciens badges "10 outils gratuits / 0€ pour toujours / 100% dans
+   le navigateur" (retour client du 26/08/2026 : mettre en avant le
+   mot du jour et la grille du jour plutôt que des chiffres). */
+.game-cards{ display:grid; grid-template-columns:1fr 1fr; gap:16px; max-width:640px; margin:28px auto 0 auto; }
+.game-card{
+  background:#ffffff; border-radius:16px; padding:20px; color:var(--ink); text-decoration:none;
+  display:flex; flex-direction:column; gap:6px; box-shadow:var(--shadow-lg);
+  transition:transform .15s ease;
+}
+.game-card:hover{ transform:translateY(-2px); }
+.game-card .icon{ width:38px; height:38px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:19px; margin-bottom:4px; }
+.game-card.mot .icon{ background:var(--coral-tint); }
+.game-card.grille .icon{ background:var(--green-tint); }
+.game-card h3{ font-size:17px; margin:0; }
+.game-card p{ font-size:13px; color:var(--muted); margin:0; line-height:1.4; }
+.game-card .cta{ margin-top:8px; font-size:13px; font-weight:700; color:var(--indigo-deep); }
 
 .seo-block{ display:flex; flex-direction:column; gap:14px; padding:48px 6px 40px 6px; margin-top:8px; border-top:1px solid var(--border); max-width:1020px; }
 .seo-block h2{ font-size:22px; font-weight:700; margin:0; }
@@ -311,6 +338,9 @@ main{ flex:1 0 auto; display:flex; flex-direction:column; }
   .site-header{ padding:16px 4px; }
   .main-nav{ order:3; width:100%; justify-content:center; gap:2px; }
   .main-nav a{ padding:8px 12px; font-size:13.5px; }
+  .nav-group{ justify-content:center; }
+  .nav-divider{ display:none; }
+  .game-cards{ grid-template-columns:1fr !important; }
   .content-grid{ padding:28px 4px; gap:20px; }
   .site-footer{ border-radius:24px 24px 0 0; padding:28px 4px; text-align:center; justify-content:center; }
   .site-footer .page-shell{ justify-content:center; text-align:center; }

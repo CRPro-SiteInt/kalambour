@@ -61,11 +61,25 @@ function page({ title, description, canonical, bodyHtml, statusNote = "" }) {
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@700&display=swap">
 <link rel="stylesheet" href="/assets/css/style.css">
+<style>
+  /* .main-nav est pensé pour le bandeau indigo de la hero (texte blanc
+     translucide) — ce gabarit de page /mot/xxx/ n'a pas de hero, le
+     header est posé directement sur fond blanc. Sans cette surcharge
+     les liens de nav (rgba(255,255,255,.75) sur fond blanc) sont
+     quasi invisibles. Ajouté le 26/08/2026 en même temps que le
+     regroupement Aides/Jeux (voir NAV_AIDES/NAV_JEUX, build_prod.py). */
+  .site-header.on-light .main-nav a{ color:var(--muted); }
+  .site-header.on-light .main-nav a:hover{ color:var(--ink); }
+  .site-header.on-light .main-nav a.active{ background:var(--indigo-tint); color:var(--indigo-deep); }
+  .site-header.on-light .main-nav a.jeu{ background:var(--indigo-tint); color:var(--indigo-deep); }
+  .site-header.on-light .main-nav a.jeu:hover{ background:var(--indigo); color:#fff; }
+  .site-header.on-light .nav-divider{ background:var(--border); }
+</style>
 </head>
 <body>
 <a href="#contenu" class="skip-link">Aller au contenu</a>
 <main id="contenu">
-  <header class="site-header page-shell">
+  <header class="site-header on-light page-shell">
     <a href="/" class="brand">
       <svg width="38" height="38" viewBox="0 0 44 44" fill="none" aria-hidden="true">
         <rect x="2" y="12" width="20" height="20" rx="6" fill="#4f3dfb" transform="rotate(-10 2 12)"></rect>
@@ -74,9 +88,16 @@ function page({ title, description, canonical, bodyHtml, statusNote = "" }) {
       <span class="display brand-name" style="color:#16151c;">${SITE_NAME}</span>
     </a>
     <nav class="main-nav" aria-label="Navigation principale">
-      <a href="/">Démêleur de mots</a><a href="/mot-du-jour/">Le mot du jour</a>
-      <a href="/mots-par-longueur/">Mots par longueur</a>
-      <a href="/anagramme/">Anagrammeur</a><a href="/dictionnaire/">Dictionnaire</a>
+      <div class="nav-group">
+        <a href="/">Démêleur de mots</a>
+        <a href="/aide-mots-croises/">Aide mots croisés</a>
+        <a href="/anagramme/">Anagrammeur</a>
+      </div>
+      <div class="nav-divider"></div>
+      <div class="nav-group">
+        <a href="/mot-du-jour/" class="jeu">Le mot du jour</a>
+        <a href="/bibliotheque-grilles/" class="jeu">La grille du jour</a>
+      </div>
     </nav>
   </header>
   <div class="page-shell" style="padding:24px 0 48px 0;">
