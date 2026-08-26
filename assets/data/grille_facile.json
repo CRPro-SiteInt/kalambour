@@ -7,80 +7,80 @@
       "E",
       "B",
       null,
-      "N",
-      "C",
-      "I",
-      "S"
-    ],
-    [
-      "I",
-      "V",
-      "O",
-      null,
-      "B",
       "A",
-      "N",
-      "C"
-    ],
-    [
-      "N",
-      "E",
       "R",
-      null,
       "A",
-      "L",
-      "F",
+      "M"
+    ],
+    [
+      "H",
+      "U",
+      "E",
+      null,
+      "D",
+      "A",
+      "D",
       "A"
     ],
     [
       "A",
-      "N",
+      "R",
       "A",
-      "L",
       null,
-      "I",
+      "A",
+      "J",
+      "A",
+      "X"
+    ],
+    [
+      "N",
       "O",
-      "N"
+      "U",
+      "S",
+      null,
+      "E",
+      "M",
+      "I"
     ],
     [
       null,
       null,
       null,
+      "A",
+      "P",
       "U",
-      "S",
-      "E",
       null,
       null
     ],
     [
-      "P",
-      "A",
-      "T",
-      "E",
-      "R",
+      "C",
+      "O",
+      "M",
+      "B",
+      "I",
       "N",
       "E",
-      "L"
+      "S"
     ],
     [
-      "E",
-      "B",
-      "R",
-      "U",
+      "A",
+      "N",
+      "G",
+      "L",
+      "A",
       "I",
-      "T",
-      "E",
-      "R"
+      "S",
+      "E"
     ],
     [
-      "U",
-      "S",
-      "E",
       "R",
-      null,
+      "I",
+      "R",
       "E",
-      "P",
-      "A"
+      null,
+      "R",
+      "E",
+      "N"
     ]
   ],
   "mots": [
@@ -99,8 +99,8 @@
       "row": 0,
       "col": 0,
       "length": 4,
-      "reponse": "ZINA",
-      "indice": "Adultère, fornication."
+      "reponse": "ZHAN",
+      "indice": "Seizième lettre de l’alphabet géorgien, ka."
     },
     {
       "number": 2,
@@ -108,8 +108,8 @@
       "row": 0,
       "col": 1,
       "length": 4,
-      "reponse": "EVEN",
-      "indice": "Synonyme de évène."
+      "reponse": "EURO",
+      "indice": "Monnaie scripturale depuis 1999 et fiduciaire à partir de 2002, ayant cours dans…"
     },
     {
       "number": 3,
@@ -117,8 +117,8 @@
       "row": 0,
       "col": 2,
       "length": 4,
-      "reponse": "BORA",
-      "indice": "Langue witotoane parlée en Amazonie péruvienne dans le bassin de la rivière Putumayo et…"
+      "reponse": "BEAU",
+      "indice": "Agréable à regarder"
     },
     {
       "number": 4,
@@ -126,8 +126,8 @@
       "row": 0,
       "col": 4,
       "length": 4,
-      "reponse": "NCIS",
-      "indice": "Service des enquêtes criminelles de la marine des États-Unis."
+      "reponse": "ARAM",
+      "indice": "Dans la Bible, cinquième fils de Sem, dont les descendants peuplèrent l’Arménie et la…"
     },
     {
       "number": 4,
@@ -135,8 +135,8 @@
       "row": 0,
       "col": 4,
       "length": 3,
-      "reponse": "NBA",
-      "indice": "La principale ligue de basket-ball nord-américaine créée en 1946."
+      "reponse": "ADA",
+      "indice": "Une des espèces de petits oiseaux passereaux d'Amérique, des genres Knipolegus et…"
     },
     {
       "number": 5,
@@ -144,8 +144,8 @@
       "row": 0,
       "col": 5,
       "length": 8,
-      "reponse": "CALIENTE",
-      "indice": "Chaud, en chaleur."
+      "reponse": "RAJEUNIR",
+      "indice": "Rendre jeune, rendre la jeunesse."
     },
     {
       "number": 6,
@@ -153,8 +153,8 @@
       "row": 0,
       "col": 6,
       "length": 4,
-      "reponse": "INFO",
-      "indice": "Information."
+      "reponse": "ADAM",
+      "indice": "Selon la Bible, le premier homme vivant sur la Terre."
     },
     {
       "number": 7,
@@ -162,8 +162,8 @@
       "row": 0,
       "col": 7,
       "length": 4,
-      "reponse": "SCAN",
-      "indice": "Scanner, examen radiologique."
+      "reponse": "MAXI",
+      "indice": "Maximum."
     },
     {
       "number": 8,
@@ -171,8 +171,8 @@
       "row": 1,
       "col": 0,
       "length": 3,
-      "reponse": "IVO",
-      "indice": "Yves."
+      "reponse": "HUE",
+      "indice": "Mot dont se servent les charretiers pour faire avancer les chevaux, ou pour les faire…"
     },
     {
       "number": 9,
@@ -180,8 +180,8 @@
       "row": 1,
       "col": 4,
       "length": 4,
-      "reponse": "BANC",
-      "indice": "Long siège permettant d’accueillir plus d’une personne."
+      "reponse": "DADA",
+      "indice": "Cheval."
     },
     {
       "number": 10,
@@ -189,8 +189,8 @@
       "row": 2,
       "col": 0,
       "length": 3,
-      "reponse": "NER",
-      "indice": "Personne sans emploi (chômeur ou inactif) avant la retraite."
+      "reponse": "ARA",
+      "indice": "Nom normalisé donné à six genres de grands oiseaux de la famille des psittacidés (e.g."
     },
     {
       "number": 11,
@@ -198,8 +198,8 @@
       "row": 2,
       "col": 4,
       "length": 4,
-      "reponse": "ALFA",
-      "indice": "Graminée de l’Afrique du Nord appartenant à la famille des Poacées (Stipa tenacissima)…"
+      "reponse": "AJAX",
+      "indice": "Nom de deux héros de la guerre de Troie :"
     },
     {
       "number": 12,
@@ -207,8 +207,8 @@
       "row": 3,
       "col": 0,
       "length": 4,
-      "reponse": "ANAL",
-      "indice": "Relatif à l’anus."
+      "reponse": "NOUS",
+      "indice": "Pronom de la première personne du pluriel, incluant le locuteur ainsi que d’autres…"
     },
     {
       "number": 13,
@@ -216,8 +216,8 @@
       "row": 3,
       "col": 3,
       "length": 5,
-      "reponse": "LUEUR",
-      "indice": "Lumière faible ou affaiblie."
+      "reponse": "SABLE",
+      "indice": "On en trouve sur la plage"
     },
     {
       "number": 14,
@@ -225,8 +225,8 @@
       "row": 3,
       "col": 5,
       "length": 3,
-      "reponse": "ION",
-      "indice": "Atome ou molécule ayant perdu ou gagné des électrons sur sa couche externe."
+      "reponse": "EMI",
+      "indice": "Expérience de mort imminente."
     },
     {
       "number": 15,
@@ -234,8 +234,8 @@
       "row": 4,
       "col": 3,
       "length": 3,
-      "reponse": "USE",
-      "indice": "Il en fait trop, il ..."
+      "reponse": "APU",
+      "indice": "Ensemble des administrations publiques de la France."
     },
     {
       "number": 16,
@@ -243,8 +243,8 @@
       "row": 4,
       "col": 4,
       "length": 3,
-      "reponse": "SRI",
-      "indice": "Système de recherche d’information."
+      "reponse": "PIA",
+      "indice": "Plante (Tacca leontopetaloides) dont la paille a été utilisée entre autres, pour la…"
     },
     {
       "number": 17,
@@ -252,8 +252,8 @@
       "row": 5,
       "col": 0,
       "length": 8,
-      "reponse": "PATERNEL",
-      "indice": "Qui a rapport au père, qui appartient au père."
+      "reponse": "COMBINES",
+      "indice": "Caleçons longs."
     },
     {
       "number": 17,
@@ -261,8 +261,8 @@
       "row": 5,
       "col": 0,
       "length": 3,
-      "reponse": "PEU",
-      "indice": "Presque pas ; pas beaucoup."
+      "reponse": "CAR",
+      "indice": "Introduit une explication, une raison, une cause à une proposition."
     },
     {
       "number": 18,
@@ -270,8 +270,8 @@
       "row": 5,
       "col": 1,
       "length": 3,
-      "reponse": "ABS",
-      "indice": "Abréviation de antiblocage de sécurité."
+      "reponse": "ONI",
+      "indice": "Créature légendaire humanoïde dotée de cornes, d’un pagne en peau de tigre et d’une…"
     },
     {
       "number": 19,
@@ -279,8 +279,8 @@
       "row": 5,
       "col": 2,
       "length": 3,
-      "reponse": "TRE",
-      "indice": "Taux de retour énergétique."
+      "reponse": "MGR",
+      "indice": "Monseigneur."
     },
     {
       "number": 20,
@@ -288,8 +288,8 @@
       "row": 5,
       "col": 6,
       "length": 3,
-      "reponse": "EEP",
-      "indice": "Abréviation de étude électrophysiologique."
+      "reponse": "ESE",
+      "indice": "Est-sud-est."
     },
     {
       "number": 21,
@@ -297,8 +297,8 @@
       "row": 5,
       "col": 7,
       "length": 3,
-      "reponse": "LRA",
-      "indice": "Local de rétention administrative."
+      "reponse": "SEN",
+      "indice": "Centième partie du yen."
     },
     {
       "number": 22,
@@ -306,8 +306,8 @@
       "row": 6,
       "col": 0,
       "length": 8,
-      "reponse": "EBRUITER",
-      "indice": "Divulguer, rendre public."
+      "reponse": "ANGLAISE",
+      "indice": "Danse d’un mouvement très vif."
     },
     {
       "number": 23,
@@ -315,8 +315,8 @@
       "row": 7,
       "col": 0,
       "length": 4,
-      "reponse": "USER",
-      "indice": "Détériorer par l’usage."
+      "reponse": "RIRE",
+      "indice": "Manifester sa joie à voix haute"
     },
     {
       "number": 24,
@@ -324,8 +324,8 @@
       "row": 7,
       "col": 5,
       "length": 3,
-      "reponse": "EPA",
-      "indice": "École d'enseignement secondaire ouverte en priorité aux pupilles de la Nation et aux…"
+      "reponse": "REN",
+      "indice": "Le nom, une des parties de l’âme humaine."
     }
   ],
   "mots_non_places": [],

@@ -5,3 +5,8 @@
 # identifiable/utile par le client) — on redirige vers l'outil le plus
 # proche encore en place plutôt que de laisser un 404 sec.
 /aide-pendu/*  /aide-mots-croises/  301
+
+# "Jouer sur mobile" retiré le 26/08/2026, fusionné dans "Bibliothèque
+# de grilles" (grille interactive quotidienne + archive) — voir
+# notes-projet.md.
+/jouer-sur-mobile/*  /bibliotheque-grilles/  301

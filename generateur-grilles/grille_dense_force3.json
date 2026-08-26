@@ -1,0 +1,729 @@
+{
+  "largeur": 13,
+  "hauteur": 13,
+  "cases": [
+    [
+      null,
+      "C",
+      "A",
+      "L",
+      "M",
+      "O",
+      "S",
+      null,
+      null,
+      null,
+      "S",
+      "L",
+      "A"
+    ],
+    [
+      "F",
+      "A",
+      "T",
+      "I",
+      "G",
+      "U",
+      "E",
+      null,
+      "I",
+      "D",
+      "E",
+      "A",
+      "L"
+    ],
+    [
+      "A",
+      "L",
+      "T",
+      "E",
+      "R",
+      "E",
+      "R",
+      null,
+      "S",
+      "A",
+      "U",
+      "C",
+      "E"
+    ],
+    [
+      "I",
+      "C",
+      "E",
+      null,
+      null,
+      "S",
+      "I",
+      "C",
+      "I",
+      "L",
+      "I",
+      "E",
+      "N"
+    ],
+    [
+      "S",
+      "I",
+      "N",
+      null,
+      null,
+      "T",
+      "A",
+      "O",
+      null,
+      null,
+      "L",
+      "R",
+      "A"
+    ],
+    [
+      "A",
+      "N",
+      "D",
+      "E",
+      "S",
+      null,
+      "L",
+      "U",
+      "N",
+      "E",
+      null,
+      null,
+      null
+    ],
+    [
+      "N",
+      "E",
+      "U",
+      "N",
+      "E",
+      "U",
+      null,
+      "P",
+      "A",
+      "V",
+      "A",
+      "N",
+      "E"
+    ],
+    [
+      null,
+      null,
+      null,
+      "F",
+      "A",
+      "N",
+      null,
+      null,
+      "T",
+      "I",
+      "M",
+      "O",
+      "N"
+    ],
+    [
+      "C",
+      "O",
+      "C",
+      "A",
+      null,
+      "E",
+      "T",
+      "A",
+      "T",
+      null,
+      "A",
+      "T",
+      "T"
+    ],
+    [
+      "E",
+      "T",
+      "O",
+      "N",
+      null,
+      null,
+      "E",
+      "R",
+      "E",
+      null,
+      "R",
+      "O",
+      "E"
+    ],
+    [
+      "S",
+      "A",
+      "U",
+      "T",
+      "E",
+      "R",
+      "I",
+      "E",
+      null,
+      "B",
+      "R",
+      "I",
+      "T"
+    ],
+    [
+      "A",
+      "G",
+      "R",
+      "E",
+      "M",
+      "E",
+      "N",
+      "T",
+      null,
+      "A",
+      "E",
+      "R",
+      "E"
+    ],
+    [
+      "R",
+      "E",
+      "T",
+      "R",
+      "A",
+      "I",
+      "T",
+      "E",
+      null,
+      "C",
+      "R",
+      "E",
+      "E"
+    ]
+  ],
+  "mots": [
+    {
+      "number": 1,
+      "direction": "horizontal",
+      "row": 0,
+      "col": 1,
+      "length": 6,
+      "reponse": "CALMOS",
+      "indice": "Demande de rester calme."
+    },
+    {
+      "number": 1,
+      "direction": "vertical",
+      "row": 0,
+      "col": 1,
+      "length": 7,
+      "reponse": "CALCINE",
+      "indice": "Matière dont on fait l’émail, fritte, composée autrefois d'un mélange d'oxyde d'étain et…"
+    },
+    {
+      "number": 2,
+      "direction": "vertical",
+      "row": 0,
+      "col": 2,
+      "length": 7,
+      "reponse": "ATTENDU",
+      "indice": "Motifs donnés par les juges de première instance."
+    },
+    {
+      "number": 3,
+      "direction": "vertical",
+      "row": 0,
+      "col": 3,
+      "length": 3,
+      "reponse": "LIE",
+      "indice": "Dépôt formé par précipitation dans une boisson, spécialement un liquide fermenté."
+    },
+    {
+      "number": 4,
+      "direction": "vertical",
+      "row": 0,
+      "col": 4,
+      "length": 3,
+      "reponse": "MGR",
+      "indice": "Monseigneur."
+    },
+    {
+      "number": 5,
+      "direction": "vertical",
+      "row": 0,
+      "col": 5,
+      "length": 5,
+      "reponse": "OUEST",
+      "indice": "Celui des points cardinaux qui indique la direction du soleil couchant, exacte aux…"
+    },
+    {
+      "number": 6,
+      "direction": "vertical",
+      "row": 0,
+      "col": 6,
+      "length": 6,
+      "reponse": "SERIAL",
+      "indice": "De série, en série."
+    },
+    {
+      "number": 7,
+      "direction": "horizontal",
+      "row": 0,
+      "col": 10,
+      "length": 3,
+      "reponse": "SLA",
+      "indice": "Sclérose latérale amyotrophique."
+    },
+    {
+      "number": 7,
+      "direction": "vertical",
+      "row": 0,
+      "col": 10,
+      "length": 5,
+      "reponse": "SEUIL",
+      "indice": "Pièce de bois ou dalle de pierre qui est au bas de l’ouverture d’une porte qui l’affleure."
+    },
+    {
+      "number": 8,
+      "direction": "vertical",
+      "row": 0,
+      "col": 11,
+      "length": 5,
+      "reponse": "LACER",
+      "indice": "Serrer avec un lacet."
+    },
+    {
+      "number": 9,
+      "direction": "vertical",
+      "row": 0,
+      "col": 12,
+      "length": 5,
+      "reponse": "ALENA",
+      "indice": "Accord de libre-échange entre le Canada, les États-Unis et le Mexique en vigueur entre…"
+    },
+    {
+      "number": 10,
+      "direction": "horizontal",
+      "row": 1,
+      "col": 0,
+      "length": 7,
+      "reponse": "FATIGUE",
+      "indice": "Sensation de faiblesse physique."
+    },
+    {
+      "number": 10,
+      "direction": "vertical",
+      "row": 1,
+      "col": 0,
+      "length": 6,
+      "reponse": "FAISAN",
+      "indice": "Nom donné à cinq genres de gallinacés de la famille des phasianidés, englobant une…"
+    },
+    {
+      "number": 11,
+      "direction": "horizontal",
+      "row": 1,
+      "col": 8,
+      "length": 5,
+      "reponse": "IDEAL",
+      "indice": "Qui n’existe ou ne peut exister que dans l’entendement, dans l’imagination par opposition…"
+    },
+    {
+      "number": 11,
+      "direction": "vertical",
+      "row": 1,
+      "col": 8,
+      "length": 3,
+      "reponse": "ISI",
+      "indice": "Institut rattaché à l’université de la Californie du Sud, spécialisé dans la recherche en…"
+    },
+    {
+      "number": 12,
+      "direction": "vertical",
+      "row": 1,
+      "col": 9,
+      "length": 3,
+      "reponse": "DAL",
+      "indice": "Plat d’origine indienne réalisé à base de lentilles, de pois ou de haricots."
+    },
+    {
+      "number": 13,
+      "direction": "horizontal",
+      "row": 2,
+      "col": 0,
+      "length": 7,
+      "reponse": "ALTERER",
+      "indice": "Modifier dans sa nature, dans sa structure, un corps."
+    },
+    {
+      "number": 14,
+      "direction": "horizontal",
+      "row": 2,
+      "col": 8,
+      "length": 5,
+      "reponse": "SAUCE",
+      "indice": "Assaisonnement liquide, souvent émulsionné, comprenant du sel, des épices ou des aromates."
+    },
+    {
+      "number": 15,
+      "direction": "horizontal",
+      "row": 3,
+      "col": 0,
+      "length": 3,
+      "reponse": "ICE",
+      "indice": "United States Immigration and Customs Enforcement, service de police des douanes et de…"
+    },
+    {
+      "number": 16,
+      "direction": "horizontal",
+      "row": 3,
+      "col": 5,
+      "length": 8,
+      "reponse": "SICILIEN",
+      "indice": "Relatif à la Sicile."
+    },
+    {
+      "number": 17,
+      "direction": "vertical",
+      "row": 3,
+      "col": 7,
+      "length": 4,
+      "reponse": "COUP",
+      "indice": "Impression que fait un corps sur un autre en le frappant."
+    },
+    {
+      "number": 18,
+      "direction": "horizontal",
+      "row": 4,
+      "col": 0,
+      "length": 3,
+      "reponse": "SIN",
+      "indice": "Variante de chine (vingt-et-unième lettre de l’alphabet hébreu) lorsqu’elle se prononce…"
+    },
+    {
+      "number": 19,
+      "direction": "horizontal",
+      "row": 4,
+      "col": 5,
+      "length": 3,
+      "reponse": "TAO",
+      "indice": "Essence fondamentale qui coule en toutes choses dans l’univers, vivantes ou inertes, qui…"
+    },
+    {
+      "number": 20,
+      "direction": "horizontal",
+      "row": 4,
+      "col": 10,
+      "length": 3,
+      "reponse": "LRA",
+      "indice": "Local de rétention administrative."
+    },
+    {
+      "number": 21,
+      "direction": "horizontal",
+      "row": 5,
+      "col": 0,
+      "length": 5,
+      "reponse": "ANDES",
+      "indice": "Cordillère d'environ 9000 km de longueur située dans l’ouest de l’Amérique du Sud."
+    },
+    {
+      "number": 22,
+      "direction": "vertical",
+      "row": 5,
+      "col": 3,
+      "length": 8,
+      "reponse": "ENFANTER",
+      "indice": "Mettre au monde un enfant."
+    },
+    {
+      "number": 23,
+      "direction": "vertical",
+      "row": 5,
+      "col": 4,
+      "length": 3,
+      "reponse": "SEA",
+      "indice": "Ligne française de chemin de fer à grande vitesse."
+    },
+    {
+      "number": 24,
+      "direction": "horizontal",
+      "row": 5,
+      "col": 6,
+      "length": 4,
+      "reponse": "LUNE",
+      "indice": "Elle brille la nuit"
+    },
+    {
+      "number": 25,
+      "direction": "vertical",
+      "row": 5,
+      "col": 8,
+      "length": 5,
+      "reponse": "NATTE",
+      "indice": "Tissu de paille, de jonc, de roseau, etc., fait ordinairement de trois brins ou cordons…"
+    },
+    {
+      "number": 26,
+      "direction": "vertical",
+      "row": 5,
+      "col": 9,
+      "length": 3,
+      "reponse": "EVI",
+      "indice": "Fruit du prunier de Cythère."
+    },
+    {
+      "number": 27,
+      "direction": "horizontal",
+      "row": 6,
+      "col": 0,
+      "length": 6,
+      "reponse": "NEUNEU",
+      "indice": "Niais et peu dégourdi (personnes) ; inepte, qui témoigne d’un manque d’intelligence…"
+    },
+    {
+      "number": 28,
+      "direction": "vertical",
+      "row": 6,
+      "col": 5,
+      "length": 3,
+      "reponse": "UNE",
+      "indice": "Article féminin singulier"
+    },
+    {
+      "number": 29,
+      "direction": "horizontal",
+      "row": 6,
+      "col": 7,
+      "length": 6,
+      "reponse": "PAVANE",
+      "indice": "Sorte d’ancienne danse grave et sérieuse ; la musique de cette danse."
+    },
+    {
+      "number": 30,
+      "direction": "vertical",
+      "row": 6,
+      "col": 10,
+      "length": 7,
+      "reponse": "AMARRER",
+      "indice": "Lier à l’aide d’une corde ou d’un câble à un autre objet dans le but d’éviter que l’un ne…"
+    },
+    {
+      "number": 31,
+      "direction": "vertical",
+      "row": 6,
+      "col": 11,
+      "length": 7,
+      "reponse": "NOTOIRE",
+      "indice": "Connu du public, manifeste."
+    },
+    {
+      "number": 32,
+      "direction": "vertical",
+      "row": 6,
+      "col": 12,
+      "length": 7,
+      "reponse": "ENTETEE",
+      "indice": "Celle qui s’entête."
+    },
+    {
+      "number": 33,
+      "direction": "horizontal",
+      "row": 7,
+      "col": 3,
+      "length": 3,
+      "reponse": "FAN",
+      "indice": "Admirateur, admiratrice enthousiaste d’une personne ou d’une chose."
+    },
+    {
+      "number": 34,
+      "direction": "horizontal",
+      "row": 7,
+      "col": 8,
+      "length": 5,
+      "reponse": "TIMON",
+      "indice": "Longue pièce de bois fixée en avant d’une voiture, d’une charrue et aux deux côtés de…"
+    },
+    {
+      "number": 35,
+      "direction": "horizontal",
+      "row": 8,
+      "col": 0,
+      "length": 4,
+      "reponse": "COCA",
+      "indice": "Plante d’Amérique du Sud de la famille des érythroxylacées utilisée par les populations…"
+    },
+    {
+      "number": 35,
+      "direction": "vertical",
+      "row": 8,
+      "col": 0,
+      "length": 5,
+      "reponse": "CESAR",
+      "indice": "Empereur ; autocrate ; dictateur."
+    },
+    {
+      "number": 36,
+      "direction": "vertical",
+      "row": 8,
+      "col": 1,
+      "length": 5,
+      "reponse": "OTAGE",
+      "indice": "Personne livrée ou prise afin de garantir des accords entre ennemis."
+    },
+    {
+      "number": 37,
+      "direction": "vertical",
+      "row": 8,
+      "col": 2,
+      "length": 5,
+      "reponse": "COURT",
+      "indice": "De petite longueur ou qui n’a pas la longueur moyenne des objets du même genre."
+    },
+    {
+      "number": 38,
+      "direction": "horizontal",
+      "row": 8,
+      "col": 5,
+      "length": 4,
+      "reponse": "ETAT",
+      "indice": "Écriture de État avec omission du signe diacritique de la capitale."
+    },
+    {
+      "number": 39,
+      "direction": "vertical",
+      "row": 8,
+      "col": 6,
+      "length": 5,
+      "reponse": "TEINT",
+      "indice": "Dont la couleur a été changée par teinture."
+    },
+    {
+      "number": 40,
+      "direction": "vertical",
+      "row": 8,
+      "col": 7,
+      "length": 5,
+      "reponse": "ARETE",
+      "indice": "Épouse et nièce d’Alcinous."
+    },
+    {
+      "number": 41,
+      "direction": "horizontal",
+      "row": 8,
+      "col": 10,
+      "length": 3,
+      "reponse": "ATT",
+      "indice": "Centième de kip."
+    },
+    {
+      "number": 42,
+      "direction": "horizontal",
+      "row": 9,
+      "col": 0,
+      "length": 4,
+      "reponse": "ETON",
+      "indice": "Langue bantoue issue du groupe linguistique pahouin (fang-beti-bulu) parlée dans le…"
+    },
+    {
+      "number": 43,
+      "direction": "horizontal",
+      "row": 9,
+      "col": 6,
+      "length": 3,
+      "reponse": "ERE",
+      "indice": "Abréviation d’escadre."
+    },
+    {
+      "number": 44,
+      "direction": "horizontal",
+      "row": 9,
+      "col": 10,
+      "length": 3,
+      "reponse": "ROE",
+      "indice": "Roi."
+    },
+    {
+      "number": 45,
+      "direction": "horizontal",
+      "row": 10,
+      "col": 0,
+      "length": 8,
+      "reponse": "SAUTERIE",
+      "indice": "Au XVIᵉ siècle, pendant les guerres de religion, une sauterie consistait à précipiter les…"
+    },
+    {
+      "number": 46,
+      "direction": "vertical",
+      "row": 10,
+      "col": 4,
+      "length": 3,
+      "reponse": "EMA",
+      "indice": "Agence européenne des médicaments, qui dépend de l’Union européenne."
+    },
+    {
+      "number": 47,
+      "direction": "vertical",
+      "row": 10,
+      "col": 5,
+      "length": 3,
+      "reponse": "REI",
+      "indice": "Saluez !"
+    },
+    {
+      "number": 48,
+      "direction": "horizontal",
+      "row": 10,
+      "col": 9,
+      "length": 4,
+      "reponse": "BRIT",
+      "indice": "Britannique."
+    },
+    {
+      "number": 48,
+      "direction": "vertical",
+      "row": 10,
+      "col": 9,
+      "length": 3,
+      "reponse": "BAC",
+      "indice": "Auge destinée à divers usages."
+    },
+    {
+      "number": 49,
+      "direction": "horizontal",
+      "row": 11,
+      "col": 0,
+      "length": 8,
+      "reponse": "AGREMENT",
+      "indice": "Action d’agréer."
+    },
+    {
+      "number": 50,
+      "direction": "horizontal",
+      "row": 11,
+      "col": 9,
+      "length": 4,
+      "reponse": "AERE",
+      "indice": "Variante orthographique de ère."
+    },
+    {
+      "number": 51,
+      "direction": "horizontal",
+      "row": 12,
+      "col": 0,
+      "length": 8,
+      "reponse": "RETRAITE",
+      "indice": "Action de se retirer."
+    },
+    {
+      "number": 52,
+      "direction": "horizontal",
+      "row": 12,
+      "col": 9,
+      "length": 4,
+      "reponse": "CREE",
+      "indice": "Langue des Cris, appartenant à la famille algonquienne."
+    }
+  ],
+  "mots_non_places": [],
+  "remplissage": 82.2,
+  "niveau": "force3",
+  "date": "2026-08-26"
+}

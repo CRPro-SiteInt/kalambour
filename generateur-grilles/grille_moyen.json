@@ -3,49 +3,49 @@
   "hauteur": 10,
   "cases": [
     [
-      "G",
+      "P",
       "R",
-      "A",
-      "F",
-      "F",
+      "O",
+      "M",
+      "O",
       null,
-      "I",
-      "S",
-      "S",
+      "R",
+      "E",
+      "V",
       "U"
     ],
     [
-      "P",
-      "A",
       "D",
-      "R",
+      "O",
+      "Y",
       "E",
+      "N",
       null,
-      "M",
       "E",
+      "L",
       "A",
       "N"
     ],
     [
-      "S",
-      "P",
+      "A",
+      "I",
       "E",
-      "E",
-      "D",
+      "U",
+      "L",
       null,
-      "M",
-      "C",
-      "D",
-      "O"
+      "L",
+      "U",
+      "N",
+      "E"
     ],
     [
       null,
       null,
       null,
-      "D",
-      "O",
-      "J",
-      "O",
+      "F",
+      "I",
+      "F",
+      "I",
       null,
       null,
       null
@@ -55,72 +55,72 @@
       "B",
       "I",
       null,
-      "R",
+      "N",
       "O",
-      "N",
-      "N",
-      "I",
-      "E"
-    ],
-    [
-      "L",
-      "E",
-      "M",
-      null,
+      "U",
+      "G",
       "A",
-      "I",
-      "D",
-      "A",
-      "N",
       "T"
     ],
     [
+      "H",
       "A",
-      "N",
+      "M",
+      null,
+      "E",
+      "R",
+      "R",
+      "E",
+      "U",
+      "R"
+    ],
+    [
+      "A",
+      "V",
       "I",
       "S",
       null,
-      "N",
+      "C",
       "E",
-      "T",
-      "T",
+      "N",
+      "S",
       "E"
-    ],
-    [
-      "M",
-      "O",
-      "T",
-      "A",
-      "R",
-      "D",
-      null,
-      "U",
-      "R",
-      "I"
     ],
     [
       "P",
-      "I",
+      "A",
+      "T",
+      "A",
+      "T",
+      "E",
+      null,
+      "E",
+      "T",
+      "S"
+    ],
+    [
+      "O",
+      "R",
       "E",
       "G",
-      "E",
-      "R",
+      "O",
+      "N",
       null,
       "R",
-      "U",
-      "N"
+      "I",
+      "S"
     ],
     [
       null,
-      "T",
+      "D",
       "R",
       "A",
       "M",
       "E",
       null,
-      "E",
-      "S",
-      "T"
+      "A",
+      "N",
+      "E"
     ]
   ],
   "mots": [
@@ -130,8 +130,8 @@
       "row": 0,
       "col": 0,
       "length": 5,
-      "reponse": "GRAFF",
-      "indice": "Inscription calligraphiée ou dessin tracé, peint ou gravé sur un support inhabituel et…"
+      "reponse": "PROMO",
+      "indice": "Promotion."
     },
     {
       "number": 1,
@@ -139,8 +139,8 @@
       "row": 0,
       "col": 0,
       "length": 3,
-      "reponse": "GPS",
-      "indice": "Sigle du système militaire de géolocalisation américain, utilisant une constellation de…"
+      "reponse": "PDA",
+      "indice": "Assistant numérique personnel."
     },
     {
       "number": 2,
@@ -148,8 +148,8 @@
       "row": 0,
       "col": 1,
       "length": 3,
-      "reponse": "RAP",
-      "indice": "Style de chanson appartenant au mouvement culturel hip-hop apparu au début des années…"
+      "reponse": "ROI",
+      "indice": "Titre porté par celui qui règne sur un peuple, un État, en particulier un État…"
     },
     {
       "number": 3,
@@ -157,8 +157,8 @@
       "row": 0,
       "col": 2,
       "length": 3,
-      "reponse": "ADE",
-      "indice": "Assurance que contracte une personne pour garantir un emprunt en cas de décès."
+      "reponse": "OYE",
+      "indice": "Ancienne graphie de oie (oiseau)."
     },
     {
       "number": 4,
@@ -166,8 +166,8 @@
       "row": 0,
       "col": 3,
       "length": 4,
-      "reponse": "FRED",
-      "indice": "Fil de discussion"
+      "reponse": "MEUF",
+      "indice": "Individu de sexe ou genre féminin."
     },
     {
       "number": 5,
@@ -175,8 +175,8 @@
       "row": 0,
       "col": 4,
       "length": 6,
-      "reponse": "FEDORA",
-      "indice": "Distribution GNU/Linux."
+      "reponse": "ONLINE",
+      "indice": "En ligne (connecté à un réseau ou à un système, notamment Internet)."
     },
     {
       "number": 6,
@@ -184,8 +184,8 @@
       "row": 0,
       "col": 6,
       "length": 4,
-      "reponse": "ISSU",
-      "indice": "Né (d’une personne, d’une lignée ou d’une race), descendant."
+      "reponse": "REVU",
+      "indice": "Qui a été mis à jour."
     },
     {
       "number": 6,
@@ -193,8 +193,8 @@
       "row": 0,
       "col": 6,
       "length": 7,
-      "reponse": "IMMONDE",
-      "indice": "Qui est impur, en fonction de critères et de dogmes religieux."
+      "reponse": "RELIURE",
+      "indice": "Métier du relieur, art de relier les livres."
     },
     {
       "number": 7,
@@ -202,8 +202,8 @@
       "row": 0,
       "col": 7,
       "length": 3,
-      "reponse": "SEC",
-      "indice": "Qui a peu ou pas d’humidité."
+      "reponse": "ELU",
+      "indice": "Qui a été élu."
     },
     {
       "number": 8,
@@ -211,8 +211,8 @@
       "row": 0,
       "col": 8,
       "length": 3,
-      "reponse": "SAD",
-      "indice": "Trente-huitième sourate du Coran."
+      "reponse": "VAN",
+      "indice": "Instrument d’osier, en forme de coquille, qui a deux anses, et dont on se sert pour…"
     },
     {
       "number": 9,
@@ -220,8 +220,8 @@
       "row": 0,
       "col": 9,
       "length": 3,
-      "reponse": "UNO",
-      "indice": "Jeu de cartes édité par Mattel se jouant avec des cartes spéciales."
+      "reponse": "UNE",
+      "indice": "Article féminin singulier"
     },
     {
       "number": 10,
@@ -229,8 +229,8 @@
       "row": 1,
       "col": 0,
       "length": 5,
-      "reponse": "PADRE",
-      "indice": "Aumônier militaire."
+      "reponse": "DOYEN",
+      "indice": "Celui qui est le plus ancien suivant l’ordre de réception dans un corps, dans une…"
     },
     {
       "number": 11,
@@ -238,8 +238,8 @@
       "row": 1,
       "col": 6,
       "length": 4,
-      "reponse": "MEAN",
-      "indice": "Cinquième réservoir d’un marais salant."
+      "reponse": "ELAN",
+      "indice": "Variante par contrainte typographique de Élan"
     },
     {
       "number": 12,
@@ -247,8 +247,8 @@
       "row": 2,
       "col": 0,
       "length": 5,
-      "reponse": "SPEED",
-      "indice": "Amphétamine utilisée comme drogue."
+      "reponse": "AIEUL",
+      "indice": "Grand-parent."
     },
     {
       "number": 13,
@@ -256,8 +256,8 @@
       "row": 2,
       "col": 6,
       "length": 4,
-      "reponse": "MCDO",
-      "indice": "McDonald’s."
+      "reponse": "LUNE",
+      "indice": "Elle brille la nuit"
     },
     {
       "number": 14,
@@ -265,8 +265,8 @@
       "row": 3,
       "col": 3,
       "length": 4,
-      "reponse": "DOJO",
-      "indice": "Endroit où le sensei entraîne ses étudiants."
+      "reponse": "FIFI",
+      "indice": "Homme homosexuel ou efféminé."
     },
     {
       "number": 15,
@@ -274,8 +274,8 @@
       "row": 3,
       "col": 5,
       "length": 7,
-      "reponse": "JOINDRE",
-      "indice": "Approcher deux choses l’une contre l’autre, en sorte qu’elles se touchent ou qu’elles se…"
+      "reponse": "FORCENE",
+      "indice": "Qui est emporté par la colère, la fureur."
     },
     {
       "number": 16,
@@ -292,8 +292,8 @@
       "row": 4,
       "col": 0,
       "length": 5,
-      "reponse": "CLAMP",
-      "indice": "Pince servant à maintenir ou à serrer."
+      "reponse": "CHAPO",
+      "indice": "Texte court coiffant un article, généralement typographié en gras, pour amener le lecteur…"
     },
     {
       "number": 17,
@@ -301,8 +301,8 @@
       "row": 4,
       "col": 1,
       "length": 6,
-      "reponse": "BENOIT",
-      "indice": "Béni, bienheureux."
+      "reponse": "BAVARD",
+      "indice": "Qui a l’habitude de bavarder."
     },
     {
       "number": 18,
@@ -319,8 +319,8 @@
       "row": 4,
       "col": 4,
       "length": 6,
-      "reponse": "RONNIE",
-      "indice": "Habitante de Ronno, commune française située dans le département du Rhône."
+      "reponse": "NOUGAT",
+      "indice": "Confiserie à base de sucre, miel, blanc d’œufs et vanille, garnie d’amandes et de…"
     },
     {
       "number": 20,
@@ -328,8 +328,8 @@
       "row": 4,
       "col": 7,
       "length": 6,
-      "reponse": "NATURE",
-      "indice": "Ensemble du monde vivant et physique"
+      "reponse": "GENERA",
+      "indice": "Livre relatif aux genres et espèces du vivant."
     },
     {
       "number": 21,
@@ -337,8 +337,8 @@
       "row": 4,
       "col": 8,
       "length": 6,
-      "reponse": "INTRUS",
-      "indice": "Introduit, contre le droit, dans quelque dignité ecclésiastique."
+      "reponse": "AUSTIN",
+      "indice": "Municipalité canadienne du Québec située dans la MRC de Memphrémagog."
     },
     {
       "number": 22,
@@ -346,8 +346,8 @@
       "row": 4,
       "col": 9,
       "length": 6,
-      "reponse": "ETEINT",
-      "indice": "Qui ne se consume plus, en parlant d’un feu."
+      "reponse": "TRESSE",
+      "indice": "Assemblage de petits cordons, de fils, de cheveux, etc."
     },
     {
       "number": 23,
@@ -355,8 +355,8 @@
       "row": 5,
       "col": 0,
       "length": 3,
-      "reponse": "LEM",
-      "indice": "Module lunaire utilisé pour le premier alunissage."
+      "reponse": "HAM",
+      "indice": "Onomatopée issue de la délectation de boire ou de manger."
     },
     {
       "number": 24,
@@ -364,8 +364,8 @@
       "row": 5,
       "col": 4,
       "length": 6,
-      "reponse": "AIDANT",
-      "indice": "Qui aide."
+      "reponse": "ERREUR",
+      "indice": "Fausse opinion ; fausse doctrine."
     },
     {
       "number": 25,
@@ -373,8 +373,8 @@
       "row": 6,
       "col": 0,
       "length": 4,
-      "reponse": "ANIS",
-      "indice": "Plante odoriférante de la famille des ombellifères, qui porte une graine de même nom…"
+      "reponse": "AVIS",
+      "indice": "Ce que l’on pense et aussi ce que l’on en dit ; opinion."
     },
     {
       "number": 26,
@@ -391,8 +391,8 @@
       "row": 6,
       "col": 5,
       "length": 5,
-      "reponse": "NETTE",
-      "indice": "Espèce de canards plongeurs de la famille des anatidés."
+      "reponse": "CENSE",
+      "indice": "ou prononciation : cinse Métairie, ferme."
     },
     {
       "number": 28,
@@ -400,8 +400,8 @@
       "row": 7,
       "col": 0,
       "length": 6,
-      "reponse": "MOTARD",
-      "indice": "Motocycliste de l’armée ou de la gendarmerie."
+      "reponse": "PATATE",
+      "indice": "Patate douce (plante)."
     },
     {
       "number": 29,
@@ -409,8 +409,8 @@
       "row": 7,
       "col": 4,
       "length": 3,
-      "reponse": "REM",
-      "indice": "Ancienne unité d’équivalent de dose de radiation, remplacée par le sievert — 1 sv= 100…"
+      "reponse": "TOM",
+      "indice": "Abréviation courante de tom-tom (instrument de percussion)."
     },
     {
       "number": 30,
@@ -418,8 +418,8 @@
       "row": 7,
       "col": 7,
       "length": 3,
-      "reponse": "URI",
-      "indice": "Canton de Suisse situé entre le lac des Quatre cantons et le massif du Gothard."
+      "reponse": "ETS",
+      "indice": "Abréviation de établissements dans un nom d’entreprise."
     },
     {
       "number": 31,
@@ -427,8 +427,8 @@
       "row": 8,
       "col": 0,
       "length": 6,
-      "reponse": "PIEGER",
-      "indice": "Variante de piéger alignant la prononciation et la graphie de l'infinitif sur les…"
+      "reponse": "OREGON",
+      "indice": "Un des cinquante États des États-Unis d’Amérique (code postal OR), bordé par l’État de…"
     },
     {
       "number": 32,
@@ -436,8 +436,8 @@
       "row": 8,
       "col": 7,
       "length": 3,
-      "reponse": "RUN",
-      "indice": "Nom de l’étendue de pâturages, en Australie, accordée aux propriétaires de troupeaux de…"
+      "reponse": "RIS",
+      "indice": "Action de rire."
     },
     {
       "number": 33,
@@ -445,8 +445,8 @@
       "row": 9,
       "col": 1,
       "length": 5,
-      "reponse": "TRAME",
-      "indice": "Fils horizontaux qui s’entrelacent avec la chaîne pour constituer un tissu."
+      "reponse": "DRAME",
+      "indice": "Pièce de théâtre (tragique ou comique)."
     },
     {
       "number": 34,
@@ -454,8 +454,8 @@
       "row": 9,
       "col": 7,
       "length": 3,
-      "reponse": "EST",
-      "indice": "Région située à l’est (en particulier à l’est d’un pays), le contexte permettant de…"
+      "reponse": "ANE",
+      "indice": "Il porte les bagages du randonneur"
     }
   ],
   "mots_non_places": [],

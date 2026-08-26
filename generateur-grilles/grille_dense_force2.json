@@ -1,0 +1,465 @@
+{
+  "largeur": 10,
+  "hauteur": 10,
+  "cases": [
+    [
+      "A",
+      "C",
+      "I",
+      "D",
+      "E",
+      null,
+      "E",
+      "N",
+      "V",
+      "I"
+    ],
+    [
+      "H",
+      "A",
+      "R",
+      "E",
+      "M",
+      null,
+      "M",
+      "A",
+      "I",
+      "S"
+    ],
+    [
+      "A",
+      "R",
+      "M",
+      "E",
+      "E",
+      null,
+      "M",
+      "I",
+      "E",
+      "N"
+    ],
+    [
+      null,
+      null,
+      null,
+      "P",
+      "U",
+      "C",
+      "E",
+      null,
+      null,
+      null
+    ],
+    [
+      "C",
+      "B",
+      "I",
+      null,
+      "T",
+      "O",
+      "N",
+      "T",
+      "O",
+      "N"
+    ],
+    [
+      "H",
+      "O",
+      "N",
+      null,
+      "E",
+      "N",
+      "E",
+      "R",
+      "V",
+      "E"
+    ],
+    [
+      "A",
+      "B",
+      "A",
+      "T",
+      null,
+      "G",
+      "R",
+      "U",
+      "A",
+      "U"
+    ],
+    [
+      "R",
+      "A",
+      "P",
+      "I",
+      "D",
+      "E",
+      null,
+      "A",
+      "I",
+      "R"
+    ],
+    [
+      "O",
+      "R",
+      "T",
+      "E",
+      "I",
+      "L",
+      null,
+      "N",
+      "R",
+      "A"
+    ],
+    [
+      null,
+      "D",
+      "E",
+      "N",
+      "S",
+      "E",
+      null,
+      "D",
+      "E",
+      "L"
+    ]
+  ],
+  "mots": [
+    {
+      "number": 1,
+      "direction": "horizontal",
+      "row": 0,
+      "col": 0,
+      "length": 5,
+      "reponse": "ACIDE",
+      "indice": "Qualifie une saveur aigre ou piquante."
+    },
+    {
+      "number": 1,
+      "direction": "vertical",
+      "row": 0,
+      "col": 0,
+      "length": 3,
+      "reponse": "AHA",
+      "indice": "Exprime l’illumination, la révélation, la découverte."
+    },
+    {
+      "number": 2,
+      "direction": "vertical",
+      "row": 0,
+      "col": 1,
+      "length": 3,
+      "reponse": "CAR",
+      "indice": "Introduit une explication, une raison, une cause à une proposition."
+    },
+    {
+      "number": 3,
+      "direction": "vertical",
+      "row": 0,
+      "col": 2,
+      "length": 3,
+      "reponse": "IRM",
+      "indice": "Technique d’imagerie médicale permettant l’analyse fine du corps humain par l’action d’un…"
+    },
+    {
+      "number": 4,
+      "direction": "vertical",
+      "row": 0,
+      "col": 3,
+      "length": 4,
+      "reponse": "DEEP",
+      "indice": "Profond."
+    },
+    {
+      "number": 5,
+      "direction": "vertical",
+      "row": 0,
+      "col": 4,
+      "length": 6,
+      "reponse": "EMEUTE",
+      "indice": "Tumulte séditieux, soulèvement dans la foule."
+    },
+    {
+      "number": 6,
+      "direction": "horizontal",
+      "row": 0,
+      "col": 6,
+      "length": 4,
+      "reponse": "ENVI",
+      "indice": "Argent qu’on mise, pour surenchérir sur un adversaire lors d’un jeu."
+    },
+    {
+      "number": 6,
+      "direction": "vertical",
+      "row": 0,
+      "col": 6,
+      "length": 7,
+      "reponse": "EMMENER",
+      "indice": "Mener du lieu où l’on est vers un autre lieu ; utilisé plutôt en parlant de personnes ou…"
+    },
+    {
+      "number": 7,
+      "direction": "vertical",
+      "row": 0,
+      "col": 7,
+      "length": 3,
+      "reponse": "NAI",
+      "indice": "Flute de Pan roumaine."
+    },
+    {
+      "number": 8,
+      "direction": "vertical",
+      "row": 0,
+      "col": 8,
+      "length": 3,
+      "reponse": "VIE",
+      "indice": "Activité spontanée propre aux êtres organisés, qui se manifeste par les fonctions de…"
+    },
+    {
+      "number": 9,
+      "direction": "vertical",
+      "row": 0,
+      "col": 9,
+      "length": 3,
+      "reponse": "ISN",
+      "indice": "Type de numéro échangé dans la séquence initiale d’un message TCP."
+    },
+    {
+      "number": 10,
+      "direction": "horizontal",
+      "row": 1,
+      "col": 0,
+      "length": 5,
+      "reponse": "HAREM",
+      "indice": "Gynécée chez les musulmans."
+    },
+    {
+      "number": 11,
+      "direction": "horizontal",
+      "row": 1,
+      "col": 6,
+      "length": 4,
+      "reponse": "MAIS",
+      "indice": "Conjonction qui sert généralement à marquer une opposition, une exception, une différence."
+    },
+    {
+      "number": 12,
+      "direction": "horizontal",
+      "row": 2,
+      "col": 0,
+      "length": 5,
+      "reponse": "ARMEE",
+      "indice": "Ensemble structuré de soldats, avec leur équipement et leurs infrastructures."
+    },
+    {
+      "number": 13,
+      "direction": "horizontal",
+      "row": 2,
+      "col": 6,
+      "length": 4,
+      "reponse": "MIEN",
+      "indice": "Ce qui est à moi ou ceux qui sont à moi."
+    },
+    {
+      "number": 14,
+      "direction": "horizontal",
+      "row": 3,
+      "col": 3,
+      "length": 4,
+      "reponse": "PUCE",
+      "indice": "Insecte ectoparasite de très petite taille se déplaçant par saut et qui se nourrit du…"
+    },
+    {
+      "number": 15,
+      "direction": "vertical",
+      "row": 3,
+      "col": 5,
+      "length": 7,
+      "reponse": "CONGELE",
+      "indice": "Qui a été congelé."
+    },
+    {
+      "number": 16,
+      "direction": "horizontal",
+      "row": 4,
+      "col": 0,
+      "length": 3,
+      "reponse": "CBI",
+      "indice": "Commission baleinière internationale, organisme international chargé de réglementer la…"
+    },
+    {
+      "number": 16,
+      "direction": "vertical",
+      "row": 4,
+      "col": 0,
+      "length": 5,
+      "reponse": "CHARO",
+      "indice": "Charognard."
+    },
+    {
+      "number": 17,
+      "direction": "vertical",
+      "row": 4,
+      "col": 1,
+      "length": 6,
+      "reponse": "BOBARD",
+      "indice": "Mensonge, fausse nouvelle."
+    },
+    {
+      "number": 18,
+      "direction": "vertical",
+      "row": 4,
+      "col": 2,
+      "length": 6,
+      "reponse": "INAPTE",
+      "indice": "Qui n’est pas apte."
+    },
+    {
+      "number": 19,
+      "direction": "horizontal",
+      "row": 4,
+      "col": 4,
+      "length": 6,
+      "reponse": "TONTON",
+      "indice": "Oncle."
+    },
+    {
+      "number": 20,
+      "direction": "vertical",
+      "row": 4,
+      "col": 7,
+      "length": 6,
+      "reponse": "TRUAND",
+      "indice": "Relatif aux truands, aux gueux."
+    },
+    {
+      "number": 21,
+      "direction": "vertical",
+      "row": 4,
+      "col": 8,
+      "length": 6,
+      "reponse": "OVAIRE",
+      "indice": "Organe pair du système reproducteur femelle, présent chez la plupart des animaux, où sont…"
+    },
+    {
+      "number": 22,
+      "direction": "vertical",
+      "row": 4,
+      "col": 9,
+      "length": 6,
+      "reponse": "NEURAL",
+      "indice": "Relatif aux nerfs et au système nerveux."
+    },
+    {
+      "number": 23,
+      "direction": "horizontal",
+      "row": 5,
+      "col": 0,
+      "length": 3,
+      "reponse": "HON",
+      "indice": "Cri de mécontentement."
+    },
+    {
+      "number": 24,
+      "direction": "horizontal",
+      "row": 5,
+      "col": 4,
+      "length": 6,
+      "reponse": "ENERVE",
+      "indice": "Qui est sans nervure."
+    },
+    {
+      "number": 25,
+      "direction": "horizontal",
+      "row": 6,
+      "col": 0,
+      "length": 4,
+      "reponse": "ABAT",
+      "indice": "Fait d’abattre, au sens de tuer."
+    },
+    {
+      "number": 26,
+      "direction": "vertical",
+      "row": 6,
+      "col": 3,
+      "length": 4,
+      "reponse": "TIEN",
+      "indice": "Ce qui est à toi ou ceux qui sont à toi."
+    },
+    {
+      "number": 27,
+      "direction": "horizontal",
+      "row": 6,
+      "col": 5,
+      "length": 5,
+      "reponse": "GRUAU",
+      "indice": "Grain mondé et moulu grossièrement."
+    },
+    {
+      "number": 28,
+      "direction": "horizontal",
+      "row": 7,
+      "col": 0,
+      "length": 6,
+      "reponse": "RAPIDE",
+      "indice": "Qui se déplace vite"
+    },
+    {
+      "number": 29,
+      "direction": "vertical",
+      "row": 7,
+      "col": 4,
+      "length": 3,
+      "reponse": "DIS",
+      "indice": "Variante orthographique de diss."
+    },
+    {
+      "number": 30,
+      "direction": "horizontal",
+      "row": 7,
+      "col": 7,
+      "length": 3,
+      "reponse": "AIR",
+      "indice": "Mélange gazeux constituant l’atmosphère."
+    },
+    {
+      "number": 31,
+      "direction": "horizontal",
+      "row": 8,
+      "col": 0,
+      "length": 6,
+      "reponse": "ORTEIL",
+      "indice": "Doigt du pied, chez les humains et les primates."
+    },
+    {
+      "number": 32,
+      "direction": "horizontal",
+      "row": 8,
+      "col": 7,
+      "length": 3,
+      "reponse": "NRA",
+      "indice": "Répartiteur téléphonique où le réseau filaire d’un abonné d’un opérateur en…"
+    },
+    {
+      "number": 33,
+      "direction": "horizontal",
+      "row": 9,
+      "col": 1,
+      "length": 5,
+      "reponse": "DENSE",
+      "indice": "Épais, compact, dont les parties nous paraissent plus épaisses ou plus serrées."
+    },
+    {
+      "number": 34,
+      "direction": "horizontal",
+      "row": 9,
+      "col": 7,
+      "length": 3,
+      "reponse": "DEL",
+      "indice": "Diode semiconductrice à jonction qui émet une lumière colorée lorsqu’elle est traversée…"
+    }
+  ],
+  "mots_non_places": [],
+  "remplissage": 84.0,
+  "niveau": "force2",
+  "date": "2026-08-26"
+}

@@ -1,15 +1,21 @@
 # Kalambour — site statique
 
-Neuf outils de mots en français (démêleur, le mot du jour, aide mots
+Huit outils de mots en français (démêleur, le mot du jour, aide mots
 croisés, anagrammeur, aide Sutom/Motus, dictionnaire, générateur,
-bibliothèque de grilles, jouer sur mobile) + pages "Mots par longueur",
-en HTML/CSS/JS pur (aucun framework, aucune étape de build obligatoire)
-plus trois fonctions Cloudflare Pages (dictionnaire à la demande, mot
-du jour, formulaire de contact).
+bibliothèque de grilles) + pages "Mots par longueur", en HTML/CSS/JS
+pur (aucun framework, aucune étape de build obligatoire) plus trois
+fonctions Cloudflare Pages (dictionnaire à la demande, mot du jour,
+formulaire de contact).
 
 *(Un outil, "aide au jeu du pendu", a été retiré le 25/08/2026 — jugé
 trop peu identifiable par le client. L'ancienne URL `/aide-pendu/`
 redirige vers `/aide-mots-croises/` via `_redirects`.)*
+
+*("Jouer sur mobile" a été retiré le 26/08/2026, fusionné dans la
+"Bibliothèque de grilles" — voir plus bas "La bibliothèque de grilles —
+grille interactive quotidienne" pour l'architecture complète. L'ancienne
+URL `/jouer-sur-mobile/` redirige vers `/bibliotheque-grilles/` via
+`_redirects`.)*
 
 *("Le mot du jour" a été ajouté le 25/08/2026 : un vrai jeu façon
 Wordle natif à Kalambour — voir `/mot-du-jour/`,
@@ -47,15 +53,17 @@ accès npm, donc à faire sur votre machine plutôt qu'ici).
 /                       pages statiques (une page = un dossier + index.html)
 assets/css/style.css    feuille de style partagée (design v2)
 assets/js/              logique des 6 outils interactifs (100% navigateur)
-assets/data/            dictionnaire.json + mots.json + mots-jeu-6.json + grille_facile/moyen/difficile.json
+assets/data/            dictionnaire.json + mots.json + mots-jeu-6.json + grille_facile/moyen/difficile.json + grilles-archive/
 functions/mot/[mot].js  page "Dictionnaire" rendue à la demande (Cloudflare Pages Function)
 functions/api/mot-du-jour.js  calcule et renvoie le mot du jour du jeu /mot-du-jour/
 functions/api/contact.js  réception du formulaire de contact (envoi via Resend)
 generateur-grilles/sources/mot_du_jour_reponses.json  séquence des réponses du jeu (curée, voir plus bas)
 generateur-grilles/     générateur de grilles Python (déjà écrit, réutilisé tel quel)
+generateur-grilles/banque_dictionnaire.py  tirage quotidien du vivier de mots des grilles (voir plus bas)
+generateur-grilles/archives/  archive immuable d'une grille par jour et par niveau (jamais écrasée)
 scripts/build.py        régénère TOUT le site (dictionnaire + grilles + pages HTML + sitemap)
 scripts/generer_mot_du_jour.py  génère (UNE FOIS, pas à chaque build) la séquence de réponses du jeu
-.github/workflows/      régénération mensuelle automatique des grilles
+.github/workflows/      régénération quotidienne automatique des grilles
 _headers                règles de cache Cloudflare Pages
 _redirects              redirections Cloudflare Pages (ex. anciennes URLs retirées)
 ```
@@ -73,7 +81,7 @@ python3 scripts/build.py
 
 puis committez les fichiers modifiés (le script affiche ce qu'il a
 régénéré). C'est exactement ce que fait automatiquement la tâche
-planifiée mensuelle GitHub Actions pour les grilles.
+planifiée quotidienne GitHub Actions pour les grilles.
 
 ## Déployer — étapes pour le client
 
@@ -96,7 +104,7 @@ qui recevra au final les messages de contact du site (voir
 Créez votre compte sur [github.com](https://github.com/join) avec
 l'adresse de l'étape 1, puis un dépôt sur
 [github.com/new](https://github.com/new) (public, pour que la tâche
-planifiée mensuelle des grilles reste gratuite — voir
+planifiée quotidienne des grilles reste gratuite — voir
 `recherche/hebergement-architecture.md`). Depuis ce dossier :
 
 ```bash
@@ -178,12 +186,14 @@ Sans `RESEND_API_KEY`, le formulaire répond une erreur claire plutôt
 que de faire semblant d'avoir envoyé le message — utile pour vérifier
 que tout est bien branché avant l'étape 5.
 
-### 7. Tâche planifiée mensuelle (grilles)
+### 7. Tâche planifiée quotidienne (grilles)
 
 Déjà configurée dans `.github/workflows/regenerer-grilles.yml` — rien
 à faire, elle tourne automatiquement une fois le dépôt sur GitHub
-(gratuite et illimitée sur un dépôt public). Vous pouvez aussi la
-déclencher manuellement depuis l'onglet **Actions** du dépôt.
+(gratuite et illimitée sur un dépôt public), tous les jours à 4h UTC.
+Vous pouvez aussi la déclencher manuellement depuis l'onglet
+**Actions** du dépôt. Voir "La bibliothèque de grilles — grille
+interactive quotidienne" plus bas pour le détail de ce qu'elle génère.
 
 ### Récapitulatif — dans quel ordre
 
@@ -193,7 +203,7 @@ déclencher manuellement depuis l'onglet **Actions** du dépôt.
 4. Cloudflare Pages connecté au dépôt → domaine personnalisé branché
 5. Email Routing → `contact@kalambour.fr` vers Gmail
 6. Compte Resend → domaine vérifié → clé API → variables Cloudflare Pages
-7. (rien à faire) tâche planifiée mensuelle déjà en place
+7. (rien à faire) tâche planifiée quotidienne déjà en place
 
 ## Le dictionnaire — architecture à deux fichiers
 
@@ -408,6 +418,78 @@ essayé, en cas de victoire). Page volontairement non indexée
 entièrement des paramètres d'URL, ce n'est pas une page de destination
 pour un moteur de recherche.
 
+## La bibliothèque de grilles — grille interactive quotidienne (/bibliotheque-grilles/)
+
+Réécrite le 26/08/2026 : cette page remplace à la fois l'ancienne
+"Bibliothèque de grilles" (grilles statiques fixes, une par taille) et
+"Jouer sur mobile" (retiré, voir plus haut — l'ancienne URL redirige
+ici via `_redirects`). Une seule page, plus lisible et plus
+interactive, avec une grille différente chaque jour sur trois niveaux
+de difficulté et un historique des jours précédents — inspirée par les
+grilles quotidiennes des sites de presse (Le Monde, Le Parisien...)
+que le client a soumises en exemple.
+
+**Important — inspiration, pas copie** : rien dans le code (HTML, CSS,
+JS) de cette page n'a été recopié depuis un site tiers. Ce qui a été
+repris, ce sont des conventions UX génériques et non protégeables,
+communes à tout mots-croisés interactif toutes plateformes confondues
+(grille à cases à remplir, synchronisation clic-sur-indice ↔
+surlignage de la grille, navigation au clavier, bouton "vérifier"
+séparé de "voir la solution", chronomètre). Le rendu visuel (couleurs,
+typographie, mise en page), le moteur de génération des grilles, le
+vivier de mots et tout le code JS sont propres à Kalambour.
+
+**Trois pièces :**
+
+1. `generateur-grilles/banque_dictionnaire.py` — tire chaque jour un
+   vivier de mots-candidats pour le générateur de grilles
+   (`generer.py`), directement depuis le dictionnaire déjà construit du
+   site (`assets/data/dictionnaire.json`, 57 420 mots avec définition),
+   restreint aux mots courants (intersection avec `fr_50k.txt`) et
+   filtré pour exclure les définitions de type "forme grammaticale"
+   (« Pluriel de... », « Participe passé de... », etc. — voir
+   `FORME_GRAMMATICALE` dans ce fichier) qui feraient de mauvaises
+   définitions de mots croisés. Le tirage est déterministe : une même
+   date + un même niveau produisent toujours le même vivier
+   (`seed_du_jour()`), ce qui est nécessaire puisque le site est
+   statique et les grilles sont pré-générées, pas calculées à la
+   demande.
+2. `generateur-grilles/generer.py` — moteur de placement par
+   intersections (préexistant, réutilisé tel quel, voir "Limites
+   connues"). La fonction `generer_jour(date)` génère les trois
+   niveaux (Facile 8×8, Moyen 10×10, Difficile 13×13), écrit
+   l'instantané du jour (`grille_{niveau}.json`, écrasé chaque jour —
+   lu par la page au moment du build) et une archive datée immuable
+   (`archives/{niveau}/{date}.json`, jamais réécrite une fois créée).
+   `scripts/build.py` copie les nouvelles archives vers
+   `assets/data/grilles-archive/{niveau}/{date}.json` (sans jamais
+   écraser une archive existante) pour qu'elles soient servies
+   statiquement au navigateur.
+3. `scripts/grille_render.py` (`KALAMBOUR_GRILLE_SCRIPT`, code JS
+   inline généré dans la page, même approche que `JEU_SCRIPT` pour "Le
+   mot du jour") — le moteur interactif côté client : remplissage des
+   cases avec avance automatique, navigation aux flèches du clavier,
+   clic sur un indice pour surligner le mot correspondant dans la
+   grille, bouton "Vérifier" (colore les cases sans révéler les bonnes
+   réponses), "Voir la solution", "Effacer", chronomètre, et
+   changement de niveau/date sans recharger la page (`charger()` va
+   chercher le JSON de la date choisie dans `grilles-archive/` et
+   reconstruit la grille en JS). Comme tout le reste du site, ce script
+   est en JavaScript ES5 pur (pas de `const`/`let`/fonctions fléchées)
+   pour rester cohérent avec `assets/js/`.
+
+**Cadence** : quotidienne (voir section 7 plus haut), tranchée en
+faveur de "quotidienne" plutôt que "hebdomadaire" pour coller à
+l'esprit "petit rituel du jour" déjà en place avec "Le mot du jour" —
+un visiteur qui revient tous les jours trouve toujours une grille
+neuve sur les deux jeux du site, pas seulement un.
+
+**Limite connue** : comme "Le mot du jour", la génération est faite au
+moment du build (GitHub Actions), pas à la demande — si l'action
+échoue un jour donné (ex. panne GitHub temporaire), la page continue
+d'afficher la dernière grille générée avec succès plutôt qu'une grille
+manquante ou une erreur.
+
 ## Limites connues à ce stade
 
 - **Liste de mots** (802 886 mots) — quelques noms propres/mots
@@ -416,10 +498,13 @@ pour un moteur de recherche.
   lettres côté Wiktionnaire, pour rester sous la limite de taille d'un
   Worker Cloudflare) — voir ci-dessus.
 - **Grilles algorithmiques simples** : le générateur (préexistant à
-  cette phase du projet) place les mots par intersections gloutonnes ;
-  les grilles produites sont correctes mais pas aussi denses qu'une
-  grille de mots croisés professionnelle. Suffisant pour lancer le
-  site, à améliorer plus tard si besoin.
+  cette phase du projet, réutilisé tel quel pour la grille quotidienne)
+  place les mots par intersections gloutonnes, sans vrai retour en
+  arrière ; les grilles produites sont correctes (environ 55-65% de
+  remplissage) mais pas aussi denses qu'une grille de mots croisés
+  professionnelle. Suffisant pour lancer le site, à améliorer plus tard
+  si besoin (un algorithme avec backtracking complet serait plus lent
+  mais plus dense).
 - **Pas de compte utilisateur, pas de sauvegarde de progression** —
   non prévu dans le cahier des charges actuel.
 - ~~`sitemap.xml` couvre les pages statiques mais pas les pages

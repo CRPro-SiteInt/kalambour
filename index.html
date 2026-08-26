@@ -35,11 +35,16 @@
       <span class="display brand-name">Kalambour</span>
     </a>
     <nav class="main-nav" aria-label="Navigation principale">
+      <div class="nav-group">
         <a href="/" class="active">Démêleur de mots</a>
-        <a href="/mot-du-jour/">Le mot du jour</a>
         <a href="/aide-mots-croises/">Aide mots croisés</a>
         <a href="/anagramme/">Anagrammeur</a>
-        <a href="/mots-par-longueur/">Mots par longueur</a>
+      </div>
+      <div class="nav-divider"></div>
+      <div class="nav-group">
+        <a href="/mot-du-jour/" class="jeu">Le mot du jour</a>
+        <a href="/bibliotheque-grilles/" class="jeu">La grille du jour</a>
+      </div>
     </nav>
     <span class="chip pill lang-chip">FR</span>
   </header>
@@ -51,16 +56,27 @@
                  style="flex:1; border:none; outline:none; font-size:22px; letter-spacing:0.08em; text-transform:uppercase; font-family:'Space Mono',monospace; padding:8px 12px; min-width:0;">
           <button type="button" id="dm-chercher" class="btn-primary">Chercher</button>
         </div>
-        <label for="dm-lettres" class="visually-hidden">Lettres mélangées à démêler</label><div style="display:flex; flex-direction:row; gap:14px; flex-wrap:wrap; justify-content:center; margin-top:28px;"><div class="stat-card" style="background:var(--indigo);"><div class="stat-number mono">10</div><div class="stat-label">outils gratuits</div></div>
-<div class="stat-card" style="background:var(--green);"><div class="stat-number mono">0€</div><div class="stat-label">pour toujours</div></div>
-<div class="stat-card" style="background:var(--coral);"><div class="stat-number mono">100%</div><div class="stat-label">calcul dans votre navigateur</div></div></div>
+        <label for="dm-lettres" class="visually-hidden">Lettres mélangées à démêler</label>      <div class="game-cards">
+        <a href="/mot-du-jour/" class="game-card mot">
+          <div class="icon">🔤</div>
+          <h3 class="display">Le mot du jour</h3>
+          <p>Devinez le mot mystère en 6 essais, comme Motus/Wordle.</p>
+          <span class="cta">Jouer aujourd'hui →</span>
+        </a>
+        <a href="/bibliotheque-grilles/" class="game-card grille">
+          <div class="icon">✏️</div>
+          <h3 class="display">La grille du jour</h3>
+          <p>Une nouvelle grille de mots croisés chaque jour, 3 niveaux.</p>
+          <span class="cta">Jouer aujourd'hui →</span>
+        </a>
+      </div>
       </div>
     </div>
   </div>  <div class="content-grid page-shell">
     <div>
       <h2 class="section-title">Résultats</h2>
       <p class="section-sub" id="resultats-info">Entrez des lettres mélangées ci-dessus pour commencer.</p>
-      <div id="resultats" class="results-list"></div>  <div class="ad-banner page-shell"><span class="ad-note">Emplacement publicitaire — bannière 728×90</span></div><div class="card" style="padding:28px 30px; margin-top:32px;"><h2 class="display" style="font-size:20px; margin:0 0 18px 0;">Aide &amp; questions fréquentes</h2><div style="margin-bottom:18px;"><div style="font-weight:700; margin-bottom:4px;">Comment fonctionne ce démêleur de mots ?</div><div style="color:var(--muted); font-size:15px; line-height:1.6;">Tapez les lettres dont vous disposez (par exemple votre tirage au Scrabble) : l'outil compare vos lettres à un dictionnaire français et affiche tous les mots que vous pouvez former, du plus court au plus long.</div></div>
+      <div id="resultats" class="results-list"></div><div class="card" style="padding:28px 30px; margin-top:32px;"><h2 class="display" style="font-size:20px; margin:0 0 18px 0;">Aide &amp; questions fréquentes</h2><div style="margin-bottom:18px;"><div style="font-weight:700; margin-bottom:4px;">Comment fonctionne ce démêleur de mots ?</div><div style="color:var(--muted); font-size:15px; line-height:1.6;">Tapez les lettres dont vous disposez (par exemple votre tirage au Scrabble) : l'outil compare vos lettres à un dictionnaire français et affiche tous les mots que vous pouvez former, du plus court au plus long.</div></div>
 <div style="margin-bottom:18px;"><div style="font-weight:700; margin-bottom:4px;">Le démêleur utilise-t-il toutes mes lettres ?</div><div style="color:var(--muted); font-size:15px; line-height:1.6;">Non — contrairement à l'<a href="/anagramme/">Anagrammeur</a>, le démêleur cherche des mots formés avec <em>tout ou partie</em> de vos lettres. Pour un mot utilisant exactement toutes vos lettres, direction l'<a href="/anagramme/">Anagrammeur</a>.</div></div>
 <div style="margin-bottom:18px;"><div style="font-weight:700; margin-bottom:4px;">Mes lettres et recherches sont-elles envoyées à un serveur ?</div><div style="color:var(--muted); font-size:15px; line-height:1.6;">Non : tout le calcul se fait directement dans votre navigateur, aucune donnée n'est transmise ni conservée.</div></div></div>
     </div>
@@ -108,17 +124,11 @@
           <span class="tool-arrow">›</span>
         </a>
         <a href="/bibliotheque-grilles/" class="tool-row">
-          <div class="swatch bg-indigo">B</div>
-          <span class="tool-label" style="font-size:15.5px;">Bibliothèque de grilles</span>
-          <span class="tool-arrow">›</span>
-        </a>
-        <a href="/jouer-sur-mobile/" class="tool-row">
-          <div class="swatch bg-amber">M</div>
-          <span class="tool-label" style="font-size:15.5px;">Jouer sur mobile</span>
+          <div class="swatch bg-indigo">G</div>
+          <span class="tool-label" style="font-size:15.5px;">La grille du jour</span>
           <span class="tool-arrow">›</span>
         </a>
       </div>
-      <div class="ad-square" style="margin-top:20px;"><span class="ad-note">Emplacement publicitaire<br>pavé 300×250</span></div>
     </aside>
   </div>  <section class="seo-block page-shell">
     <h2 class="display">Le démêleur de mots, un outil pensé pour le Scrabble et les mots fléchés</h2>

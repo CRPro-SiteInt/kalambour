@@ -35,11 +35,16 @@
       <span class="display brand-name">Kalambour</span>
     </a>
     <nav class="main-nav" aria-label="Navigation principale">
+      <div class="nav-group">
         <a href="/">Démêleur de mots</a>
-        <a href="/mot-du-jour/">Le mot du jour</a>
         <a href="/aide-mots-croises/" class="active">Aide mots croisés</a>
         <a href="/anagramme/">Anagrammeur</a>
-        <a href="/mots-par-longueur/">Mots par longueur</a>
+      </div>
+      <div class="nav-divider"></div>
+      <div class="nav-group">
+        <a href="/mot-du-jour/" class="jeu">Le mot du jour</a>
+        <a href="/bibliotheque-grilles/" class="jeu">La grille du jour</a>
+      </div>
     </nav>
     <span class="chip pill lang-chip">FR</span>
   </header>
@@ -67,7 +72,7 @@
     <div>
       <h2 class="section-title">Résultats</h2>
       <p class="section-sub" id="resultats-info">Entrez un motif, ex. C_A_ pour un mot de 4 lettres.</p>
-      <div id="resultats" class="results-list"></div>  <div class="ad-banner page-shell"><span class="ad-note">Emplacement publicitaire — bannière 728×90</span></div><div class="card" style="padding:28px 30px; margin-top:32px;"><h2 class="display" style="font-size:20px; margin:0 0 18px 0;">Aide &amp; questions fréquentes</h2><div style="margin-bottom:18px;"><div style="font-weight:700; margin-bottom:4px;">Comment écrire un motif de lettres ?</div><div style="color:var(--muted); font-size:15px; line-height:1.6;">Utilisez le symbole <code>_</code> pour chaque case vide. Par exemple <span class="mono">C_A_</span> cherche un mot de 4 lettres commençant par C, avec un A en 3ᵉ position.</div></div>
+      <div id="resultats" class="results-list"></div><div class="card" style="padding:28px 30px; margin-top:32px;"><h2 class="display" style="font-size:20px; margin:0 0 18px 0;">Aide &amp; questions fréquentes</h2><div style="margin-bottom:18px;"><div style="font-weight:700; margin-bottom:4px;">Comment écrire un motif de lettres ?</div><div style="color:var(--muted); font-size:15px; line-height:1.6;">Utilisez le symbole <code>_</code> pour chaque case vide. Par exemple <span class="mono">C_A_</span> cherche un mot de 4 lettres commençant par C, avec un A en 3ᵉ position.</div></div>
 <div style="margin-bottom:18px;"><div style="font-weight:700; margin-bottom:4px;">Puis-je chercher à partir d'une définition ?</div><div style="color:var(--muted); font-size:15px; line-height:1.6;">Oui, l'onglet « Par définition » cherche dans les définitions du dictionnaire du site — utile quand vous connaissez le sens du mot mais pas ses lettres.</div></div></div>
     </div>
     <aside>
@@ -114,17 +119,11 @@
           <span class="tool-arrow">›</span>
         </a>
         <a href="/bibliotheque-grilles/" class="tool-row">
-          <div class="swatch bg-indigo">B</div>
-          <span class="tool-label" style="font-size:15.5px;">Bibliothèque de grilles</span>
-          <span class="tool-arrow">›</span>
-        </a>
-        <a href="/jouer-sur-mobile/" class="tool-row">
-          <div class="swatch bg-amber">M</div>
-          <span class="tool-label" style="font-size:15.5px;">Jouer sur mobile</span>
+          <div class="swatch bg-indigo">G</div>
+          <span class="tool-label" style="font-size:15.5px;">La grille du jour</span>
           <span class="tool-arrow">›</span>
         </a>
       </div>
-      <div class="ad-square" style="margin-top:20px;"><span class="ad-note">Emplacement publicitaire<br>pavé 300×250</span></div>
     </aside>
   </div>  <section class="seo-block page-shell">
     <h2 class="display">Solutionneur de mots croisés et mots fléchés</h2>

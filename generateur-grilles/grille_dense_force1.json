@@ -1,0 +1,335 @@
+{
+  "largeur": 8,
+  "hauteur": 8,
+  "cases": [
+    [
+      "Z",
+      "E",
+      "B",
+      null,
+      "S",
+      "E",
+      "T",
+      "H"
+    ],
+    [
+      "O",
+      "L",
+      "A",
+      null,
+      "E",
+      "C",
+      "H",
+      "O"
+    ],
+    [
+      "N",
+      "A",
+      "N",
+      null,
+      "P",
+      "E",
+      "E",
+      "P"
+    ],
+    [
+      "E",
+      "N",
+      "D",
+      "O",
+      null,
+      "R",
+      "Y",
+      "E"
+    ],
+    [
+      null,
+      null,
+      null,
+      "R",
+      "D",
+      "V",
+      null,
+      null
+    ],
+    [
+      "R",
+      "O",
+      "U",
+      "T",
+      "I",
+      "E",
+      "R",
+      "E"
+    ],
+    [
+      "O",
+      "R",
+      "P",
+      "H",
+      "E",
+      "L",
+      "I",
+      "N"
+    ],
+    [
+      "M",
+      "I",
+      "S",
+      "O",
+      null,
+      "E",
+      "S",
+      "T"
+    ]
+  ],
+  "mots": [
+    {
+      "number": 1,
+      "direction": "horizontal",
+      "row": 0,
+      "col": 0,
+      "length": 3,
+      "reponse": "ZEB",
+      "indice": "Variante orthographique de zob."
+    },
+    {
+      "number": 1,
+      "direction": "vertical",
+      "row": 0,
+      "col": 0,
+      "length": 4,
+      "reponse": "ZONE",
+      "indice": "Bande ou marque plus ou moins circulaire."
+    },
+    {
+      "number": 2,
+      "direction": "vertical",
+      "row": 0,
+      "col": 1,
+      "length": 4,
+      "reponse": "ELAN",
+      "indice": "Variante par contrainte typographique de Élan"
+    },
+    {
+      "number": 3,
+      "direction": "vertical",
+      "row": 0,
+      "col": 2,
+      "length": 4,
+      "reponse": "BAND",
+      "indice": "Groupe de musique."
+    },
+    {
+      "number": 4,
+      "direction": "horizontal",
+      "row": 0,
+      "col": 4,
+      "length": 4,
+      "reponse": "SETH",
+      "indice": "Fils d’Adam et Ève, frère d’Abel et Caïn."
+    },
+    {
+      "number": 4,
+      "direction": "vertical",
+      "row": 0,
+      "col": 4,
+      "length": 3,
+      "reponse": "SEP",
+      "indice": "Pièce de bois ou de fer, fixée à l'age d'une charrue, et qui porte le soc et le versoir."
+    },
+    {
+      "number": 5,
+      "direction": "vertical",
+      "row": 0,
+      "col": 5,
+      "length": 8,
+      "reponse": "ECERVELE",
+      "indice": "Qui a peu de jugement."
+    },
+    {
+      "number": 6,
+      "direction": "vertical",
+      "row": 0,
+      "col": 6,
+      "length": 4,
+      "reponse": "THEY",
+      "indice": "Ancien nom de la commune française They-sous-Vaudemont."
+    },
+    {
+      "number": 7,
+      "direction": "vertical",
+      "row": 0,
+      "col": 7,
+      "length": 4,
+      "reponse": "HOPE",
+      "indice": "Paroisse civile d’Angleterre située dans le district de High Peak."
+    },
+    {
+      "number": 8,
+      "direction": "horizontal",
+      "row": 1,
+      "col": 0,
+      "length": 3,
+      "reponse": "OLA",
+      "indice": "Mouvement de foule ayant lieu surtout pendant les évènements sportifs, où des spectateurs…"
+    },
+    {
+      "number": 9,
+      "direction": "horizontal",
+      "row": 1,
+      "col": 4,
+      "length": 4,
+      "reponse": "ECHO",
+      "indice": "Répétition du son lorsqu’il frappe contre un corps qui le renvoie plus ou moins…"
+    },
+    {
+      "number": 10,
+      "direction": "horizontal",
+      "row": 2,
+      "col": 0,
+      "length": 3,
+      "reponse": "NAN",
+      "indice": "Variante de non (utilisé en tant que réponse à une question fermée ou un ordre)."
+    },
+    {
+      "number": 11,
+      "direction": "horizontal",
+      "row": 2,
+      "col": 4,
+      "length": 4,
+      "reponse": "PEEP",
+      "indice": "Une des fédérations françaises d’associations de parents d’élèves."
+    },
+    {
+      "number": 12,
+      "direction": "horizontal",
+      "row": 3,
+      "col": 0,
+      "length": 4,
+      "reponse": "ENDO",
+      "indice": "Endoscopie (examen réalisé avec un endoscope)."
+    },
+    {
+      "number": 13,
+      "direction": "vertical",
+      "row": 3,
+      "col": 3,
+      "length": 5,
+      "reponse": "ORTHO",
+      "indice": "Orthographe."
+    },
+    {
+      "number": 14,
+      "direction": "horizontal",
+      "row": 3,
+      "col": 5,
+      "length": 3,
+      "reponse": "RYE",
+      "indice": "Whisky canadien."
+    },
+    {
+      "number": 15,
+      "direction": "horizontal",
+      "row": 4,
+      "col": 3,
+      "length": 3,
+      "reponse": "RDV",
+      "indice": "Rendez-vous."
+    },
+    {
+      "number": 16,
+      "direction": "vertical",
+      "row": 4,
+      "col": 4,
+      "length": 3,
+      "reponse": "DIE",
+      "indice": "Petit morceau rectangulaire obtenu par découpe d’un wafer à partir duquel on fabrique un…"
+    },
+    {
+      "number": 17,
+      "direction": "horizontal",
+      "row": 5,
+      "col": 0,
+      "length": 8,
+      "reponse": "ROUTIERE",
+      "indice": "Conductrice de camion ou de camionnette, qui assure le transport par la route."
+    },
+    {
+      "number": 17,
+      "direction": "vertical",
+      "row": 5,
+      "col": 0,
+      "length": 3,
+      "reponse": "ROM",
+      "indice": "Membre du peuple des Roms."
+    },
+    {
+      "number": 18,
+      "direction": "vertical",
+      "row": 5,
+      "col": 1,
+      "length": 3,
+      "reponse": "ORI",
+      "indice": "Abréviation de origine de réplication."
+    },
+    {
+      "number": 19,
+      "direction": "vertical",
+      "row": 5,
+      "col": 2,
+      "length": 3,
+      "reponse": "UPS",
+      "indice": "Nom d’une société de transport postal, en particulier de colis."
+    },
+    {
+      "number": 20,
+      "direction": "vertical",
+      "row": 5,
+      "col": 6,
+      "length": 3,
+      "reponse": "RIS",
+      "indice": "Action de rire."
+    },
+    {
+      "number": 21,
+      "direction": "vertical",
+      "row": 5,
+      "col": 7,
+      "length": 3,
+      "reponse": "ENT",
+      "indice": "Espace numérique de travail."
+    },
+    {
+      "number": 22,
+      "direction": "horizontal",
+      "row": 6,
+      "col": 0,
+      "length": 8,
+      "reponse": "ORPHELIN",
+      "indice": "Qui a perdu son père et sa mère, ou l’un des deux."
+    },
+    {
+      "number": 23,
+      "direction": "horizontal",
+      "row": 7,
+      "col": 0,
+      "length": 4,
+      "reponse": "MISO",
+      "indice": "Misogyne."
+    },
+    {
+      "number": 24,
+      "direction": "horizontal",
+      "row": 7,
+      "col": 5,
+      "length": 3,
+      "reponse": "EST",
+      "indice": "Région située à l’est (en particulier à l’est d’un pays), le contexte permettant de…"
+    }
+  ],
+  "mots_non_places": [],
+  "remplissage": 84.4,
+  "niveau": "force1",
+  "date": "2026-08-26"
+}
