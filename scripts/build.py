@@ -125,7 +125,27 @@ def etape_2_grilles():
             print(f"[2/4] ATTENTION : {src} absent — lancez d'abord generer.py")
             continue
         shutil.copy(src, os.path.join(dst_dir, f"grille_{cle}.json"))
-    print("[2/4] grilles copiées vers assets/data/")
+
+    # Archive datée (une grille par jour et par niveau, jamais réécrite une
+    # fois créée — voir generer.py, generer_jour()) : copiée telle quelle
+    # pour être servie en statique, alimente le calendrier de la
+    # bibliothèque de grilles (build_pages_prod2.build_grilles()).
+    src_archives = os.path.join(src_dir, "archives")
+    dst_archives = os.path.join(dst_dir, "grilles-archive")
+    n_copiees = 0
+    if os.path.isdir(src_archives):
+        for niveau in os.listdir(src_archives):
+            src_niveau = os.path.join(src_archives, niveau)
+            if not os.path.isdir(src_niveau):
+                continue
+            dst_niveau = os.path.join(dst_archives, niveau)
+            os.makedirs(dst_niveau, exist_ok=True)
+            for nom_fichier in os.listdir(src_niveau):
+                dst_fichier = os.path.join(dst_niveau, nom_fichier)
+                if not os.path.exists(dst_fichier):  # archive = jamais écrasée
+                    shutil.copy(os.path.join(src_niveau, nom_fichier), dst_fichier)
+                    n_copiees += 1
+    print(f"[2/4] grilles du jour copiées vers assets/data/ (+ {n_copiees} nouvelle(s) grille(s) d'archive)")
 
 
 def etape_3_pages():
@@ -155,11 +175,10 @@ def etape_3_pages():
             build_pages_prod2.build_page_longueur(n, mots)
             pages_longueur += 1
     build_pages_prod2.build_grilles()
-    build_pages_prod2.build_jouer_mobile()
     build_pages_prod2.build_mentions_legales()
     build_pages_prod2.build_confidentialite()
     build_pages_prod2.build_contact()
-    print(f"[3/4] {6 + 1 + 2 + pages_longueur + 4} pages HTML régénérées")
+    print(f"[3/4] {6 + 1 + 2 + pages_longueur + 3} pages HTML régénérées")
 
 
 def _normaliser_mot(mot):

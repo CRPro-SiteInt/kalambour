@@ -445,8 +445,7 @@ if __name__ == "__main__":
     for n, mots in par_len.items():
         build_page_longueur(n, mots)
     build_grilles()
-    build_jouer_mobile()
     build_mentions_legales()
     build_confidentialite()
     build_contact()
-    print("Partie 2 terminée:", 2 + len(par_len) + 4, "pages")
+    print("Partie 2 terminée:", 2 + len(par_len) + 3, "pages")
