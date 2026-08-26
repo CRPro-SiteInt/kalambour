@@ -29,6 +29,13 @@ with open(os.path.join(ROOT, "assets/data/dictionnaire.json"), encoding="utf-8")
 
 FONT_LINK = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@700&display=swap">'
 
+# Code de vérification/activation Google AdSense (compte du client, ajouté
+# le 26/08/2026). Présent sur TOUTES les pages générées par ce script, au
+# tout début de <head>, comme demandé par Google — voir aussi
+# functions/mot/[mot].js qui a son propre template HTML dupliqué et doit
+# recevoir la même balise séparément.
+ADSENSE_SCRIPT = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4933154281367816" crossorigin="anonymous"></script>'
+
 # Ordre revu le 25/08/2026 avec le client : priorité aux outils jugés
 # les plus identifiables/utiles (démêleur, aide mots croisés,
 # anagrammeur, Sutom/Motus — ce dernier moins évident en apparence mais
@@ -199,6 +206,7 @@ def page(slug, title, description, active_nav, active_tool, body_main, data_tool
     return f"""<!doctype html>
 <html lang="fr">
 <head>
+{ADSENSE_SCRIPT}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{esc(title)}</title>
