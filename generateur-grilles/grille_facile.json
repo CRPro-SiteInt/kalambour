@@ -1,374 +1,335 @@
 {
-  "largeur": 11,
-  "hauteur": 17,
+  "largeur": 8,
+  "hauteur": 8,
   "cases": [
     [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      "P",
-      null,
-      null,
-      null,
-      null
-    ],
-    [
-      null,
-      null,
-      null,
-      null,
-      null,
-      "R",
-      "O",
-      "U",
-      "T",
+      "Z",
       "E",
-      null
-    ],
-    [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      "R",
-      null,
-      null,
-      null,
-      null
-    ],
-    [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      "T",
-      "A",
       "B",
-      "L",
-      "E"
+      null,
+      "N",
+      "C",
+      "I",
+      "S"
     ],
     [
+      "I",
+      "V",
+      "O",
       null,
-      null,
-      null,
-      "L",
-      "U",
+      "B",
+      "A",
+      "N",
+      "C"
+    ],
+    [
       "N",
       "E",
-      null,
-      null,
-      "I",
-      null
-    ],
-    [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      "V",
-      null
-    ],
-    [
-      null,
-      null,
-      null,
-      null,
-      null,
-      "J",
-      null,
-      null,
-      null,
       "R",
-      null
-    ],
-    [
-      null,
-      null,
-      null,
-      null,
       null,
       "A",
-      "R",
-      "B",
-      "R",
-      "E",
-      null
-    ],
-    [
-      null,
-      null,
-      null,
-      null,
-      null,
-      "R",
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    [
-      null,
-      "C",
-      null,
-      null,
-      null,
-      "D",
-      null,
-      null,
-      "C",
-      null,
-      "P"
-    ],
-    [
-      null,
-      "H",
-      null,
-      null,
-      null,
-      "I",
-      null,
-      null,
-      "H",
-      null,
+      "L",
+      "F",
       "A"
     ],
     [
-      "M",
       "A",
-      "I",
-      "S",
-      "O",
       "N",
-      null,
-      null,
       "A",
+      "L",
       null,
-      "I"
-    ],
-    [
-      null,
-      "T",
-      null,
-      "O",
-      null,
-      null,
-      "C",
-      "H",
       "I",
-      "E",
+      "O",
       "N"
     ],
     [
       null,
       null,
       null,
-      "L",
-      null,
-      null,
-      null,
-      null,
+      "U",
       "S",
+      "E",
       null,
       null
     ],
     [
-      null,
-      null,
-      "F",
+      "P",
+      "A",
+      "T",
       "E",
+      "R",
       "N",
       "E",
-      "T",
+      "L"
+    ],
+    [
+      "E",
+      "B",
       "R",
-      "E",
-      null,
-      null
-    ],
-    [
-      null,
-      null,
-      null,
-      "I",
-      null,
-      "A",
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    [
-      null,
-      null,
-      "F",
-      "L",
-      "E",
       "U",
+      "I",
+      "T",
+      "E",
+      "R"
+    ],
+    [
+      "U",
+      "S",
+      "E",
       "R",
       null,
-      null,
-      null,
-      null
+      "E",
+      "P",
+      "A"
     ]
   ],
   "mots": [
     {
       "number": 1,
+      "direction": "horizontal",
+      "row": 0,
+      "col": 0,
+      "length": 3,
+      "reponse": "ZEB",
+      "indice": "Variante orthographique de zob."
+    },
+    {
+      "number": 1,
       "direction": "vertical",
       "row": 0,
-      "col": 6,
-      "length": 5,
-      "reponse": "PORTE",
-      "indice": "On l'ouvre pour entrer"
+      "col": 0,
+      "length": 4,
+      "reponse": "ZINA",
+      "indice": "Adultère, fornication."
     },
     {
       "number": 2,
-      "direction": "horizontal",
-      "row": 1,
-      "col": 5,
-      "length": 5,
-      "reponse": "ROUTE",
-      "indice": "Les voitures y roulent"
+      "direction": "vertical",
+      "row": 0,
+      "col": 1,
+      "length": 4,
+      "reponse": "EVEN",
+      "indice": "Synonyme de évène."
     },
     {
       "number": 3,
+      "direction": "vertical",
+      "row": 0,
+      "col": 2,
+      "length": 4,
+      "reponse": "BORA",
+      "indice": "Langue witotoane parlée en Amazonie péruvienne dans le bassin de la rivière Putumayo et…"
+    },
+    {
+      "number": 4,
       "direction": "horizontal",
-      "row": 3,
-      "col": 6,
-      "length": 5,
-      "reponse": "TABLE",
-      "indice": "Meuble pour manger"
+      "row": 0,
+      "col": 4,
+      "length": 4,
+      "reponse": "NCIS",
+      "indice": "Service des enquêtes criminelles de la marine des États-Unis."
     },
     {
       "number": 4,
       "direction": "vertical",
-      "row": 3,
-      "col": 9,
-      "length": 5,
-      "reponse": "LIVRE",
-      "indice": "On le lit page après page"
+      "row": 0,
+      "col": 4,
+      "length": 3,
+      "reponse": "NBA",
+      "indice": "La principale ligue de basket-ball nord-américaine créée en 1946."
     },
     {
       "number": 5,
-      "direction": "horizontal",
-      "row": 4,
-      "col": 3,
-      "length": 4,
-      "reponse": "LUNE",
-      "indice": "Elle brille la nuit"
+      "direction": "vertical",
+      "row": 0,
+      "col": 5,
+      "length": 8,
+      "reponse": "CALIENTE",
+      "indice": "Chaud, en chaleur."
     },
     {
       "number": 6,
       "direction": "vertical",
-      "row": 6,
-      "col": 5,
-      "length": 6,
-      "reponse": "JARDIN",
-      "indice": "Coin vert avec des fleurs"
+      "row": 0,
+      "col": 6,
+      "length": 4,
+      "reponse": "INFO",
+      "indice": "Information."
     },
     {
       "number": 7,
-      "direction": "horizontal",
-      "row": 7,
-      "col": 5,
-      "length": 5,
-      "reponse": "ARBRE",
-      "indice": "Il a des feuilles et des racines"
+      "direction": "vertical",
+      "row": 0,
+      "col": 7,
+      "length": 4,
+      "reponse": "SCAN",
+      "indice": "Scanner, examen radiologique."
     },
     {
       "number": 8,
-      "direction": "vertical",
-      "row": 9,
-      "col": 1,
-      "length": 4,
-      "reponse": "CHAT",
-      "indice": "Compagnon domestique qui ronronne"
+      "direction": "horizontal",
+      "row": 1,
+      "col": 0,
+      "length": 3,
+      "reponse": "IVO",
+      "indice": "Yves."
     },
     {
       "number": 9,
-      "direction": "vertical",
-      "row": 9,
-      "col": 8,
-      "length": 6,
-      "reponse": "CHAISE",
-      "indice": "On s'y assoit"
+      "direction": "horizontal",
+      "row": 1,
+      "col": 4,
+      "length": 4,
+      "reponse": "BANC",
+      "indice": "Long siège permettant d’accueillir plus d’une personne."
     },
     {
       "number": 10,
-      "direction": "vertical",
-      "row": 9,
-      "col": 10,
-      "length": 4,
-      "reponse": "PAIN",
-      "indice": "On le coupe à table tous les jours"
+      "direction": "horizontal",
+      "row": 2,
+      "col": 0,
+      "length": 3,
+      "reponse": "NER",
+      "indice": "Personne sans emploi (chômeur ou inactif) avant la retraite."
     },
     {
       "number": 11,
       "direction": "horizontal",
-      "row": 11,
-      "col": 0,
-      "length": 6,
-      "reponse": "MAISON",
-      "indice": "On y habite"
+      "row": 2,
+      "col": 4,
+      "length": 4,
+      "reponse": "ALFA",
+      "indice": "Graminée de l’Afrique du Nord appartenant à la famille des Poacées (Stipa tenacissima)…"
     },
     {
       "number": 12,
-      "direction": "vertical",
-      "row": 11,
-      "col": 3,
-      "length": 6,
-      "reponse": "SOLEIL",
-      "indice": "Il brille le jour"
+      "direction": "horizontal",
+      "row": 3,
+      "col": 0,
+      "length": 4,
+      "reponse": "ANAL",
+      "indice": "Relatif à l’anus."
     },
     {
       "number": 13,
-      "direction": "horizontal",
-      "row": 12,
-      "col": 6,
+      "direction": "vertical",
+      "row": 3,
+      "col": 3,
       "length": 5,
-      "reponse": "CHIEN",
-      "indice": "Meilleur ami de l'homme"
+      "reponse": "LUEUR",
+      "indice": "Lumière faible ou affaiblie."
     },
     {
       "number": 14,
       "direction": "horizontal",
-      "row": 14,
-      "col": 2,
-      "length": 7,
-      "reponse": "FENETRE",
-      "indice": "On regarde dehors à travers elle"
+      "row": 3,
+      "col": 5,
+      "length": 3,
+      "reponse": "ION",
+      "indice": "Atome ou molécule ayant perdu ou gagné des électrons sur sa couche externe."
     },
     {
       "number": 15,
-      "direction": "vertical",
-      "row": 14,
-      "col": 5,
+      "direction": "horizontal",
+      "row": 4,
+      "col": 3,
       "length": 3,
-      "reponse": "EAU",
-      "indice": "Elle coule à la source"
+      "reponse": "USE",
+      "indice": "Il en fait trop, il ..."
     },
     {
       "number": 16,
+      "direction": "vertical",
+      "row": 4,
+      "col": 4,
+      "length": 3,
+      "reponse": "SRI",
+      "indice": "Système de recherche d’information."
+    },
+    {
+      "number": 17,
       "direction": "horizontal",
-      "row": 16,
+      "row": 5,
+      "col": 0,
+      "length": 8,
+      "reponse": "PATERNEL",
+      "indice": "Qui a rapport au père, qui appartient au père."
+    },
+    {
+      "number": 17,
+      "direction": "vertical",
+      "row": 5,
+      "col": 0,
+      "length": 3,
+      "reponse": "PEU",
+      "indice": "Presque pas ; pas beaucoup."
+    },
+    {
+      "number": 18,
+      "direction": "vertical",
+      "row": 5,
+      "col": 1,
+      "length": 3,
+      "reponse": "ABS",
+      "indice": "Abréviation de antiblocage de sécurité."
+    },
+    {
+      "number": 19,
+      "direction": "vertical",
+      "row": 5,
       "col": 2,
-      "length": 5,
-      "reponse": "FLEUR",
-      "indice": "Elle pousse dans le jardin"
+      "length": 3,
+      "reponse": "TRE",
+      "indice": "Taux de retour énergétique."
+    },
+    {
+      "number": 20,
+      "direction": "vertical",
+      "row": 5,
+      "col": 6,
+      "length": 3,
+      "reponse": "EEP",
+      "indice": "Abréviation de étude électrophysiologique."
+    },
+    {
+      "number": 21,
+      "direction": "vertical",
+      "row": 5,
+      "col": 7,
+      "length": 3,
+      "reponse": "LRA",
+      "indice": "Local de rétention administrative."
+    },
+    {
+      "number": 22,
+      "direction": "horizontal",
+      "row": 6,
+      "col": 0,
+      "length": 8,
+      "reponse": "EBRUITER",
+      "indice": "Divulguer, rendre public."
+    },
+    {
+      "number": 23,
+      "direction": "horizontal",
+      "row": 7,
+      "col": 0,
+      "length": 4,
+      "reponse": "USER",
+      "indice": "Détériorer par l’usage."
+    },
+    {
+      "number": 24,
+      "direction": "horizontal",
+      "row": 7,
+      "col": 5,
+      "length": 3,
+      "reponse": "EPA",
+      "indice": "École d'enseignement secondaire ouverte en priorité aux pupilles de la Nation et aux…"
     }
   ],
-  "mots_non_places": []
+  "mots_non_places": [],
+  "remplissage": 84.4,
+  "niveau": "facile",
+  "date": "2026-08-26"
 }
