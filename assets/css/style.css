@@ -70,6 +70,15 @@ main{ flex:1 0 auto; display:flex; flex-direction:column; }
 .hero-tab{ background:transparent; border-color:rgba(255,255,255,0.35); color:rgba(255,255,255,0.75); }
 .hero-tab:hover{ background:rgba(255,255,255,0.1); }
 .hero-tab.active-tab{ background:rgba(255,255,255,0.18); border-color:transparent; color:#fff; font-weight:700; }
+/* .chip.active-tab SANS .hero-tab — onglets/puces sur fond CLAIR (ex.
+   Bibliothèque de grilles, niveaux + puces de date) : jusqu'au
+   26/08/2026 cette combinaison n'avait AUCUNE règle associée (l'état
+   "actif" posé par le JS ne changeait donc rien visuellement — bug
+   distinct de celui corrigé ci-dessus pour .hero-tab). */
+.chip.active-tab{ background:var(--indigo); border-color:transparent; color:#fff; font-weight:700; }
+/* Menus d'outils de la grille (Vérifier/Révéler/Annuler ▾) — voir
+   grille_render.py, render_barre_outils()/KALAMBOUR_GRILLE_SCRIPT. */
+.menu-outil-item:hover:not([data-disabled]){ background:#f4f2ec; }
 .field{
   border-radius:12px; border:1.5px solid var(--border); background:var(--surface);
   font-size:15px; color:var(--ink); padding:0 14px; display:flex; align-items:center; height:52px; width:100%;

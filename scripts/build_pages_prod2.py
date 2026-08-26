@@ -10,7 +10,7 @@ from build_prod import (
     ROOT, SITE_NAME, DOMAIN, DICT, AUTORITES,
     header, hero, sidebar, ad_banner, seo_block, footer, page, write, content_grid, esc,
 )
-from grille_render import render_grille_jouable, render_definitions, GRILLE_JOUABLE_SCRIPT
+from grille_render import render_grille_jouable, render_definitions, render_barre_outils, KALAMBOUR_GRILLE_SCRIPT
 from build_pages_prod import breadcrumb_schema, webapp_schema, combine_schema, hero_page_wrap, ad_banner_inline
 
 TODAY = "26 août 2026"
@@ -198,94 +198,168 @@ def build_page_longueur_lettre(n, lettre, mots, lettres_dispo):
 # ---------------------------------------------------------------------
 # 9. BIBLIOTHÈQUE DE GRILLES (/bibliotheque-grilles/)
 # ---------------------------------------------------------------------
+# Réécrite le 26/08/2026 : fusionne l'ancienne "Bibliothèque de
+# grilles" (3 grilles statiques, mises à jour une fois par mois) et
+# l'ancienne page "Jouer sur mobile" (/jouer-sur-mobile/, supprimée et
+# redirigée — voir _redirects) en UNE SEULE page, plus lisible et plus
+# proche de l'esprit "jeu" du site (comme /mot-du-jour/) : une vraie
+# grille DU JOUR par niveau (régénérée chaque nuit par
+# .github/workflows/regenerer-grilles.yml), avec un historique par date
+# consultable directement dans la page. Voir notes-projet.md pour le
+# contexte complet de cette décision et son inspiration (UX de
+# référence du secteur, jamais son code ni son contenu — voir la note
+# en tête de grille_render.py).
+
+MOIS_FR = ["janv.", "févr.", "mars", "avr.", "mai", "juin",
+           "juil.", "août", "sept.", "oct.", "nov.", "déc."]
+
+
+def _date_lisible(date_str):
+    annee, mois, jour = date_str.split("-")
+    return f"{int(jour)} {MOIS_FR[int(mois) - 1]}"
+
+
+def _dates_archivees(limite=21):
+    dossier = os.path.join(ROOT, "generateur-grilles", "archives", "facile")
+    if not os.path.isdir(dossier):
+        return []
+    dates = sorted(f[:-5] for f in os.listdir(dossier) if f.endswith(".json"))
+    return dates[-limite:]
+
 
 def build_grilles():
-    grilles = []
-    for cle, niveau in [("facile", "Facile"), ("moyen", "Moyen"), ("difficile", "Difficile")]:
+    # Libellés "Force 1/2/3" depuis le 26/08/2026 (terminologie standard
+    # des mots croisés — retour client) ; les clés internes
+    # facile/moyen/difficile sont conservées (noms de fichiers, dossiers
+    # d'archive). cell_px agrandi en même temps (grilles plus denses,
+    # la grille doit occuper plus de place — voir notes-projet.md).
+    NIVEAUX = [("facile", "Force 1", 50), ("moyen", "Force 2", 44), ("difficile", "Force 3", 34)]
+    grilles = {}
+    for cle, _label, _cell in NIVEAUX:
         with open(os.path.join(ROOT, f"assets/data/grille_{cle}.json"), encoding="utf-8") as f:
-            grilles.append((cle, niveau, json.load(f)))
+            grilles[cle] = json.load(f)
 
-    cartes = []
-    for cle, niveau, puzzle in grilles:
+    date_du_jour = grilles["facile"].get("date", "")
+    dates = _dates_archivees()
+
+    onglets = []
+    panneaux = []
+    for i, (cle, label, cell_px) in enumerate(NIVEAUX):
+        puzzle = grilles[cle]
         gid = f"grille-{cle}"
-        taille_affichee = f"{puzzle['largeur']}×{puzzle['hauteur']}"
-        cartes.append(f"""    <div class="card" data-grille-wrap style="padding:26px; display:flex; flex-direction:column; gap:18px; align-items:center;">
-      <div style="display:flex; flex-direction:row; align-items:center; justify-content:space-between; width:100%;">
-        <div><div class="display" style="font-size:19px; font-weight:700;">Grille {niveau} ({taille_affichee})</div>
-        <div style="font-size:13px; color:var(--muted);">{len(puzzle['mots'])} mots à trouver</div></div>
-        <div style="display:flex; gap:8px;" data-no-print>
-          <button type="button" class="btn-secondary" data-action="solution" style="padding:9px 16px; font-size:13.5px;">Voir la solution</button>
-          <button type="button" class="btn-secondary" data-action="effacer" style="padding:9px 16px; font-size:13.5px;">Effacer</button>
-          <button type="button" class="btn-secondary" onclick="window.print()" style="padding:9px 16px; font-size:13.5px;">Imprimer</button>
-        </div>
+        actif = i == 0
+        onglets.append(
+            # NB : "hero-tab" volontairement absent ici — cette barre d'onglets
+            # est rendue sur fond blanc (content_grid), pas sur le bandeau
+            # dégradé de la hero ; hero-tab suppose un fond sombre et rendait
+            # l'onglet actif quasi invisible (bug signalé par le client le
+            # 26/08/2026). Voir .chip.active-tab dans style.css pour le
+            # correctif (règle utilisable sur fond clair).
+            f'<button type="button" class="chip{" active-tab" if actif else ""}" '
+            f'data-niveau-tab="{cle}" role="tab" aria-selected="{"true" if actif else "false"}" '
+            f'style="border-radius:{"12px 0 0 12px" if i == 0 else ("0 12px 12px 0" if i == len(NIVEAUX)-1 else "0")};">{label}</button>'
+        )
+        panneaux.append(f"""    <div class="card" data-grille-wrap data-niveau-panneau="{cle}" data-cell-px="{cell_px}" data-current-date="{date_du_jour}"
+         style="padding:22px; display:{'flex' if actif else 'none'}; flex-direction:column; gap:16px; align-items:center;">
+      <div style="display:flex; flex-direction:row; align-items:center; justify-content:space-between; width:100%; flex-wrap:wrap; gap:8px;">
+        <div><div class="display" style="font-size:18px; font-weight:700;">Grille {label} ({puzzle['largeur']}×{puzzle['hauteur']})</div>
+        <div data-date-active style="font-size:13px; color:var(--muted);">Aujourd'hui — {_date_lisible(date_du_jour)}</div></div>
       </div>
-      <div style="overflow-x:auto; max-width:100%; padding:4px;">{render_grille_jouable(puzzle, cell_px=32, grid_id=gid)}</div>
-      {render_definitions(puzzle)}
+      {render_barre_outils(gid)}
+      <div class="grille-zone" style="overflow-x:auto; max-width:100%; padding:4px;">{render_grille_jouable(puzzle, cell_px=cell_px, grid_id=gid)}</div>
+      <div class="definitions-zone-wrap" style="width:100%;">{render_definitions(puzzle, gid)}</div>
     </div>""")
+
+    puces_dates = []
+    for d in reversed(dates):
+        actif = d == date_du_jour
+        libelle = "Aujourd'hui" if d == date_du_jour else _date_lisible(d)
+        puces_dates.append(
+            f'<button type="button" class="chip{" active-tab" if actif else ""}" data-date-chip="{d}" '
+            f'style="white-space:nowrap; padding:7px 13px; font-size:13px;">{libelle}</button>'
+        )
 
     h = hero(
         "grilles",
         "Bibliothèque de grilles",
-        "Des grilles de mots croisés générées automatiquement, jouables en ligne ou à imprimer — trois niveaux de difficulté.",
+        "Une nouvelle grille de mots croisés chaque jour, trois niveaux de difficulté — jouable en ligne ou à imprimer, avec l'historique des jours précédents.",
     )
-    main = f"""      <h2 class="section-title">Trois niveaux, mis à jour chaque mois</h2>
-      <p class="section-sub">De nouvelles grilles sont générées automatiquement chaque mois. Jouez directement en ligne ou imprimez-les.</p>
-      <div style="display:flex; flex-direction:column; gap:24px;">{''.join(cartes)}</div>"""
+    main = f"""      <div role="tablist" style="display:flex; flex-direction:row; margin-top:8px;">{''.join(onglets)}</div>
+      <div style="display:flex; flex-direction:row; gap:8px; overflow-x:auto; padding:12px 2px; margin-bottom:4px;" data-no-print>{''.join(puces_dates)}</div>
+      {''.join(panneaux)}"""
     body = hero_page_wrap(h, main + ad_banner_inline(), "grilles")
-    body += GRILLE_JOUABLE_SCRIPT
+    body += KALAMBOUR_GRILLE_SCRIPT
+    body += _GRILLES_PAGE_SCRIPT
     body += seo_block(
         "Des grilles de mots croisés gratuites, à imprimer ou à jouer en ligne",
-        "Ces grilles sont produites par un générateur maison (placement par intersections de mots avec optimisation de compacité), pas copiées d'une source tierce. Trois niveaux sont proposés, du plus accessible (8×8) au plus corsé (15×15), régénérés automatiquement chaque mois pour renouveler le contenu.",
+        "Une nouvelle grille est générée automatiquement chaque jour pour chacun des trois niveaux, à partir du dictionnaire complet de Kalambour (pas d'une source tierce, pas de l'ODS) — voir les jours précédents directement dans la page.",
     )
     schema = combine_schema(
-        webapp_schema("Bibliothèque de grilles", "/bibliotheque-grilles/", "Grilles de mots croisés à jouer en ligne ou à imprimer, trois niveaux de difficulté."),
+        webapp_schema("Bibliothèque de grilles", "/bibliotheque-grilles/", "Grille de mots croisés du jour à jouer en ligne ou à imprimer, trois niveaux de difficulté, avec historique par date."),
         breadcrumb_schema("Bibliothèque de grilles", "/bibliotheque-grilles/"),
     )
     html = page(
-        "/bibliotheque-grilles/", f"Mots croisés gratuits à imprimer et à jouer en ligne | {SITE_NAME}",
-        "Grilles de mots croisés gratuites, générées automatiquement — jouez en ligne ou imprimez. Trois niveaux : facile, moyen, difficile.",
+        "/bibliotheque-grilles/", f"Mots croisés du jour, gratuits, à imprimer ou à jouer en ligne | {SITE_NAME}",
+        "Une nouvelle grille de mots croisés chaque jour, trois niveaux de difficulté — jouez en ligne ou imprimez, avec l'historique des jours précédents.",
         "accueil", "grilles", body, data_tool=None, schema_json=schema,
     )
     write("/bibliotheque-grilles/", html)
 
 
-# ---------------------------------------------------------------------
-# 10. JOUER SUR MOBILE (/jouer-sur-mobile/)
-# ---------------------------------------------------------------------
+_GRILLES_PAGE_SCRIPT = """
+<script>
+(function(){
+  var niveauActif = 'facile';
+  var onglets = document.querySelectorAll('[data-niveau-tab]');
+  var panneaux = document.querySelectorAll('[data-niveau-panneau]');
+  var puces = document.querySelectorAll('[data-date-chip]');
 
-def build_jouer_mobile():
-    with open(os.path.join(ROOT, "assets/data/grille_facile.json"), encoding="utf-8") as f:
-        puzzle = json.load(f)
-    h = hero(
-        "mobile",
-        "Jouer sur mobile",
-        f"La grille facile ({puzzle['largeur']}×{puzzle['hauteur']}), optimisée pour jouer confortablement depuis votre téléphone.",
-    )
-    main = f"""    <div class="card" data-grille-wrap style="padding:20px; display:flex; flex-direction:column; gap:16px; align-items:center;">
-      <div style="display:flex; gap:8px;" data-no-print>
-        <button type="button" class="btn-secondary" data-action="solution" style="padding:9px 16px; font-size:13.5px;">Voir la solution</button>
-        <button type="button" class="btn-secondary" data-action="effacer" style="padding:9px 16px; font-size:13.5px;">Effacer</button>
-      </div>
-      <div style="overflow-x:auto; max-width:100%;">{render_grille_jouable(puzzle, cell_px=38, grid_id="grille-mobile")}</div>
-      {render_definitions(puzzle)}
-    </div>"""
-    body = h + f'  <div class="content-grid page-shell" style="grid-template-columns:1fr;"><div>{main}{ad_banner_inline()}</div></div>'
-    body += GRILLE_JOUABLE_SCRIPT
-    body += seo_block(
-        "Mots croisés en ligne, jouables sur téléphone",
-        "Cette grille utilise de grandes cases tactiles pensées pour un écran de téléphone. Pour un niveau plus difficile, direction la bibliothèque de grilles.",
-        [("Bibliothèque de grilles", "/bibliotheque-grilles/")] + AUTORITES[:2],
-    )
-    schema = combine_schema(
-        webapp_schema("Jouer sur mobile", "/jouer-sur-mobile/", "Grille de mots croisés jouable sur téléphone."),
-        breadcrumb_schema("Jouer sur mobile", "/jouer-sur-mobile/"),
-    )
-    html = page(
-        "/jouer-sur-mobile/", f"Mots croisés en ligne sur mobile — jouer gratuitement | {SITE_NAME}",
-        "Jouez aux mots croisés directement depuis votre téléphone, grande grille tactile et solution en un clic. Gratuit.",
-        "accueil", "mobile", body, data_tool=None, schema_json=schema,
-    )
-    write("/jouer-sur-mobile/", html)
+  function panneauActif(){
+    return document.querySelector('[data-niveau-panneau="' + niveauActif + '"]');
+  }
+
+  function synchroniserPuces(){
+    var courante = panneauActif() ? panneauActif().getAttribute('data-current-date') : null;
+    puces.forEach(function(b){ b.classList.toggle('active-tab', b.getAttribute('data-date-chip') === courante); });
+  }
+
+  onglets.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      niveauActif = btn.getAttribute('data-niveau-tab');
+      onglets.forEach(function(b){
+        var actif = b === btn;
+        b.classList.toggle('active-tab', actif);
+        b.setAttribute('aria-selected', actif ? 'true' : 'false');
+      });
+      panneaux.forEach(function(p){
+        p.style.display = (p.getAttribute('data-niveau-panneau') === niveauActif) ? 'flex' : 'none';
+      });
+      synchroniserPuces();
+    });
+  });
+
+  puces.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var date = btn.getAttribute('data-date-chip');
+      var wrap = panneauActif();
+      if (!wrap) return;
+      var gridId = wrap.querySelector('.grille-jouable').id;
+      var cellPx = parseInt(wrap.getAttribute('data-cell-px'), 10) || 36;
+      var url = '/assets/data/grilles-archive/' + niveauActif + '/' + date + '.json';
+      window.KalambourGrille.charger(url, wrap, gridId, cellPx).then(function(){
+        wrap.setAttribute('data-current-date', date);
+        var label = wrap.querySelector('[data-date-active]');
+        if (label) label.textContent = btn.textContent;
+        synchroniserPuces();
+      }).catch(function(){
+        var label = wrap.querySelector('[data-date-active]');
+        if (label) label.textContent = 'Grille indisponible pour cette date';
+      });
+    });
+  });
+})();
+</script>
+"""
 
 
 # ---------------------------------------------------------------------

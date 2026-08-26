@@ -10,11 +10,15 @@ mots triés du plus long au plus court, première position valide
 trouvée. Suffisant pour une preuve de concept ; une version production
 pourrait chercher la position qui minimise l'empreinte du quadrillage.
 """
+import datetime
 import json
+import os
 import unicodedata
 import sys
 
 from wordbanks import FACILE, MOYEN, DIFFICILE
+from banque_dictionnaire import banque_du_jour, seed_du_jour, _charger_banque_complete
+import generer_dense
 
 
 def normalize(word):
@@ -309,14 +313,78 @@ def render_ascii(puzzle):
     return "\n".join(lines)
 
 
-if __name__ == "__main__":
-    for name, bank in [("facile", FACILE), ("moyen", MOYEN), ("difficile", DIFFICILE)]:
-        puzzle = generate(bank)
-        with open(f"grille_{name}.json", "w", encoding="utf-8") as f:
+# Trois niveaux, une grille par jour — remplace l'ancien tirage unique
+# depuis une petite banque écrite à la main (wordbanks.py, conservé
+# ci-dessus pour compatibilité/tests mais plus utilisé ici). Voir
+# banque_dictionnaire.py pour la source des mots (dictionnaire complet
+# du site x FrequencyWords) et notes-projet.md (26/08/2026) pour le
+# contexte de cette évolution "Bibliothèque de grilles".
+#
+# Réécrit le 26/08/2026 : remplacement de generate_fixed_best() (placement
+# libre par intersections gloutonnes, ~55-65% de remplissage, grandes
+# zones vides non matérialisées) par le générateur "dense" façon vrai
+# mots croisés — voir generer_dense.py (motif de cases noires fixe +
+# remplissage par backtracking). Retour client du 26/08/2026 : quasi pas
+# d'espace vide (noir visible à la place), niveaux renommés Force 1/2/3
+# côté affichage (voir build_pages_prod2.py) — les clés internes
+# facile/moyen/difficile sont conservées ici pour ne pas casser les
+# noms de fichiers, dossiers d'archive et scripts en aval.
+NIVEAUX_QUOTIDIENS = [
+    ("facile", 8, 0, "force1"),
+    ("moyen", 10, 1, "force2"),
+    ("difficile", 13, 2, "force3"),
+]
+
+ICI = os.path.dirname(os.path.abspath(__file__))
+
+
+def generer_jour(date_str):
+    """Génère et écrit les 3 grilles du jour donné ("AAAA-MM-JJ") :
+    - grille_{niveau}.json : "instantané du jour" (écrasé chaque jour,
+      c'est ce fichier que lit le site pour afficher la grille du jour) ;
+    - archives/{niveau}/{date}.json : copie datée, jamais réécrite une
+      fois créée — alimente l'archive/calendrier de la bibliothèque de
+      grilles (voir build_pages_prod2.py, build_grilles())."""
+    # Vivier de mots + index construits UNE FOIS pour les 3 niveaux (la
+    # taille max couvre le niveau le plus difficile) — voir
+    # generer_dense.build_index()/candidates_for() pour le détail du
+    # filtrage par lettres déjà posées aux croisements.
+    pool = _charger_banque_complete(longueur_min=3, longueur_max=13)
+    definitions_par_mot = {}
+    words_by_length = {}
+    for mot, indice in pool:
+        if mot not in definitions_par_mot:
+            definitions_par_mot[mot] = indice
+        words_by_length.setdefault(len(mot), []).append(mot)
+    index = generer_dense.build_index(words_by_length)
+
+    for niveau, taille, idx, cle_motif in NIVEAUX_QUOTIDIENS:
+        motif = generer_dense.MOTIFS[cle_motif]
+        seed = seed_du_jour(date_str, idx)
+        puzzle = generer_dense.generer_niveau(
+            niveau, motif, definitions_par_mot, words_by_length, index, seed
+        )
+        if puzzle is None:
+            print(f"=== {date_str} — {niveau.upper()} : ÉCHEC de remplissage (motif {cle_motif}, "
+                  f"graine {seed}) — grille précédente conservée ===")
+            continue
+        puzzle["date"] = date_str
+        puzzle["niveau"] = niveau
+
+        with open(os.path.join(ICI, f"grille_{niveau}.json"), "w", encoding="utf-8") as f:
             json.dump(puzzle, f, ensure_ascii=False, indent=2)
-        print(f"=== {name.upper()} — {puzzle['largeur']}x{puzzle['hauteur']} — "
-              f"{len(puzzle['mots'])} mots placés, {len(puzzle['mots_non_places'])} non placés ===")
-        if puzzle["mots_non_places"]:
-            print("Non placés :", ", ".join(puzzle["mots_non_places"]))
-        print(render_ascii(puzzle))
-        print()
+
+        dossier_archive = os.path.join(ICI, "archives", niveau)
+        os.makedirs(dossier_archive, exist_ok=True)
+        chemin_archive = os.path.join(dossier_archive, f"{date_str}.json")
+        if not os.path.exists(chemin_archive):  # une grille passée ne change jamais rétroactivement
+            with open(chemin_archive, "w", encoding="utf-8") as f:
+                json.dump(puzzle, f, ensure_ascii=False, separators=(",", ":"))
+
+        print(f"=== {date_str} — {niveau.upper()} ({taille}x{taille}) — "
+              f"{len(puzzle['mots'])} mots placés, {puzzle.get('remplissage', '?')}% rempli ===")
+
+
+if __name__ == "__main__":
+    date_cible = sys.argv[1] if len(sys.argv) > 1 else datetime.date.today().isoformat()
+    generer_jour(date_cible)
