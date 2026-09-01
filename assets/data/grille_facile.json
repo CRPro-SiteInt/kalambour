@@ -3,84 +3,84 @@
   "hauteur": 8,
   "cases": [
     [
-      "Z",
-      "E",
-      "B",
+      "P",
+      "F",
+      "F",
       null,
       "A",
-      "R",
-      "A",
-      "M"
+      "C",
+      "T",
+      "E"
     ],
     [
-      "H",
-      "U",
-      "E",
-      null,
-      "D",
-      "A",
-      "D",
-      "A"
-    ],
-    [
-      "A",
-      "R",
+      "I",
+      "L",
       "A",
       null,
-      "A",
-      "J",
-      "A",
-      "X"
-    ],
-    [
-      "N",
+      "G",
       "O",
-      "U",
-      "S",
+      "R",
+      "D"
+    ],
+    [
+      "G",
+      "O",
+      "N",
       null,
       "E",
       "M",
+      "O",
       "I"
+    ],
+    [
+      "E",
+      "P",
+      "E",
+      "E",
+      null,
+      "P",
+      "U",
+      "T"
     ],
     [
       null,
       null,
       null,
+      "N",
+      "S",
       "A",
-      "P",
-      "U",
       null,
       null
     ],
     [
+      "P",
+      "A",
+      "N",
       "C",
-      "O",
-      "M",
-      "B",
-      "I",
-      "N",
-      "E",
-      "S"
-    ],
-    [
       "A",
-      "N",
-      "G",
-      "L",
-      "A",
-      "I",
-      "S",
+      "R",
+      "T",
       "E"
     ],
     [
+      "A",
+      "B",
+      "E",
       "R",
+      "D",
+      "E",
+      "E",
+      "N"
+    ],
+    [
+      "P",
       "I",
       "R",
       "E",
       null,
       "R",
       "E",
-      "N"
+      "D"
     ]
   ],
   "mots": [
@@ -90,8 +90,8 @@
       "row": 0,
       "col": 0,
       "length": 3,
-      "reponse": "ZEB",
-      "indice": "Variante orthographique de zob."
+      "reponse": "PFF",
+      "indice": "Bruit de souffle."
     },
     {
       "number": 1,
@@ -99,8 +99,8 @@
       "row": 0,
       "col": 0,
       "length": 4,
-      "reponse": "ZHAN",
-      "indice": "Seizième lettre de l’alphabet géorgien, ka."
+      "reponse": "PIGE",
+      "indice": "Longueur arbitraire, prise comme référence, petite branche transformée en instrument de…"
     },
     {
       "number": 2,
@@ -108,8 +108,8 @@
       "row": 0,
       "col": 1,
       "length": 4,
-      "reponse": "EURO",
-      "indice": "Monnaie scripturale depuis 1999 et fiduciaire à partir de 2002, ayant cours dans…"
+      "reponse": "FLOP",
+      "indice": "Échec, en particulier d’œuvre artistique ou d’entreprise commerciale."
     },
     {
       "number": 3,
@@ -117,8 +117,8 @@
       "row": 0,
       "col": 2,
       "length": 4,
-      "reponse": "BEAU",
-      "indice": "Agréable à regarder"
+      "reponse": "FANE",
+      "indice": "Feuille tombée d’un arbre."
     },
     {
       "number": 4,
@@ -126,8 +126,8 @@
       "row": 0,
       "col": 4,
       "length": 4,
-      "reponse": "ARAM",
-      "indice": "Dans la Bible, cinquième fils de Sem, dont les descendants peuplèrent l’Arménie et la…"
+      "reponse": "ACTE",
+      "indice": "Résultat d’une action, opération accomplie."
     },
     {
       "number": 4,
@@ -135,8 +135,8 @@
       "row": 0,
       "col": 4,
       "length": 3,
-      "reponse": "ADA",
-      "indice": "Une des espèces de petits oiseaux passereaux d'Amérique, des genres Knipolegus et…"
+      "reponse": "AGE",
+      "indice": "Pièce de la charrue, horizontale, reliée au tracteur, et qui soutient les pièces…"
     },
     {
       "number": 5,
@@ -144,8 +144,8 @@
       "row": 0,
       "col": 5,
       "length": 8,
-      "reponse": "RAJEUNIR",
-      "indice": "Rendre jeune, rendre la jeunesse."
+      "reponse": "COMPARER",
+      "indice": "Examiner les rapports de ressemblance et de différence entre une chose et une autre…"
     },
     {
       "number": 6,
@@ -153,8 +153,8 @@
       "row": 0,
       "col": 6,
       "length": 4,
-      "reponse": "ADAM",
-      "indice": "Selon la Bible, le premier homme vivant sur la Terre."
+      "reponse": "TROU",
+      "indice": "Ouverture au travers d’un corps ou qui y pénètre à une certaine profondeur."
     },
     {
       "number": 7,
@@ -162,8 +162,8 @@
       "row": 0,
       "col": 7,
       "length": 4,
-      "reponse": "MAXI",
-      "indice": "Maximum."
+      "reponse": "EDIT",
+      "indice": "Ordonnance d’un magistrat, d’un empereur."
     },
     {
       "number": 8,
@@ -171,8 +171,8 @@
       "row": 1,
       "col": 0,
       "length": 3,
-      "reponse": "HUE",
-      "indice": "Mot dont se servent les charretiers pour faire avancer les chevaux, ou pour les faire…"
+      "reponse": "ILA",
+      "indice": "Langue bantoue parlée en Zambie."
     },
     {
       "number": 9,
@@ -180,8 +180,8 @@
       "row": 1,
       "col": 4,
       "length": 4,
-      "reponse": "DADA",
-      "indice": "Cheval."
+      "reponse": "GORD",
+      "indice": "Double rangée de perches plantées dans le fond de la rivière, qui forment un angle, au…"
     },
     {
       "number": 10,
@@ -189,8 +189,8 @@
       "row": 2,
       "col": 0,
       "length": 3,
-      "reponse": "ARA",
-      "indice": "Nom normalisé donné à six genres de grands oiseaux de la famille des psittacidés (e.g."
+      "reponse": "GON",
+      "indice": "Symbole du grade, unité de mesure d’angle plan."
     },
     {
       "number": 11,
@@ -198,8 +198,8 @@
       "row": 2,
       "col": 4,
       "length": 4,
-      "reponse": "AJAX",
-      "indice": "Nom de deux héros de la guerre de Troie :"
+      "reponse": "EMOI",
+      "indice": "Forte inquiétude."
     },
     {
       "number": 12,
@@ -207,8 +207,8 @@
       "row": 3,
       "col": 0,
       "length": 4,
-      "reponse": "NOUS",
-      "indice": "Pronom de la première personne du pluriel, incluant le locuteur ainsi que d’autres…"
+      "reponse": "EPEE",
+      "indice": "Arme offensive et défensive composée d’une longue lame affilée de section triangulaire…"
     },
     {
       "number": 13,
@@ -216,8 +216,8 @@
       "row": 3,
       "col": 3,
       "length": 5,
-      "reponse": "SABLE",
-      "indice": "On en trouve sur la plage"
+      "reponse": "ENCRE",
+      "indice": "Liquide ordinairement noir dont on se sert pour écrire, pour imprimer."
     },
     {
       "number": 14,
@@ -225,8 +225,8 @@
       "row": 3,
       "col": 5,
       "length": 3,
-      "reponse": "EMI",
-      "indice": "Expérience de mort imminente."
+      "reponse": "PUT",
+      "indice": "Onomatopée évoquant le bruit du moteur d’un petit bateau."
     },
     {
       "number": 15,
@@ -234,8 +234,8 @@
       "row": 4,
       "col": 3,
       "length": 3,
-      "reponse": "APU",
-      "indice": "Ensemble des administrations publiques de la France."
+      "reponse": "NSA",
+      "indice": "« Agence de sécurité nationale » américaine."
     },
     {
       "number": 16,
@@ -243,8 +243,8 @@
       "row": 4,
       "col": 4,
       "length": 3,
-      "reponse": "PIA",
-      "indice": "Plante (Tacca leontopetaloides) dont la paille a été utilisée entre autres, pour la…"
+      "reponse": "SAD",
+      "indice": "Trente-huitième sourate du Coran."
     },
     {
       "number": 17,
@@ -252,8 +252,8 @@
       "row": 5,
       "col": 0,
       "length": 8,
-      "reponse": "COMBINES",
-      "indice": "Caleçons longs."
+      "reponse": "PANCARTE",
+      "indice": "Document ancien compilant le résumé d’actes notariaux sur parchemin ou sur papier."
     },
     {
       "number": 17,
@@ -261,8 +261,8 @@
       "row": 5,
       "col": 0,
       "length": 3,
-      "reponse": "CAR",
-      "indice": "Introduit une explication, une raison, une cause à une proposition."
+      "reponse": "PAP",
+      "indice": "Abréviation de port et assurance payés."
     },
     {
       "number": 18,
@@ -270,8 +270,8 @@
       "row": 5,
       "col": 1,
       "length": 3,
-      "reponse": "ONI",
-      "indice": "Créature légendaire humanoïde dotée de cornes, d’un pagne en peau de tigre et d’une…"
+      "reponse": "ABI",
+      "indice": "Interface bas niveau entre les applications et le système d’exploitation."
     },
     {
       "number": 19,
@@ -279,8 +279,8 @@
       "row": 5,
       "col": 2,
       "length": 3,
-      "reponse": "MGR",
-      "indice": "Monseigneur."
+      "reponse": "NER",
+      "indice": "Personne sans emploi (chômeur ou inactif) avant la retraite."
     },
     {
       "number": 20,
@@ -288,8 +288,8 @@
       "row": 5,
       "col": 6,
       "length": 3,
-      "reponse": "ESE",
-      "indice": "Est-sud-est."
+      "reponse": "TEE",
+      "indice": "Support, socle, petit tas de terre facilitant la frappe de la balle."
     },
     {
       "number": 21,
@@ -297,8 +297,8 @@
       "row": 5,
       "col": 7,
       "length": 3,
-      "reponse": "SEN",
-      "indice": "Centième partie du yen."
+      "reponse": "END",
+      "indice": "Essai non destructif."
     },
     {
       "number": 22,
@@ -306,8 +306,8 @@
       "row": 6,
       "col": 0,
       "length": 8,
-      "reponse": "ANGLAISE",
-      "indice": "Danse d’un mouvement très vif."
+      "reponse": "ABERDEEN",
+      "indice": "Autorité unitaire et ville d’Écosse."
     },
     {
       "number": 23,
@@ -315,8 +315,8 @@
       "row": 7,
       "col": 0,
       "length": 4,
-      "reponse": "RIRE",
-      "indice": "Manifester sa joie à voix haute"
+      "reponse": "PIRE",
+      "indice": "Comparatif de mauvais."
     },
     {
       "number": 24,
@@ -324,12 +324,12 @@
       "row": 7,
       "col": 5,
       "length": 3,
-      "reponse": "REN",
-      "indice": "Le nom, une des parties de l’âme humaine."
+      "reponse": "RED",
+      "indice": "Algorithme de gestion de queue, permettant d'éviter la congestion dans un réseau…"
     }
   ],
   "mots_non_places": [],
   "remplissage": 84.4,
   "niveau": "facile",
-  "date": "2026-08-26"
+  "date": "2026-09-01"
 }
