@@ -3,84 +3,84 @@
   "hauteur": 8,
   "cases": [
     [
-      "P",
-      "F",
-      "F",
-      null,
-      "A",
-      "C",
-      "T",
-      "E"
-    ],
-    [
-      "I",
-      "L",
-      "A",
-      null,
-      "G",
       "O",
-      "R",
-      "D"
-    ],
-    [
-      "G",
-      "O",
-      "N",
-      null,
-      "E",
       "M",
-      "O",
-      "I"
+      "S",
+      null,
+      "A",
+      "B",
+      "D",
+      "O"
     ],
     [
       "E",
+      "E",
       "P",
+      null,
+      "V",
+      "O",
       "E",
-      "E",
+      "U"
+    ],
+    [
+      "U",
+      "N",
+      "O",
       null,
       "P",
       "U",
-      "T"
+      "C",
+      "E"
+    ],
+    [
+      "F",
+      "U",
+      "T",
+      "E",
+      null,
+      "S",
+      "U",
+      "P"
     ],
     [
       null,
       null,
       null,
-      "N",
+      "L",
+      "O",
       "S",
-      "A",
       null,
       null
     ],
     [
-      "P",
-      "A",
-      "N",
+      "S",
       "C",
-      "A",
-      "R",
-      "T",
+      "O",
+      "L",
+      "I",
+      "O",
+      "S",
       "E"
     ],
     [
-      "A",
-      "B",
+      "M",
       "E",
-      "R",
       "D",
       "E",
-      "E",
+      "L",
+      "L",
+      "I",
       "N"
     ],
     [
-      "P",
-      "I",
-      "R",
+      "S",
       "E",
+      "E",
+      "N",
       null,
-      "R",
       "E",
-      "D"
+      "S",
+      "T"
     ]
   ],
   "mots": [
@@ -90,8 +90,8 @@
       "row": 0,
       "col": 0,
       "length": 3,
-      "reponse": "PFF",
-      "indice": "Bruit de souffle."
+      "reponse": "OMS",
+      "indice": "Organisation mondiale de la santé."
     },
     {
       "number": 1,
@@ -99,8 +99,8 @@
       "row": 0,
       "col": 0,
       "length": 4,
-      "reponse": "PIGE",
-      "indice": "Longueur arbitraire, prise comme référence, petite branche transformée en instrument de…"
+      "reponse": "OEUF",
+      "indice": "On le cuit au plat ou à la coque"
     },
     {
       "number": 2,
@@ -108,8 +108,8 @@
       "row": 0,
       "col": 1,
       "length": 4,
-      "reponse": "FLOP",
-      "indice": "Échec, en particulier d’œuvre artistique ou d’entreprise commerciale."
+      "reponse": "MENU",
+      "indice": "Qui est délié, qui a peu de volume, peu de grosseur."
     },
     {
       "number": 3,
@@ -117,8 +117,8 @@
       "row": 0,
       "col": 2,
       "length": 4,
-      "reponse": "FANE",
-      "indice": "Feuille tombée d’un arbre."
+      "reponse": "SPOT",
+      "indice": "Site particulièrement favorable, par exemple pour exercer un sport de plein air, plus…"
     },
     {
       "number": 4,
@@ -126,8 +126,8 @@
       "row": 0,
       "col": 4,
       "length": 4,
-      "reponse": "ACTE",
-      "indice": "Résultat d’une action, opération accomplie."
+      "reponse": "ABDO",
+      "indice": "Muscle abdominal."
     },
     {
       "number": 4,
@@ -135,8 +135,8 @@
       "row": 0,
       "col": 4,
       "length": 3,
-      "reponse": "AGE",
-      "indice": "Pièce de la charrue, horizontale, reliée au tracteur, et qui soutient les pièces…"
+      "reponse": "AVP",
+      "indice": "En France, phase d’un projet de construction selon la loi MOP, dite d’avant-projet."
     },
     {
       "number": 5,
@@ -144,8 +144,8 @@
       "row": 0,
       "col": 5,
       "length": 8,
-      "reponse": "COMPARER",
-      "indice": "Examiner les rapports de ressemblance et de différence entre une chose et une autre…"
+      "reponse": "BOUSSOLE",
+      "indice": "Cadran au centre duquel est fixée une aiguille qui tourne librement sur son pivot et dont…"
     },
     {
       "number": 6,
@@ -153,8 +153,8 @@
       "row": 0,
       "col": 6,
       "length": 4,
-      "reponse": "TROU",
-      "indice": "Ouverture au travers d’un corps ou qui y pénètre à une certaine profondeur."
+      "reponse": "DECU",
+      "indice": "Qui a éprouvé une déception, qui a subi une situation inférieure à ses attentes."
     },
     {
       "number": 7,
@@ -162,8 +162,8 @@
       "row": 0,
       "col": 7,
       "length": 4,
-      "reponse": "EDIT",
-      "indice": "Ordonnance d’un magistrat, d’un empereur."
+      "reponse": "OUEP",
+      "indice": "Variante orthographique de ouaip."
     },
     {
       "number": 8,
@@ -171,8 +171,8 @@
       "row": 1,
       "col": 0,
       "length": 3,
-      "reponse": "ILA",
-      "indice": "Langue bantoue parlée en Zambie."
+      "reponse": "EEP",
+      "indice": "Abréviation de étude électrophysiologique."
     },
     {
       "number": 9,
@@ -180,8 +180,8 @@
       "row": 1,
       "col": 4,
       "length": 4,
-      "reponse": "GORD",
-      "indice": "Double rangée de perches plantées dans le fond de la rivière, qui forment un angle, au…"
+      "reponse": "VOEU",
+      "indice": "Promesse faite à Dieu, par laquelle on s’engage à quelque œuvre que l’on croit lui être…"
     },
     {
       "number": 10,
@@ -189,8 +189,8 @@
       "row": 2,
       "col": 0,
       "length": 3,
-      "reponse": "GON",
-      "indice": "Symbole du grade, unité de mesure d’angle plan."
+      "reponse": "UNO",
+      "indice": "Jeu de cartes édité par Mattel se jouant avec des cartes spéciales."
     },
     {
       "number": 11,
@@ -198,8 +198,8 @@
       "row": 2,
       "col": 4,
       "length": 4,
-      "reponse": "EMOI",
-      "indice": "Forte inquiétude."
+      "reponse": "PUCE",
+      "indice": "Insecte ectoparasite de très petite taille se déplaçant par saut et qui se nourrit du…"
     },
     {
       "number": 12,
@@ -207,8 +207,8 @@
       "row": 3,
       "col": 0,
       "length": 4,
-      "reponse": "EPEE",
-      "indice": "Arme offensive et défensive composée d’une longue lame affilée de section triangulaire…"
+      "reponse": "FUTE",
+      "indice": "Pantalon."
     },
     {
       "number": 13,
@@ -216,8 +216,8 @@
       "row": 3,
       "col": 3,
       "length": 5,
-      "reponse": "ENCRE",
-      "indice": "Liquide ordinairement noir dont on se sert pour écrire, pour imprimer."
+      "reponse": "ELLEN",
+      "indice": "Hélène."
     },
     {
       "number": 14,
@@ -225,8 +225,8 @@
       "row": 3,
       "col": 5,
       "length": 3,
-      "reponse": "PUT",
-      "indice": "Onomatopée évoquant le bruit du moteur d’un petit bateau."
+      "reponse": "SUP",
+      "indice": "Super"
     },
     {
       "number": 15,
@@ -234,8 +234,8 @@
       "row": 4,
       "col": 3,
       "length": 3,
-      "reponse": "NSA",
-      "indice": "« Agence de sécurité nationale » américaine."
+      "reponse": "LOS",
+      "indice": "Louange, employé parfois dans le style recherché ou plaisant."
     },
     {
       "number": 16,
@@ -243,8 +243,8 @@
       "row": 4,
       "col": 4,
       "length": 3,
-      "reponse": "SAD",
-      "indice": "Trente-huitième sourate du Coran."
+      "reponse": "OIL",
+      "indice": "Ancienne forme du mot oui dans le nord de la France."
     },
     {
       "number": 17,
@@ -252,8 +252,8 @@
       "row": 5,
       "col": 0,
       "length": 8,
-      "reponse": "PANCARTE",
-      "indice": "Document ancien compilant le résumé d’actes notariaux sur parchemin ou sur papier."
+      "reponse": "SCOLIOSE",
+      "indice": "Déviation latérale de la colonne vertébrale."
     },
     {
       "number": 17,
@@ -261,8 +261,8 @@
       "row": 5,
       "col": 0,
       "length": 3,
-      "reponse": "PAP",
-      "indice": "Abréviation de port et assurance payés."
+      "reponse": "SMS",
+      "indice": "Court message écrit qu’on peut envoyer de téléphone mobile à téléphone mobile."
     },
     {
       "number": 18,
@@ -270,8 +270,8 @@
       "row": 5,
       "col": 1,
       "length": 3,
-      "reponse": "ABI",
-      "indice": "Interface bas niveau entre les applications et le système d’exploitation."
+      "reponse": "CEE",
+      "indice": "La Communauté économique européenne, l’ancienne union économique fondée par le Traité de…"
     },
     {
       "number": 19,
@@ -279,8 +279,8 @@
       "row": 5,
       "col": 2,
       "length": 3,
-      "reponse": "NER",
-      "indice": "Personne sans emploi (chômeur ou inactif) avant la retraite."
+      "reponse": "ODE",
+      "indice": "Poème lyrique (donc chanté) composé d’une strophe, d’une antistrophe et d’une épode, que…"
     },
     {
       "number": 20,
@@ -288,8 +288,8 @@
       "row": 5,
       "col": 6,
       "length": 3,
-      "reponse": "TEE",
-      "indice": "Support, socle, petit tas de terre facilitant la frappe de la balle."
+      "reponse": "SIS",
+      "indice": "Qui est situé."
     },
     {
       "number": 21,
@@ -297,8 +297,8 @@
       "row": 5,
       "col": 7,
       "length": 3,
-      "reponse": "END",
-      "indice": "Essai non destructif."
+      "reponse": "ENT",
+      "indice": "Espace numérique de travail."
     },
     {
       "number": 22,
@@ -306,8 +306,8 @@
       "row": 6,
       "col": 0,
       "length": 8,
-      "reponse": "ABERDEEN",
-      "indice": "Autorité unitaire et ville d’Écosse."
+      "reponse": "MEDELLIN",
+      "indice": "Variante orthographique de Medellín ; ville de Colombie, capitale de l’Antioquia."
     },
     {
       "number": 23,
@@ -315,8 +315,8 @@
       "row": 7,
       "col": 0,
       "length": 4,
-      "reponse": "PIRE",
-      "indice": "Comparatif de mauvais."
+      "reponse": "SEEN",
+      "indice": "Habitant de Sceaux, commune française située dans le département de l’Yonne."
     },
     {
       "number": 24,
@@ -324,12 +324,12 @@
       "row": 7,
       "col": 5,
       "length": 3,
-      "reponse": "RED",
-      "indice": "Algorithme de gestion de queue, permettant d'éviter la congestion dans un réseau…"
+      "reponse": "EST",
+      "indice": "Région située à l’est (en particulier à l’est d’un pays), le contexte permettant de…"
     }
   ],
   "mots_non_places": [],
   "remplissage": 84.4,
   "niveau": "facile",
-  "date": "2026-09-01"
+  "date": "2026-10-01"
 }

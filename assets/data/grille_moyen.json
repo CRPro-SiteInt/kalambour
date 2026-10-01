@@ -3,124 +3,124 @@
   "hauteur": 10,
   "cases": [
     [
-      "A",
-      "R",
-      "A",
+      "P",
+      "L",
+      "E",
       "B",
       "E",
       null,
-      "A",
-      "R",
-      "C",
-      "Y"
-    ],
-    [
-      "P",
-      "O",
+      "V",
       "I",
-      "L",
-      "U",
-      null,
-      "L",
-      "O",
-      "N",
+      "V",
       "E"
     ],
     [
-      "E",
-      "S",
-      "S",
-      "O",
-      "R",
-      null,
-      "L",
-      "Y",
+      "C",
+      "A",
       "N",
-      "N"
+      "A",
+      "L",
+      null,
+      "E",
+      "D",
+      "I",
+      "T"
+    ],
+    [
+      "V",
+      "I",
+      "D",
+      "E",
+      "O",
+      null,
+      "T",
+      "A",
+      "L",
+      "C"
     ],
     [
       null,
       null,
       null,
-      "C",
-      "O",
-      "C",
-      "U",
+      "R",
+      "I",
+      "V",
+      "E",
       null,
       null,
       null
     ],
     [
       "S",
-      "A",
-      "D",
+      "R",
+      "U",
       null,
-      "P",
+      "S",
       "O",
-      "M",
-      "P",
-      "E",
+      "R",
+      "T",
+      "I",
       "R"
     ],
     [
-      "A",
-      "V",
-      "A",
-      null,
-      "E",
-      "M",
-      "E",
-      "U",
-      "T",
-      "E"
-    ],
-    [
-      "B",
-      "O",
-      "L",
-      "T",
-      null,
-      "B",
-      "E",
-      "T",
-      "O",
-      "N"
-    ],
-    [
-      "R",
-      "I",
-      "T",
-      "U",
-      "E",
-      "L",
-      null,
-      "A",
-      "I",
-      "N"
-    ],
-    [
-      "E",
-      "N",
-      "O",
-      "R",
-      "M",
-      "E",
-      null,
-      "I",
-      "L",
-      "E"
-    ],
-    [
-      null,
-      "E",
-      "N",
       "C",
+      "O",
+      "R",
+      null,
+      "E",
+      "L",
       "A",
-      "S",
+      "I",
+      "N",
+      "E"
+    ],
+    [
+      "O",
+      "U",
+      "E",
+      "P",
+      null,
+      "I",
+      "N",
+      "T",
+      "E",
+      "L"
+    ],
+    [
+      "U",
+      "L",
+      "T",
+      "I",
+      "M",
+      "E",
+      null,
+      "A",
+      "D",
+      "A"
+    ],
+    [
+      "T",
+      "E",
+      "R",
+      "N",
+      "I",
+      "R",
       null,
       "N",
+      "I",
+      "X"
+    ],
+    [
+      null,
+      "R",
       "E",
-      "S"
+      "G",
+      "N",
+      "E",
+      null,
+      "E",
+      "T",
+      "E"
     ]
   ],
   "mots": [
@@ -130,8 +130,8 @@
       "row": 0,
       "col": 0,
       "length": 5,
-      "reponse": "ARABE",
-      "indice": "Langue sémitique originaire de la péninsule Arabique, aujourd’hui parlée sous différentes…"
+      "reponse": "PLEBE",
+      "indice": "(Antiquité) Dans l'ancienne Rome, ensemble des classes du peuple romain qui…"
     },
     {
       "number": 1,
@@ -139,8 +139,8 @@
       "row": 0,
       "col": 0,
       "length": 3,
-      "reponse": "APE",
-      "indice": "Triporteur à moteur."
+      "reponse": "PCV",
+      "indice": "Appel téléphonique où l'appelé accepte de payer à la place de l'appelant."
     },
     {
       "number": 2,
@@ -148,8 +148,8 @@
       "row": 0,
       "col": 1,
       "length": 3,
-      "reponse": "ROS",
-      "indice": "Peigne placé sur le battant du métier à tisser et entre les dents duquel on place un ou…"
+      "reponse": "LAI",
+      "indice": "Laïc, convers."
     },
     {
       "number": 3,
@@ -157,8 +157,8 @@
       "row": 0,
       "col": 2,
       "length": 3,
-      "reponse": "AIS",
-      "indice": "Planche de bois."
+      "reponse": "END",
+      "indice": "Essai non destructif."
     },
     {
       "number": 4,
@@ -166,8 +166,8 @@
       "row": 0,
       "col": 3,
       "length": 4,
-      "reponse": "BLOC",
-      "indice": "Masse, gros morceau d’une matière pesante et dure, telle que la pierre, le marbre, le fer…"
+      "reponse": "BAER",
+      "indice": "nom de famille alsacien ou mosellan."
     },
     {
       "number": 5,
@@ -175,8 +175,8 @@
       "row": 0,
       "col": 4,
       "length": 6,
-      "reponse": "EUROPE",
-      "indice": "Princesse, fille d’Agénor, aimée de Zeus, et qu’il a enlevée après s’être transformé en…"
+      "reponse": "ELOISE",
+      "indice": "Variante typographique de Éloise."
     },
     {
       "number": 6,
@@ -184,8 +184,8 @@
       "row": 0,
       "col": 6,
       "length": 4,
-      "reponse": "ARCY",
-      "indice": "Synonyme de Arcy-Sainte-Restitue."
+      "reponse": "VIVE",
+      "indice": "Type de poisson osseux marin de l’Atlantique, de la Méditerranée et de la mer Noire, qui…"
     },
     {
       "number": 6,
@@ -193,8 +193,8 @@
       "row": 0,
       "col": 6,
       "length": 7,
-      "reponse": "ALLUMEE",
-      "indice": "Folle furieuse."
+      "reponse": "VETERAN",
+      "indice": "Ancien soldat."
     },
     {
       "number": 7,
@@ -202,8 +202,8 @@
       "row": 0,
       "col": 7,
       "length": 3,
-      "reponse": "ROY",
-      "indice": "De 1694 à 1740 : Orthographe de l’Académie française de roi."
+      "reponse": "IDA",
+      "indice": "Mont de Crète, berceau de Zeus."
     },
     {
       "number": 8,
@@ -211,8 +211,8 @@
       "row": 0,
       "col": 8,
       "length": 3,
-      "reponse": "CNN",
-      "indice": "Cable News Network, chaîne de télévision d'information en continu américaine fondée en…"
+      "reponse": "VIL",
+      "indice": "Qui est bas, abject, méprisable."
     },
     {
       "number": 9,
@@ -220,8 +220,8 @@
       "row": 0,
       "col": 9,
       "length": 3,
-      "reponse": "YEN",
-      "indice": "Monnaie du Japon."
+      "reponse": "ETC",
+      "indice": "Variante orthographique de etc."
     },
     {
       "number": 10,
@@ -229,8 +229,8 @@
       "row": 1,
       "col": 0,
       "length": 5,
-      "reponse": "POILU",
-      "indice": "Qui est velu, couvert de poils."
+      "reponse": "CANAL",
+      "indice": "Conduit par où l’eau passe."
     },
     {
       "number": 11,
@@ -238,8 +238,8 @@
       "row": 1,
       "col": 6,
       "length": 4,
-      "reponse": "LONE",
-      "indice": "Tout bras du Rhône en voie de colmatage, soit naturellement, soit par suite d’un barrage…"
+      "reponse": "EDIT",
+      "indice": "Ordonnance d’un magistrat, d’un empereur."
     },
     {
       "number": 12,
@@ -247,8 +247,8 @@
       "row": 2,
       "col": 0,
       "length": 5,
-      "reponse": "ESSOR",
-      "indice": "Action de l’oiseau qui s’élance pour prendre son vol."
+      "reponse": "VIDEO",
+      "indice": "Ensemble des techniques permettant la visualisation ou l’enregistrement d’images animées…"
     },
     {
       "number": 13,
@@ -256,8 +256,8 @@
       "row": 2,
       "col": 6,
       "length": 4,
-      "reponse": "LYNN",
-      "indice": "Nom d’usage de King’s Lynn."
+      "reponse": "TALC",
+      "indice": "Minéral composé de silicate de magnésium doublement hydroxylé de la famille des…"
     },
     {
       "number": 14,
@@ -265,8 +265,8 @@
       "row": 3,
       "col": 3,
       "length": 4,
-      "reponse": "COCU",
-      "indice": "Dupé, trompé, victime d’infidélité conjugale."
+      "reponse": "RIVE",
+      "indice": "Terrain qui borde un fleuve, une rivière, un étang ou un lac."
     },
     {
       "number": 15,
@@ -274,8 +274,8 @@
       "row": 3,
       "col": 5,
       "length": 7,
-      "reponse": "COMBLES",
-      "indice": "Logements situés immédiatement sous le toit d’un édifice."
+      "reponse": "VOLIERE",
+      "indice": "Sorte de grande cage où l’on nourrit des oiseaux pour son plaisir."
     },
     {
       "number": 16,
@@ -283,8 +283,8 @@
       "row": 4,
       "col": 0,
       "length": 3,
-      "reponse": "SAD",
-      "indice": "Trente-huitième sourate du Coran."
+      "reponse": "SRU",
+      "indice": "Loi française relative à la solidarité et au renouvellement urbains, demandant notamment…"
     },
     {
       "number": 16,
@@ -292,8 +292,8 @@
       "row": 4,
       "col": 0,
       "length": 5,
-      "reponse": "SABRE",
-      "indice": "Arme blanche dont la lame, longue et à un seul tranchant, est droite ou présente une…"
+      "reponse": "SCOUT",
+      "indice": "Personne qui pratique le scoutisme."
     },
     {
       "number": 17,
@@ -301,8 +301,8 @@
       "row": 4,
       "col": 1,
       "length": 6,
-      "reponse": "AVOINE",
-      "indice": "Nom usuel de Avena sativa, plante herbacée annuelle, de la famille des Poaceae (Poacées)…"
+      "reponse": "ROULER",
+      "indice": "Faire avancer une chose en la faisant tourner sur elle-même."
     },
     {
       "number": 18,
@@ -310,8 +310,8 @@
       "row": 4,
       "col": 2,
       "length": 6,
-      "reponse": "DALTON",
-      "indice": "Unité de masse atomique unifiée."
+      "reponse": "URETRE",
+      "indice": "Canal par où sort l’urine."
     },
     {
       "number": 19,
@@ -319,8 +319,8 @@
       "row": 4,
       "col": 4,
       "length": 6,
-      "reponse": "POMPER",
-      "indice": "Élever, attirer, puiser un liquide ou un gaz avec une pompe."
+      "reponse": "SORTIR",
+      "indice": "Passer du dedans vers le dehors."
     },
     {
       "number": 20,
@@ -328,8 +328,8 @@
       "row": 4,
       "col": 7,
       "length": 6,
-      "reponse": "PUTAIN",
-      "indice": "Prostituée."
+      "reponse": "TITANE",
+      "indice": "Élément chimique de symbole chimique Ti et de numéro atomique 22 de la série des métaux…"
     },
     {
       "number": 21,
@@ -337,8 +337,8 @@
       "row": 4,
       "col": 8,
       "length": 6,
-      "reponse": "ETOILE",
-      "indice": "Point lumineux dans le ciel nocturne"
+      "reponse": "INEDIT",
+      "indice": "Qui n’a pas été imprimé ou publié."
     },
     {
       "number": 22,
@@ -346,8 +346,8 @@
       "row": 4,
       "col": 9,
       "length": 6,
-      "reponse": "RENNES",
-      "indice": "Commune, ville et chef-lieu de département français, situé dans le département…"
+      "reponse": "RELAXE",
+      "indice": "Relaxant."
     },
     {
       "number": 23,
@@ -355,8 +355,8 @@
       "row": 5,
       "col": 0,
       "length": 3,
-      "reponse": "AVA",
-      "indice": "Kava."
+      "reponse": "COR",
+      "indice": "(toujours employé au pluriel) Andouiller."
     },
     {
       "number": 24,
@@ -364,8 +364,8 @@
       "row": 5,
       "col": 4,
       "length": 6,
-      "reponse": "EMEUTE",
-      "indice": "Tumulte séditieux, soulèvement dans la foule."
+      "reponse": "ELAINE",
+      "indice": "Variante de Élaine."
     },
     {
       "number": 25,
@@ -373,8 +373,8 @@
       "row": 6,
       "col": 0,
       "length": 4,
-      "reponse": "BOLT",
-      "indice": "Boulon."
+      "reponse": "OUEP",
+      "indice": "Variante orthographique de ouaip."
     },
     {
       "number": 26,
@@ -382,8 +382,8 @@
       "row": 6,
       "col": 3,
       "length": 4,
-      "reponse": "TURC",
-      "indice": "Relatif aux Turcs, à la Turquie."
+      "reponse": "PING",
+      "indice": "Onomatopée."
     },
     {
       "number": 27,
@@ -391,8 +391,8 @@
       "row": 6,
       "col": 5,
       "length": 5,
-      "reponse": "BETON",
-      "indice": "Matériau de construction fabriqué grâce à un mélange d’agrégats divers (gravier, sable…"
+      "reponse": "INTEL",
+      "indice": "Entreprise multinationale dont les processeurs sont omniprésents."
     },
     {
       "number": 28,
@@ -400,8 +400,8 @@
       "row": 7,
       "col": 0,
       "length": 6,
-      "reponse": "RITUEL",
-      "indice": "Cérémonie répétée selon un ordre précis"
+      "reponse": "ULTIME",
+      "indice": "Dernier, final, le plus éloigné possible."
     },
     {
       "number": 29,
@@ -409,8 +409,8 @@
       "row": 7,
       "col": 4,
       "length": 3,
-      "reponse": "EMA",
-      "indice": "Agence européenne des médicaments, qui dépend de l’Union européenne."
+      "reponse": "MIN",
+      "indice": "Langue chinoise parlées dans les provinces du Fujian, du Guangdong et du Hainan."
     },
     {
       "number": 30,
@@ -418,8 +418,8 @@
       "row": 7,
       "col": 7,
       "length": 3,
-      "reponse": "AIN",
-      "indice": "ע, seizième lettre des alphabets hébreu et phénicien."
+      "reponse": "ADA",
+      "indice": "Une des espèces de petits oiseaux passereaux d'Amérique, des genres Knipolegus et…"
     },
     {
       "number": 31,
@@ -427,8 +427,8 @@
       "row": 8,
       "col": 0,
       "length": 6,
-      "reponse": "ENORME",
-      "indice": "Très grand; qui excède de beaucoup la grandeur ou la grosseur habituelle."
+      "reponse": "TERNIR",
+      "indice": "Rendre terne, ôter ou diminuer l’éclat de quelque chose."
     },
     {
       "number": 32,
@@ -436,8 +436,8 @@
       "row": 8,
       "col": 7,
       "length": 3,
-      "reponse": "ILE",
-      "indice": "Espace de terre entouré d’eau de tous côtés."
+      "reponse": "NIX",
+      "indice": "Rien, nenni."
     },
     {
       "number": 33,
@@ -445,8 +445,8 @@
       "row": 9,
       "col": 1,
       "length": 5,
-      "reponse": "ENCAS",
-      "indice": "Repas léger."
+      "reponse": "REGNE",
+      "indice": "Exercice du pouvoir souverain dans un État monarchique."
     },
     {
       "number": 34,
@@ -454,12 +454,12 @@
       "row": 9,
       "col": 7,
       "length": 3,
-      "reponse": "NES",
-      "indice": "Boisson faite avec du café instantané soluble."
+      "reponse": "ETE",
+      "indice": "Saison la plus chaude"
     }
   ],
   "mots_non_places": [],
   "remplissage": 84.0,
   "niveau": "moyen",
-  "date": "2026-09-01"
+  "date": "2026-10-01"
 }
