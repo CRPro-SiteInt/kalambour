@@ -3,84 +3,84 @@
   "hauteur": 8,
   "cases": [
     [
-      "O",
-      "M",
-      "S",
+      "V",
+      "E",
+      "R",
       null,
-      "A",
-      "B",
-      "D",
-      "O"
+      "K",
+      "I",
+      "S",
+      "S"
     ],
     [
       "E",
-      "E",
-      "P",
+      "T",
+      "A",
       null,
-      "V",
+      "I",
+      "N",
+      "C",
+      "A"
+    ],
+    [
+      "L",
       "O",
-      "E",
-      "U"
+      "K",
+      null,
+      "T",
+      "S",
+      "A",
+      "R"
     ],
     [
       "U",
       "N",
+      "I",
+      "R",
+      null,
       "O",
-      null,
-      "P",
-      "U",
-      "C",
-      "E"
-    ],
-    [
-      "F",
-      "U",
-      "T",
-      "E",
-      null,
-      "S",
-      "U",
-      "P"
+      "N",
+      "I"
     ],
     [
       null,
       null,
       null,
-      "L",
-      "O",
-      "S",
+      "I",
+      "B",
+      "M",
       null,
       null
     ],
     [
-      "S",
+      "A",
+      "N",
+      "A",
       "C",
       "O",
-      "L",
-      "I",
-      "O",
-      "S",
-      "E"
+      "N",
+      "D",
+      "A"
     ],
     [
       "M",
-      "E",
-      "D",
-      "E",
-      "L",
+      "O",
+      "B",
+      "I",
       "L",
       "I",
-      "N"
+      "E",
+      "R"
     ],
     [
-      "S",
       "E",
-      "E",
+      "R",
+      "I",
       "N",
       null,
       "E",
       "S",
-      "T"
+      "E"
     ]
   ],
   "mots": [
@@ -90,8 +90,8 @@
       "row": 0,
       "col": 0,
       "length": 3,
-      "reponse": "OMS",
-      "indice": "Organisation mondiale de la santé."
+      "reponse": "VER",
+      "indice": "Animal invertébré long et rampant au corps cylindrique, sans membres articulés et qui…"
     },
     {
       "number": 1,
@@ -99,8 +99,8 @@
       "row": 0,
       "col": 0,
       "length": 4,
-      "reponse": "OEUF",
-      "indice": "On le cuit au plat ou à la coque"
+      "reponse": "VELU",
+      "indice": "Qui est couvert de poils."
     },
     {
       "number": 2,
@@ -108,8 +108,8 @@
       "row": 0,
       "col": 1,
       "length": 4,
-      "reponse": "MENU",
-      "indice": "Qui est délié, qui a peu de volume, peu de grosseur."
+      "reponse": "ETON",
+      "indice": "Langue bantoue issue du groupe linguistique pahouin (fang-beti-bulu) parlée dans le…"
     },
     {
       "number": 3,
@@ -117,8 +117,8 @@
       "row": 0,
       "col": 2,
       "length": 4,
-      "reponse": "SPOT",
-      "indice": "Site particulièrement favorable, par exemple pour exercer un sport de plein air, plus…"
+      "reponse": "RAKI",
+      "indice": "Eau-de-vie généralement parfumée à l’anis des pays du Proche-Orient (arak en Syrie et…"
     },
     {
       "number": 4,
@@ -126,8 +126,8 @@
       "row": 0,
       "col": 4,
       "length": 4,
-      "reponse": "ABDO",
-      "indice": "Muscle abdominal."
+      "reponse": "KISS",
+      "indice": "Baiser, bisou."
     },
     {
       "number": 4,
@@ -135,8 +135,8 @@
       "row": 0,
       "col": 4,
       "length": 3,
-      "reponse": "AVP",
-      "indice": "En France, phase d’un projet de construction selon la loi MOP, dite d’avant-projet."
+      "reponse": "KIT",
+      "indice": "Panoplie, fourniment, attirail, équipement."
     },
     {
       "number": 5,
@@ -144,8 +144,8 @@
       "row": 0,
       "col": 5,
       "length": 8,
-      "reponse": "BOUSSOLE",
-      "indice": "Cadran au centre duquel est fixée une aiguille qui tourne librement sur son pivot et dont…"
+      "reponse": "INSOMNIE",
+      "indice": "Absence involontaire de sommeil, difficulté à s’endormir."
     },
     {
       "number": 6,
@@ -153,8 +153,8 @@
       "row": 0,
       "col": 6,
       "length": 4,
-      "reponse": "DECU",
-      "indice": "Qui a éprouvé une déception, qui a subi une situation inférieure à ses attentes."
+      "reponse": "SCAN",
+      "indice": "Scanner, examen radiologique."
     },
     {
       "number": 7,
@@ -162,8 +162,8 @@
       "row": 0,
       "col": 7,
       "length": 4,
-      "reponse": "OUEP",
-      "indice": "Variante orthographique de ouaip."
+      "reponse": "SARI",
+      "indice": "Robe traditionnelle des femmes en Inde."
     },
     {
       "number": 8,
@@ -171,8 +171,8 @@
       "row": 1,
       "col": 0,
       "length": 3,
-      "reponse": "EEP",
-      "indice": "Abréviation de étude électrophysiologique."
+      "reponse": "ETA",
+      "indice": "Organisation terroriste armée basque indépendantiste d’inspiration marxiste."
     },
     {
       "number": 9,
@@ -180,8 +180,8 @@
       "row": 1,
       "col": 4,
       "length": 4,
-      "reponse": "VOEU",
-      "indice": "Promesse faite à Dieu, par laquelle on s’engage à quelque œuvre que l’on croit lui être…"
+      "reponse": "INCA",
+      "indice": "Relatif à l’histoire et à la civilisation précolombienne des Incas."
     },
     {
       "number": 10,
@@ -189,8 +189,8 @@
       "row": 2,
       "col": 0,
       "length": 3,
-      "reponse": "UNO",
-      "indice": "Jeu de cartes édité par Mattel se jouant avec des cartes spéciales."
+      "reponse": "LOK",
+      "indice": "Variante de looch."
     },
     {
       "number": 11,
@@ -198,8 +198,8 @@
       "row": 2,
       "col": 4,
       "length": 4,
-      "reponse": "PUCE",
-      "indice": "Insecte ectoparasite de très petite taille se déplaçant par saut et qui se nourrit du…"
+      "reponse": "TSAR",
+      "indice": "Nom donné aux anciens souverains de la Bulgarie (de 893 à 1422 et de 1908 à 1946), de la…"
     },
     {
       "number": 12,
@@ -207,8 +207,8 @@
       "row": 3,
       "col": 0,
       "length": 4,
-      "reponse": "FUTE",
-      "indice": "Pantalon."
+      "reponse": "UNIR",
+      "indice": "Joindre deux ou plusieurs choses ensemble."
     },
     {
       "number": 13,
@@ -216,8 +216,8 @@
       "row": 3,
       "col": 3,
       "length": 5,
-      "reponse": "ELLEN",
-      "indice": "Hélène."
+      "reponse": "RICIN",
+      "indice": "Grande plante vivace arborescente de la famille des Euphorbiacées, à fleurs unisexuelles…"
     },
     {
       "number": 14,
@@ -225,8 +225,8 @@
       "row": 3,
       "col": 5,
       "length": 3,
-      "reponse": "SUP",
-      "indice": "Super"
+      "reponse": "ONI",
+      "indice": "Créature légendaire humanoïde dotée de cornes, d’un pagne en peau de tigre et d’une…"
     },
     {
       "number": 15,
@@ -234,8 +234,8 @@
       "row": 4,
       "col": 3,
       "length": 3,
-      "reponse": "LOS",
-      "indice": "Louange, employé parfois dans le style recherché ou plaisant."
+      "reponse": "IBM",
+      "indice": "Indice bio-météorologique."
     },
     {
       "number": 16,
@@ -243,8 +243,8 @@
       "row": 4,
       "col": 4,
       "length": 3,
-      "reponse": "OIL",
-      "indice": "Ancienne forme du mot oui dans le nord de la France."
+      "reponse": "BOL",
+      "indice": "Terre argileuse friable, miscible dans l’eau."
     },
     {
       "number": 17,
@@ -252,8 +252,8 @@
       "row": 5,
       "col": 0,
       "length": 8,
-      "reponse": "SCOLIOSE",
-      "indice": "Déviation latérale de la colonne vertébrale."
+      "reponse": "ANACONDA",
+      "indice": "Grand serpent ophidien aquatique d’Amérique du Sud qui se nourrit de mammifères et…"
     },
     {
       "number": 17,
@@ -261,8 +261,8 @@
       "row": 5,
       "col": 0,
       "length": 3,
-      "reponse": "SMS",
-      "indice": "Court message écrit qu’on peut envoyer de téléphone mobile à téléphone mobile."
+      "reponse": "AME",
+      "indice": "Âme."
     },
     {
       "number": 18,
@@ -270,8 +270,8 @@
       "row": 5,
       "col": 1,
       "length": 3,
-      "reponse": "CEE",
-      "indice": "La Communauté économique européenne, l’ancienne union économique fondée par le Traité de…"
+      "reponse": "NOR",
+      "indice": "Variante de Nour ; prénom épicène arabe."
     },
     {
       "number": 19,
@@ -279,8 +279,8 @@
       "row": 5,
       "col": 2,
       "length": 3,
-      "reponse": "ODE",
-      "indice": "Poème lyrique (donc chanté) composé d’une strophe, d’une antistrophe et d’une épode, que…"
+      "reponse": "ABI",
+      "indice": "Interface bas niveau entre les applications et le système d’exploitation."
     },
     {
       "number": 20,
@@ -288,8 +288,8 @@
       "row": 5,
       "col": 6,
       "length": 3,
-      "reponse": "SIS",
-      "indice": "Qui est situé."
+      "reponse": "DES",
+      "indice": "Article indéfini du pluriel."
     },
     {
       "number": 21,
@@ -297,8 +297,8 @@
       "row": 5,
       "col": 7,
       "length": 3,
-      "reponse": "ENT",
-      "indice": "Espace numérique de travail."
+      "reponse": "ARE",
+      "indice": "Unité de mesure de surface de terrains, égale à 100 mètres carrés."
     },
     {
       "number": 22,
@@ -306,8 +306,8 @@
       "row": 6,
       "col": 0,
       "length": 8,
-      "reponse": "MEDELLIN",
-      "indice": "Variante orthographique de Medellín ; ville de Colombie, capitale de l’Antioquia."
+      "reponse": "MOBILIER",
+      "indice": "Relatif aux biens meubles."
     },
     {
       "number": 23,
@@ -315,8 +315,8 @@
       "row": 7,
       "col": 0,
       "length": 4,
-      "reponse": "SEEN",
-      "indice": "Habitant de Sceaux, commune française située dans le département de l’Yonne."
+      "reponse": "ERIN",
+      "indice": "Mauvaise orthographe de Érin"
     },
     {
       "number": 24,
@@ -324,12 +324,12 @@
       "row": 7,
       "col": 5,
       "length": 3,
-      "reponse": "EST",
-      "indice": "Région située à l’est (en particulier à l’est d’un pays), le contexte permettant de…"
+      "reponse": "ESE",
+      "indice": "Est-sud-est."
     }
   ],
   "mots_non_places": [],
   "remplissage": 84.4,
   "niveau": "facile",
-  "date": "2026-10-01"
+  "date": "2026-11-01"
 }
